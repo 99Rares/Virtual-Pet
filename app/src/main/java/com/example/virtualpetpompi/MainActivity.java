@@ -13,6 +13,7 @@ import android.hardware.SensorManager;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -48,8 +49,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private SensorManager sensorManager = null;
     private boolean running = false;
-    private float totalSteps = 0;
-    private float previousTotalSteps = 0;
+    private int totalSteps = 0;
+    private int previousTotalSteps = 0;
+
+    private TextView testText;
+    SharedPreferences testPrefs;
+
+    //SharedPrefs
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences oneTimePrefs;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -59,15 +67,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
 
         initData();
-        loadData();
+        requestActivityRecognition();
         resetSteps();
-        onWakeUp();
-        saveData();
+        //onWakeUpAlarm();
+        onWakeUpReset();
         openMenuPanel();
 
         openSettings();
         openShop();
-        requestActivityRecognition();
 
         menuPanel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,9 +82,33 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 menuPanel.setVisibility(View.GONE);
             }
         });
+
+    }
+    private void initData() {
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
+        testText = findViewById(R.id.testText);
+        menuBtn = findViewById(R.id.menuBtn);
+        shopBtn = (Button) findViewById(R.id.shopBtn);
+        settingsBtn = (Button) findViewById(R.id.settingsBtn);
+        nrSteps = (TextView) findViewById(R.id.nrSteps);
 
+        menuPanel = (CardView) findViewById(R.id.insideMenuPanel);
+
+        sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        oneTimePrefs = getSharedPreferences("firstTime", Context.MODE_PRIVATE);
+    }
+
+    private void firstTimeReset() {
+        if (!oneTimePrefs.contains("firstTime")) {
+            oneTimePrefs.edit().putString("firstTime", "true").apply();
+            previousTotalSteps = totalSteps;
+            nrSteps.setText(String.valueOf(0));
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("total", totalSteps);
+            editor.putInt("prev", totalSteps);
+            editor.apply();
+        }
     }
 
     @Override
@@ -91,45 +122,40 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         } else {
             sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
         }
+        //testPrefs = getSharedPreferences("testPrefs",Context.MODE_PRIVATE);
+        //testText.setText(testPrefs.getString("test", "empty"));
+        //loadData();
     }
 
     @Override
     public final void onSensorChanged(SensorEvent event) {
-        nrSteps = (TextView) findViewById(R.id.nrSteps);
         if (running) {
-            totalSteps = event.values[0];
-            float currentSteps = (totalSteps - previousTotalSteps);
+            float steps = event.values[0]; // toti pasii facuti de la ultimul reset
+            totalSteps = (int) steps;
+
+            if (!oneTimePrefs.contains("firstTime")) {
+                oneTimePrefs.edit().putString("firstTime", "true").apply();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("total", totalSteps);
+                editor.putInt("prev", totalSteps);
+                editor.apply();
+
+                //previousTotalSteps = totalSteps;
+                nrSteps.setText(String.valueOf(0));
+            }
+            int currentSteps = (totalSteps - sharedPreferences.getInt("prev", 0));
             String currentStepsString = String.valueOf(currentSteps);
             nrSteps.setText(currentStepsString);
         }
     }
 
     public void resetSteps() {
-        nrSteps = (TextView) findViewById(R.id.nrSteps);
         nrSteps.setOnLongClickListener(v -> {
-            previousTotalSteps = totalSteps;
-            nrSteps.setText(String.valueOf(0.0));
-            saveData();
+            Toast.makeText(MainActivity.this, String.valueOf(sharedPreferences.getInt("total", 0)), Toast.LENGTH_SHORT).show();
+            testText.setText(String.valueOf(sharedPreferences.getInt("prev", 0)));
             return true;
         });
-    }
 
-    private void saveData() {
-
-        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putFloat("total", totalSteps);
-        editor.putFloat("prev", previousTotalSteps);
-        editor.apply();
-    }
-
-    private void loadData() {
-
-        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-        float savedNumber = sharedPreferences.getFloat("prev", 0);
-
-        previousTotalSteps = savedNumber;
     }
 
     @Override
@@ -140,30 +166,39 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onStop() {
         super.onStop();
-        saveData();
-    }
-
-    private void initData() {
-        menuBtn = findViewById(R.id.menuBtn);
-        shopBtn = (Button) findViewById(R.id.shopBtn);
-        settingsBtn = (Button) findViewById(R.id.settingsBtn);
-
-        menuPanel = (CardView) findViewById(R.id.insideMenuPanel);
+        sharedPreferences.edit().putInt("total", totalSteps).apply();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
 
-    private void onWakeUp() {
-        Context context = getApplicationContext();
+    private void onWakeUpReset() {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 14);
-        calendar.set(Calendar.MINUTE, 2);
+        calendar.set(Calendar.HOUR_OF_DAY, 18);
+        calendar.set(Calendar.MINUTE, 41);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
-        PendingIntent pi = PendingIntent.getService(context, 0,
-                new Intent(context, ResetSteps.class), PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+
+        PendingIntent pi = PendingIntent.getService(this, 0,
+                new Intent(this, ResetSteps.class), 0); //PendingIntent.FLAG_UPDATE_CURRENT
+
+        AlarmManager am = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), //sau .RTC
+                AlarmManager.INTERVAL_DAY, pi);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void onWakeUpAlarm() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 18);
+        calendar.set(Calendar.MINUTE, 39);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        PendingIntent pi = PendingIntent.getService(this, 0,
+                new Intent(this, Alarm.class), 0); //PendingIntent.FLAG_UPDATE_CURRENT
+
+        AlarmManager am = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        am.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, pi);
     }
 
@@ -200,8 +235,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 .withListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                        loadData();
-                        saveData();
+                        //Toast.makeText(MainActivity.this, "ba", Toast.LENGTH_SHORT).show();
+                        running = true;
+                        Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+                        if (stepSensor == null) {
+                            Toast.makeText(MainActivity.this, "No sensor detected on this device", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            sensorManager.registerListener(MainActivity.this, stepSensor, SensorManager.SENSOR_DELAY_UI);
+                        }
                     }
 
                     @Override

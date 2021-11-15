@@ -124,5 +124,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/paws" />
 
+    <TextView
+        android:id="@+id/testText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="40dp"
+        android:text="prev"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
