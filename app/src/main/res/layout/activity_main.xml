@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/jade"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -11,12 +12,12 @@
         android:layout_width="300dp"
         android:layout_height="400dp"
         android:layout_gravity="center"
-        android:backgroundTint="@color/emerald"
+        android:backgroundTint="@color/white"
         android:elevation="50dp"
         android:translationZ="1dp"
         android:visibility="gone"
         app:cardBackgroundColor="#CDFFBF"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +69,7 @@
         android:layout_height="375dp"
         android:layout_marginStart="141dp"
         android:layout_marginEnd="142dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="244dp"
         android:contentDescription="TODO"
         android:src="@drawable/pompi"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,6 +83,7 @@
         android:contentDescription="TODO"
         android:scaleType="centerCrop"
         android:translationZ="-1dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -91,16 +93,76 @@
         app:srcCompat="@drawable/t2p5_30hv_210416" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/searchPlayerBtn"
+        android:id="@+id/openInventoryBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="28dp"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/background"
-        app:layout_constraintEnd_toEndOf="@+id/background"
-        app:srcCompat="?android:attr/actionModeWebSearchDrawable"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_dialog_dialer"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/inventoryCardView"
+        android:layout_width="371dp"
+        android:layout_height="103dp"
+        android:layout_marginBottom="100dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:contentPadding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/inventoryLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/noFoodText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="90dp"
+                    android:text="Please buy me some food :("
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="29dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/food1" />
+
+    <TextView
+        android:id="@+id/hungerTextView"
+        android:layout_width="63dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/glutenbold"
+        android:gravity="center"
+        android:text=""
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nrSteps"
@@ -108,7 +170,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
-        android:text="0"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="32dp"
         app:layout_constraintEnd_toEndOf="@+id/background"
@@ -120,19 +182,10 @@
         android:layout_height="41dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="4dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/nrSteps"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/paws" />
-
-    <TextView
-        android:id="@+id/testText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="40dp"
-        android:text="prev"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
