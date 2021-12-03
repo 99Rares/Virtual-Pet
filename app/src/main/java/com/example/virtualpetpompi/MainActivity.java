@@ -200,7 +200,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         displayHunger();
                     }
                 });
-
                 inventoryLayout.addView(cardView);
             }
         }

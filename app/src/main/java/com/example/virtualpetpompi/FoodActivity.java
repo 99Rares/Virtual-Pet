@@ -56,10 +56,21 @@ public class FoodActivity extends AppCompatActivity {
         rice = findViewById(R.id.rice);
     }
 
+    /**
+     * Displays current amount of coins to a textView
+     */
     private void displayCoins() {
         coinTextView.setText(String.valueOf(coins));
     }
 
+    /**
+     * Use this to define a new food item
+     *
+     * @param foodCardView the existing food cardview
+     * @param imageName    the image name, so that it can be seen in inventory
+     * @param hunger       how much it helps with the hunger
+     * @param cost         how much it costs
+     */
     private void buyFood(CardView foodCardView, String imageName, int hunger, int cost) {
         foodCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,12 +92,20 @@ public class FoodActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * After an item is bought, this refreshes amount of coins
+     *
+     * @param cost
+     */
     private void substractAndResetCoins(int cost) {
         coinRepository.removeAmount(cost);
         coins = coinRepository.getTotalCoins();
         displayCoins();
     }
 
+    /**
+     * Sets up the button that goes back to the shop menu
+     */
     private void goBack() {
         goBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -50,7 +50,7 @@ public class HungerRepository {
         //Toast.makeText(context, minutes + ": Minutes", Toast.LENGTH_SHORT).show();
 
         // Daca exista vreo diferenta, scad din hunger Levelul curent
-        if ((int) minutes > 0) {
+        if ((int) minutes >= 20) {
             calculateHunger((int) minutes);
         }
     }
@@ -58,7 +58,8 @@ public class HungerRepository {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void calculateHunger(int minutes) {
         int hunger = hungerSharedPrefs.getInt("hungerLevel", 0);
-        hunger -= minutes / 30; //------------------------------------------------ HUNGER ALGORITHM
+        // ca in 48h sa moara de foame, ar trebui sa setam aprox: hunger -= minutes/25
+        hunger -= minutes / 20; //------------------------------------------------ HUNGER ALGORITHM
         if (hunger <= 0) {
             hunger = 0;
         }
