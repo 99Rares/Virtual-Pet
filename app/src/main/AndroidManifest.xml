@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VirtualPetPompi">
         <activity
+            android:name=".BackgroundActivity"
+            android:exported="false" />
+        <activity
             android:name=".FoodActivity"
             android:exported="false" />
         <activity

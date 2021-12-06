@@ -37,6 +37,7 @@ public class ShopActivity extends AppCompatActivity {
         init();
         displayCoins();
         openFoodShop();
+        openBackgroundShop();
         goBack();
     }
 
@@ -69,6 +70,15 @@ public class ShopActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), FoodActivity.class));
+            }
+        });
+    }
+
+    private void openBackgroundShop() {
+        openBackgroundsCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), BackgroundActivity.class));
             }
         });
     }

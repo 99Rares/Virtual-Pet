@@ -82,15 +82,15 @@
         android:layout_height="match_parent"
         android:contentDescription="TODO"
         android:scaleType="centerCrop"
+        android:src="@drawable/bg0"
         android:translationZ="-1dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/t2p5_30hv_210416" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/openInventoryBtn"
@@ -168,21 +168,21 @@
         android:id="@+id/nrSteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="24dp"
-        android:text=""
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="60dp"
+        android:text="0"
         android:textColor="@color/white"
-        android:textSize="32dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/background"
         app:layout_constraintTop_toTopOf="@+id/background" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="46dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="4dp"
-        android:visibility="gone"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/nrSteps"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/paws" />

@@ -63,11 +63,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private FoodRepository foodRepository;
     private HungerRepository hungerRepository;
 
+    // Inventory
     private FloatingActionButton openInventoryBtn;
     private boolean inventoryOpened;
     private CardView inventoryCardView;
     private LinearLayout inventoryLayout;
 
+    // Background
+    private ImageView background;
+    private BackgroundRepository backgroundRepository;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -84,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         openInventory();
         displayOwnedFood();
         displayHunger();
+        displayBackground();
         openSettings();
         openShop();
 
@@ -120,11 +125,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         hungerRepository = new HungerRepository(this);
         noFoodText = findViewById(R.id.noFoodText);
         hungerTextView = findViewById(R.id.hungerTextView);
+
+        background = findViewById(R.id.background);
+        backgroundRepository = new BackgroundRepository(this);
     }
 
     @SuppressLint("SetTextI18n")
     private void displayHunger() {
         hungerTextView.setText(hungerRepository.getHunger() + "%");
+    }
+
+    private void displayBackground() {
+        String backgroundName = backgroundRepository.getCurrentBackground();
+        int id = this.getResources().
+                getIdentifier(backgroundName, "drawable", getPackageName());
+        Drawable drawable = getResources().getDrawable(id);
+        background.setImageDrawable(drawable);
     }
 
     /**
@@ -191,13 +207,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                 cardView.addView(linearLayout);
 
+                // EATING METHOD!! WHEN TAPPING A FOOD ITEM, IT FEEDS THE PET
                 cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        cardView.setVisibility(View.GONE);
-                        foodRepository.remove(entry.getValue().toString());
-                        hungerRepository.feed(Integer.parseInt(values[1]));
-                        displayHunger();
+                        if (hungerRepository.getHunger() >= 100) {
+                            Toast.makeText(MainActivity.this, "Your pet is full already", Toast.LENGTH_SHORT).show();
+                        } else {
+                            cardView.setVisibility(View.GONE);
+                            foodRepository.remove(entry.getValue().toString());
+                            hungerRepository.feed(Integer.parseInt(values[1]));
+                            displayHunger();
+                        }
                     }
                 });
                 inventoryLayout.addView(cardView);

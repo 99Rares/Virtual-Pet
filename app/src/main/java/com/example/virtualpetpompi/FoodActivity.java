@@ -60,7 +60,7 @@ public class FoodActivity extends AppCompatActivity {
         buyFood(nuggets, "nuggets", 10, 10);
         buyFood(onionrings, "onionrings", 9, 8);
         buyFood(gogosi, "gogosi", 12, 10);
-        buyFood(gogosi, "pizza", 10, 9);
+        buyFood(pizza, "pizza", 10, 9);
 
         goBack();
     }

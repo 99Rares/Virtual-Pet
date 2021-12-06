@@ -38,8 +38,11 @@ public class CoinRepository {
 
     private void calculateCoins() {
         int coins = stepsSharedPrefs.getInt("total", 0);
-        coins /= 10;
+        coins = coins / 100; // ----------------------------------------------- COIN ALGORITHM
         coins -= coinsSharedPrefs.getInt("spentCoins", 0);
+        if (coins <= 0) {
+            coins = 0;
+        }
         coinsSharedPrefs.edit().putInt("totalCoins", coins).apply();
     }
 
