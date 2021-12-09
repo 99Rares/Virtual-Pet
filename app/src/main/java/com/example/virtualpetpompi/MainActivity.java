@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private CardView menuPanel;
 
     private TextView nrSteps, noFoodText, hungerTextView;
+    ImageView stepsPoza;
 
     // Sensor attributes
     private SensorManager sensorManager = null;
@@ -92,6 +93,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         openSettings();
         openShop();
 
+        if (sharedPreferences.getBoolean("steps",false)){
+            nrSteps.setVisibility(View.VISIBLE);
+            stepsPoza.setVisibility(View.VISIBLE);
+        }
+        else {
+            nrSteps.setVisibility(View.GONE);
+            stepsPoza.setVisibility(View.GONE);
+        }
+
         menuPanel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         shopBtn = (Button) findViewById(R.id.shopBtn);
         settingsBtn = (Button) findViewById(R.id.settingsBtn);
         nrSteps = (TextView) findViewById(R.id.nrSteps);
+        stepsPoza=findViewById(R.id.stepsPoza);
 
         menuPanel = (CardView) findViewById(R.id.insideMenuPanel);
 
@@ -163,6 +174,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         ViewGroup.LayoutParams.WRAP_CONTENT
                 );
                 paramsCard.leftMargin = 20;
+                paramsCard.topMargin = 20;
+                paramsCard.bottomMargin = 20;
                 cardView.setLayoutParams(paramsCard);
                 cardView.setCardBackgroundColor(Color.WHITE);
                 cardView.setContentPadding(5, 5, 5, 5);
@@ -180,8 +193,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 // Image
                 ImageView image = new ImageView(this);
                 LinearLayout.LayoutParams paramsImage = new LinearLayout.LayoutParams(
-                        200,
-                        200
+                        140,
+                        140
                 );
                 image.setLayoutParams(paramsImage);
                 int id = this.getResources().
@@ -249,7 +262,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         } else {
             sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
         }
-        hungerRepository.hunger();
+//        hungerRepository.hunger();
         //testPrefs = getSharedPreferences("testPrefs",Context.MODE_PRIVATE);
         //testText.setText(testPrefs.getString("test", "empty"));
         //loadData();

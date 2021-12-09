@@ -177,7 +177,7 @@
         app:layout_constraintTop_toTopOf="@+id/background" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/stepsPoza"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginTop="64dp"

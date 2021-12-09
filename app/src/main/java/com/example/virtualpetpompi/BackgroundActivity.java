@@ -123,6 +123,7 @@ public class BackgroundActivity extends AppCompatActivity {
                     backgroundRepository.setCurrentBackground(imageName);
                     Toast.makeText(BackgroundActivity.this,
                             "Background selected", Toast.LENGTH_SHORT).show();
+                    displayBoughtBackgrounds();
                 } else {
                     if (coins >= cost) {
                         backgroundRepository.add(imageName);

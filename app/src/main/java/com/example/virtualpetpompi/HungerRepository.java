@@ -3,6 +3,7 @@ package com.example.virtualpetpompi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
@@ -46,6 +47,7 @@ public class HungerRepository {
         // Iau timpul vechi si il compar cu timpul curent
         LocalDateTime oldDate = LocalDateTime.parse(timeSharedPrefs.getString("currentDate", "empty"));
         long minutes = ChronoUnit.MINUTES.between(oldDate, LocalDateTime.now());
+//        Toast.makeText(context, ""+minutes, Toast.LENGTH_SHORT).show();
 
         //Toast.makeText(context, minutes + ": Minutes", Toast.LENGTH_SHORT).show();
 

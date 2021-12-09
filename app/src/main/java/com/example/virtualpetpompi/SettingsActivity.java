@@ -1,7 +1,9 @@
 package com.example.virtualpetpompi;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -24,13 +26,15 @@ public class SettingsActivity extends AppCompatActivity {
 
     // Switches to show their respective panels
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private Switch aboutSwitch, creditsSwitch, privacySwitch, contactSwitch, helpSwitch;
+    private Switch aboutSwitch, creditsSwitch, privacySwitch, contactSwitch, helpSwitch, stepSwitch;
 
     // panels
     private CardView aboutPanel, creditsPanel, privacyPanel, contactPanel, helpPanel;
 
     // buttons
     private FloatingActionButton goBackBtn;
+
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,8 @@ public class SettingsActivity extends AppCompatActivity {
         openPanel(helpSwitch, helpPanel);
         openPanel(privacySwitch, privacyPanel);
         openPanel(contactSwitch, contactPanel);
+        setSwitch();
+        turnOnSteps();
         goBack();
     }
 
@@ -61,8 +67,32 @@ public class SettingsActivity extends AppCompatActivity {
         privacySwitch = findViewById(R.id.privacySwitch);
         contactSwitch = findViewById(R.id.contactSwitch);
         helpSwitch = findViewById(R.id.helpSwitch);
+        stepSwitch =findViewById(R.id.stepSwitch);
 
         goBackBtn = findViewById(R.id.goBackToMainActivity);
+        sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+
+        if(!sharedPreferences.contains("steps")){
+            sharedPreferences.edit().putBoolean("steps",false).apply();
+        }
+    }
+
+    private void setSwitch(){
+        stepSwitch.setChecked(sharedPreferences.getBoolean("steps", true));
+    }
+
+    private void turnOnSteps(){
+        stepSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    sharedPreferences.edit().putBoolean("steps",true).apply();
+                }else{
+                    sharedPreferences.edit().putBoolean("steps",false).apply();
+                }
+            }
+        });
+        setSwitch();
     }
 
     /**
