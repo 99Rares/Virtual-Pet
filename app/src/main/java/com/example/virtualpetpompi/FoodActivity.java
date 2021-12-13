@@ -43,7 +43,7 @@ public class FoodActivity extends AppCompatActivity {
         buyFood(rice, "food1", 5, 5);
         buyFood(cirese, "cirese", 1, 2);
         buyFood(clatitecucafea, "clatitecucafea", 28, 16);
-        buyFood(englishbreakfast, "englishbreakfast", 28, 16);
+        buyFood(englishbreakfast, "englishbreakfast", 26, 16);
         buyFood(fruits1, "fruits1", 15, 13);
         buyFood(cafea, "cafea", 4, 4);
 

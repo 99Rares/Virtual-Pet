@@ -40,9 +40,9 @@ public class BackgroundActivity extends AppCompatActivity {
         displayCoins();
         displayBoughtBackgrounds();
         buyBackground(bg0, "bg0", 0);
-        buyBackground(bg1, "bg1", 1);
-        buyBackground(bg2, "bg2", 1);
-        buyBackground(bg3, "bg3", 1);
+        buyBackground(bg1, "bg1", 30);
+        buyBackground(bg2, "bg2", 40);
+        buyBackground(bg3, "bg3", 45);
         goBack();
     }
 
