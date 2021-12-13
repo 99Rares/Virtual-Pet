@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -13,6 +14,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,20 +40,16 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
+    ImageView stepsPoza;
     // opens the shop
     private Button shopBtn;
-
     // opens the settings
     private Button settingsBtn;
-
     // open the menu panel
     private FloatingActionButton menuBtn;
     private boolean menuOpened;
     private CardView menuPanel;
-
     private TextView nrSteps, noFoodText, hungerTextView;
-    ImageView stepsPoza;
-
     // Sensor attributes
     private SensorManager sensorManager = null;
     private boolean running = false;
@@ -74,6 +72,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private ImageView background;
     private BackgroundRepository backgroundRepository;
 
+    // Animations
+    private ImageView petImage;
+    private AnimationDrawable anim;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,11 +95,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         openSettings();
         openShop();
 
-        if (sharedPreferences.getBoolean("steps",false)){
+        //Anim
+        playWakeUpAnimation();
+        playIdleAnimation();
+
+        if (sharedPreferences.getBoolean("steps", false)) {
             nrSteps.setVisibility(View.VISIBLE);
             stepsPoza.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             nrSteps.setVisibility(View.GONE);
             stepsPoza.setVisibility(View.GONE);
         }
@@ -122,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         shopBtn = (Button) findViewById(R.id.shopBtn);
         settingsBtn = (Button) findViewById(R.id.settingsBtn);
         nrSteps = (TextView) findViewById(R.id.nrSteps);
-        stepsPoza=findViewById(R.id.stepsPoza);
+        stepsPoza = findViewById(R.id.stepsPoza);
 
         menuPanel = (CardView) findViewById(R.id.insideMenuPanel);
 
@@ -139,6 +144,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         background = findViewById(R.id.background);
         backgroundRepository = new BackgroundRepository(this);
+
+        petImage = findViewById(R.id.petImage);
     }
 
     @SuppressLint("SetTextI18n")
@@ -438,6 +445,26 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     }
                 })
                 .check();
+    }
+
+    private void playWakeUpAnimation() {
+        petImage.setBackgroundResource(R.drawable.wakeup_anim);
+        anim = (AnimationDrawable) petImage.getBackground();
+        //anim.addFrame(getDrawable(R.drawable.a1), 110);
+        anim.start();
+    }
+
+    private void playIdleAnimation() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                petImage.setBackgroundResource(R.drawable.idle_anim);
+                anim = (AnimationDrawable) petImage.getBackground();
+                anim.start();
+            }
+        },1100);
+
     }
 
 }
