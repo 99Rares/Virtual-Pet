@@ -238,6 +238,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                             foodRepository.remove(entry.getValue().toString());
                             hungerRepository.feed(Integer.parseInt(values[1]));
                             displayHunger();
+                            if(foodRepository.getAll().size() == 0){
+                                noFoodText.setVisibility(View.VISIBLE);
+                                inventoryCardView.setVisibility(View.GONE);
+                                inventoryOpened = false;
+                            }
+                            anim.stop();
+                            petImage.setBackgroundResource(R.drawable.feed_anim);
+                            anim = (AnimationDrawable) petImage.getBackground();
+                            anim.start();
+                            playIdleAnimation();
                         }
                     }
                 });
@@ -245,18 +255,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         }
     }
-/*
-    private void firstTimeReset() {
-        if (!oneTimePrefs.contains("firstTime")) {
-            oneTimePrefs.edit().putString("firstTime", "true").apply();
-            previousTotalSteps = totalSteps;
-            nrSteps.setText(String.valueOf(0));
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("total", totalSteps);
-            editor.putInt("prev", totalSteps);
-            editor.apply();
-        }
-    }*/
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -436,7 +434,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                     @Override
                     public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-                        Toast.makeText(MainActivity.this, "Plz allow sensor to run", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Please allow sensor to run", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -459,11 +457,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                petImage.setBackgroundResource(R.drawable.idle_anim);
+                if (hungerRepository.getHunger() >= 82) {
+                    petImage.setBackgroundResource(R.drawable.idle_anim);
+                } else {
+                    petImage.setBackgroundResource(R.drawable.hungry_anim);
+                }
                 anim = (AnimationDrawable) petImage.getBackground();
                 anim.start();
             }
-        },1100);
+        }, 1100);
 
     }
 
