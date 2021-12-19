@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         displayHunger();
         displayBackground();
         openSettings();
+        playDanceAnim();
         openShop();
 
         //Anim
@@ -232,13 +233,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     @Override
                     public void onClick(View v) {
                         if (hungerRepository.getHunger() >= 100) {
-                            Toast.makeText(MainActivity.this, "Your pet is full already", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(MainActivity.this, "Your pet is full already",
+                            //      Toast.LENGTH_SHORT).show();
+                            anim.stop();
+                            petImage.setBackgroundResource(R.drawable.full_anim);
+                            anim = (AnimationDrawable) petImage.getBackground();
+                            anim.start();
+                            playIdleAnimation();
+
                         } else {
                             cardView.setVisibility(View.GONE);
                             foodRepository.remove(entry.getValue().toString());
                             hungerRepository.feed(Integer.parseInt(values[1]));
                             displayHunger();
-                            if(foodRepository.getAll().size() == 0){
+                            if (foodRepository.getAll().size() == 0) {
                                 noFoodText.setVisibility(View.VISIBLE);
                                 inventoryCardView.setVisibility(View.GONE);
                                 inventoryOpened = false;
@@ -457,7 +465,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (hungerRepository.getHunger() >= 82) {
+                if (hungerRepository.getHunger() >= 50) {
                     petImage.setBackgroundResource(R.drawable.idle_anim);
                 } else {
                     petImage.setBackgroundResource(R.drawable.hungry_anim);
@@ -465,8 +473,32 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 anim = (AnimationDrawable) petImage.getBackground();
                 anim.start();
             }
-        }, 1100);
+        }, 1300);
 
+    }
+
+    private void playDanceAnim() {
+        petImage.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (hungerRepository.getHunger() >= 50) {
+                    anim.stop();
+                    petImage.setBackgroundResource(R.drawable.dance_anim);
+                    anim = (AnimationDrawable) petImage.getBackground();
+                    anim.start();
+
+                    playIdleAnimation();
+
+                } else {
+                    anim.stop();
+                    petImage.setBackgroundResource(R.drawable.full_anim);
+                    anim = (AnimationDrawable) petImage.getBackground();
+                    anim.start();
+                    playIdleAnimation();
+                }
+                return false;
+            }
+        });
     }
 
 }
