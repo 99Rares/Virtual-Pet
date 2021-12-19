@@ -487,7 +487,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     anim = (AnimationDrawable) petImage.getBackground();
                     anim.start();
 
-                    playIdleAnimation();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            playIdleAnimation();
+                        }
+                    }, 200);
 
                 } else {
                     anim.stop();
