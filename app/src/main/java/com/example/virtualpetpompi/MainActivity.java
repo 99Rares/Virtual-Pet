@@ -2,6 +2,10 @@ package com.example.virtualpetpompi;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,6 +40,7 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.util.Calendar;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
@@ -95,6 +100,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         openSettings();
         openShop();
 
+        createNotificationChannel();
+        createNotification();
         //Anim
         playWakeUpAnimation();
         playIdleAnimation();
@@ -107,12 +114,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             stepsPoza.setVisibility(View.GONE);
         }
 
-        menuPanel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                menuPanel.setVisibility(View.GONE);
-            }
-        });
+        menuPanel.setOnClickListener(v -> menuPanel.setVisibility(View.GONE));
 
     }
 
@@ -124,12 +126,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         menuBtn = findViewById(R.id.menuBtn);
-        shopBtn = (Button) findViewById(R.id.shopBtn);
-        settingsBtn = (Button) findViewById(R.id.settingsBtn);
-        nrSteps = (TextView) findViewById(R.id.nrSteps);
+        shopBtn = findViewById(R.id.shopBtn);
+        settingsBtn = findViewById(R.id.settingsBtn);
+        nrSteps = findViewById(R.id.nrSteps);
         stepsPoza = findViewById(R.id.stepsPoza);
 
-        menuPanel = (CardView) findViewById(R.id.insideMenuPanel);
+        menuPanel = findViewById(R.id.insideMenuPanel);
 
         openInventoryBtn = findViewById(R.id.openInventoryBtn);
         inventoryCardView = findViewById(R.id.inventoryCardView);
@@ -228,17 +230,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 cardView.addView(linearLayout);
 
                 // EATING METHOD!! WHEN TAPPING A FOOD ITEM, IT FEEDS THE PET
-                cardView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (hungerRepository.getHunger() >= 100) {
-                            Toast.makeText(MainActivity.this, "Your pet is full already", Toast.LENGTH_SHORT).show();
-                        } else {
-                            cardView.setVisibility(View.GONE);
-                            foodRepository.remove(entry.getValue().toString());
-                            hungerRepository.feed(Integer.parseInt(values[1]));
-                            displayHunger();
-                        }
+                cardView.setOnClickListener(v -> {
+                    if (hungerRepository.getHunger() >= 100) {
+                        Toast.makeText(MainActivity.this, "Your pet is full already", Toast.LENGTH_SHORT).show();
+                    } else {
+                        cardView.setVisibility(View.GONE);
+                        foodRepository.remove(entry.getValue().toString());
+                        hungerRepository.feed(Integer.parseInt(values[1]));
+                        displayHunger();
                     }
                 });
                 inventoryLayout.addView(cardView);
@@ -355,20 +354,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
      * Opens the menu panel
      */
     private void openMenuPanel() {
-        menuBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!menuOpened) {
-                    menuPanel.setVisibility(View.VISIBLE);
-                    openInventoryBtn.setEnabled(false);
-                    menuOpened = true;
-                } else {
-                    menuPanel.setVisibility(View.GONE);
-                    openInventoryBtn.setEnabled(true);
-                    menuOpened = false;
-                }
-
+        menuBtn.setOnClickListener(v -> {
+            if (!menuOpened) {
+                menuPanel.setVisibility(View.VISIBLE);
+                openInventoryBtn.setEnabled(false);
+                menuOpened = true;
+            } else {
+                menuPanel.setVisibility(View.GONE);
+                openInventoryBtn.setEnabled(true);
+                menuOpened = false;
             }
+
         });
     }
 
@@ -376,40 +372,27 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
      * Sets up the button that opens the shop
      */
     private void openShop() {
-        shopBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ShopActivity.class));
-            }
-        });
+        shopBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ShopActivity.class)));
     }
 
     /**
      * Sets up the button that opens the settings
      */
     private void openSettings() {
-        settingsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-            }
-        });
+        settingsBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SettingsActivity.class)));
     }
 
     /**
      * sets up the button that opens and closes the inventory
      */
     private void openInventory() {
-        openInventoryBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!inventoryOpened) {
-                    inventoryCardView.setVisibility(View.VISIBLE);
-                    inventoryOpened = true;
-                } else {
-                    inventoryCardView.setVisibility(View.GONE);
-                    inventoryOpened = false;
-                }
+        openInventoryBtn.setOnClickListener(v -> {
+            if (!inventoryOpened) {
+                inventoryCardView.setVisibility(View.VISIBLE);
+                inventoryOpened = true;
+            } else {
+                inventoryCardView.setVisibility(View.GONE);
+                inventoryOpened = false;
             }
         });
     }
@@ -456,15 +439,43 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private void playIdleAnimation() {
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                petImage.setBackgroundResource(R.drawable.idle_anim);
-                anim = (AnimationDrawable) petImage.getBackground();
-                anim.start();
-            }
-        },1100);
+        handler.postDelayed(() -> {
+            petImage.setBackgroundResource(R.drawable.idle_anim);
+            anim = (AnimationDrawable) petImage.getBackground();
+            anim.start();
+        }, 1100);
 
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("hunger", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    private void createNotification() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 20);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 1);
+
+
+        Intent intent = new Intent(getApplicationContext(), HungerNotification.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast
+                (getApplicationContext(), 666, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
 }

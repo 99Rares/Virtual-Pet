@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Virtual Pet Pompi</string>
+    <string name="channel_name">Hunger Notification</string>
+    <string name="channel_description">Channel for hunger notifications</string>
 </resources>
