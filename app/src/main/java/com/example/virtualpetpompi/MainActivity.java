@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         displayHunger();
         displayBackground();
         openSettings();
+        playDanceAnim();
         openShop();
 
         createNotificationChannel();
@@ -230,32 +231,40 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 cardView.addView(linearLayout);
 
                 // EATING METHOD!! WHEN TAPPING A FOOD ITEM, IT FEEDS THE PET
-                cardView.setOnClickListener(v -> {
-                    if (hungerRepository.getHunger() >= 100) {
-                        Toast.makeText(MainActivity.this, "Your pet is full already", Toast.LENGTH_SHORT).show();
-                    } else {
-                        cardView.setVisibility(View.GONE);
-                        foodRepository.remove(entry.getValue().toString());
-                        hungerRepository.feed(Integer.parseInt(values[1]));
-                        displayHunger();
+                cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (hungerRepository.getHunger() >= 100) {
+                            //Toast.makeText(MainActivity.this, "Your pet is full already",
+                            //      Toast.LENGTH_SHORT).show();
+                            anim.stop();
+                            petImage.setBackgroundResource(R.drawable.full_anim);
+                            anim = (AnimationDrawable) petImage.getBackground();
+                            anim.start();
+                            playIdleAnimation();
+
+                        } else {
+                            cardView.setVisibility(View.GONE);
+                            foodRepository.remove(entry.getValue().toString());
+                            hungerRepository.feed(Integer.parseInt(values[1]));
+                            displayHunger();
+                            if (foodRepository.getAll().size() == 0) {
+                                noFoodText.setVisibility(View.VISIBLE);
+                                inventoryCardView.setVisibility(View.GONE);
+                                inventoryOpened = false;
+                            }
+                            anim.stop();
+                            petImage.setBackgroundResource(R.drawable.feed_anim);
+                            anim = (AnimationDrawable) petImage.getBackground();
+                            anim.start();
+                            playIdleAnimation();
+                        }
                     }
                 });
                 inventoryLayout.addView(cardView);
             }
         }
     }
-/*
-    private void firstTimeReset() {
-        if (!oneTimePrefs.contains("firstTime")) {
-            oneTimePrefs.edit().putString("firstTime", "true").apply();
-            previousTotalSteps = totalSteps;
-            nrSteps.setText(String.valueOf(0));
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("total", totalSteps);
-            editor.putInt("prev", totalSteps);
-            editor.apply();
-        }
-    }*/
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -419,7 +428,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                     @Override
                     public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-                        Toast.makeText(MainActivity.this, "Plz allow sensor to run", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Please allow sensor to run", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -439,12 +448,49 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private void playIdleAnimation() {
         Handler handler = new Handler();
-        handler.postDelayed(() -> {
-            petImage.setBackgroundResource(R.drawable.idle_anim);
-            anim = (AnimationDrawable) petImage.getBackground();
-            anim.start();
-        }, 1100);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (hungerRepository.getHunger() >= 50) {
+                    petImage.setBackgroundResource(R.drawable.idle_anim);
+                } else {
+                    petImage.setBackgroundResource(R.drawable.hungry_anim);
+                }
+                anim = (AnimationDrawable) petImage.getBackground();
+                anim.start();
+            }
+        }, 1300);
 
+    }
+
+    private void playDanceAnim() {
+        petImage.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (hungerRepository.getHunger() >= 50) {
+                    anim.stop();
+                    petImage.setBackgroundResource(R.drawable.dance_anim);
+                    anim = (AnimationDrawable) petImage.getBackground();
+                    anim.start();
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            playIdleAnimation();
+                        }
+                    }, 200);
+
+                } else {
+                    anim.stop();
+                    petImage.setBackgroundResource(R.drawable.full_anim);
+                    anim = (AnimationDrawable) petImage.getBackground();
+                    anim.start();
+                    playIdleAnimation();
+                }
+                return false;
+            }
+        });
     }
 
     private void createNotificationChannel() {

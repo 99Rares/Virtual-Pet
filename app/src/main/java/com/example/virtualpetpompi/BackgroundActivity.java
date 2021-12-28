@@ -100,7 +100,6 @@ public class BackgroundActivity extends AppCompatActivity {
         }
 
         String currentBackground = backgroundRepository.getCurrentBackground();
-        Toast.makeText(BackgroundActivity.this, currentBackground, Toast.LENGTH_SHORT).show();
         if(currentBackground.equals("bg0")){
             bg0Text.setText("selected");
         }
