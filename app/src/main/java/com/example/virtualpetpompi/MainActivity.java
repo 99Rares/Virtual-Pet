@@ -100,9 +100,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         openSettings();
         playDanceAnim();
         openShop();
-
-        createNotificationChannel();
-        createNotification();
         //Anim
         playWakeUpAnimation();
         playIdleAnimation();
@@ -290,6 +287,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             totalSteps = (int) steps;
 
             if (!oneTimePrefs.contains("firstTime")) {
+                createNotificationChannel();
+                createNotification();
                 oneTimePrefs.edit().putString("firstTime", "true").apply();
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("total", totalSteps);
@@ -522,6 +521,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 (getApplicationContext(), 666, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        //Toast.makeText(MainActivity.this, String.valueOf(calendar.getTimeInMillis()), Toast.LENGTH_SHORT).show();
     }
 
 }
