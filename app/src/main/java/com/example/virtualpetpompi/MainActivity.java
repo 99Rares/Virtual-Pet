@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private FloatingActionButton menuBtn;
     private boolean menuOpened;
     private CardView menuPanel;
-    private TextView nrSteps, noFoodText, hungerTextView;
+    private TextView nrSteps, noFoodText, hungerTextView, nrLifes;
     // Sensor attributes
     private SensorManager sensorManager = null;
     private boolean running = false;
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private SharedPreferences oneTimePrefs;
     private FoodRepository foodRepository;
     private HungerRepository hungerRepository;
+    private SharedPreferences savedLifes;
 
     // Inventory
     private FloatingActionButton openInventoryBtn;
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private BackgroundRepository backgroundRepository;
 
     // Animations
-    private ImageView petImage;
+    private ImageView petImage, dead;
     private AnimationDrawable anim;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         displayOwnedFood();
         displayHunger();
         displayBackground();
+        manageLifes();
         openSettings();
         playDanceAnim();
         openShop();
@@ -116,6 +118,32 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
+    private void manageLifes() {
+        if (savedLifes.contains("life")) {
+            int hunger = hungerRepository.getHunger();
+            int lifes = savedLifes.getInt("life", 0);
+            if (lifes > 0) {
+                if (hunger == 0) {
+                    lifes--;
+                    savedLifes.edit().putInt("life", lifes).apply();
+                    hungerRepository.feed(100);
+                    displayHunger();
+                }
+            }
+            String lifeString = String.valueOf(lifes);
+            nrLifes.setText(lifeString);
+            if (lifes == 0 && hunger == 0) {
+                Toast.makeText(this, "Your pet died :(", Toast.LENGTH_SHORT).show();
+                menuBtn.setVisibility(View.GONE);
+                openInventoryBtn.setVisibility(View.GONE);
+                petImage.setVisibility(View.GONE);
+                dead.setVisibility(View.VISIBLE);
+
+                Toast.makeText(this, "Reinstall the app", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
     /**
      * Initializes data
      */
@@ -128,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         settingsBtn = findViewById(R.id.settingsBtn);
         nrSteps = findViewById(R.id.nrSteps);
         stepsPoza = findViewById(R.id.stepsPoza);
+        nrLifes = findViewById(R.id.lives);
 
         menuPanel = findViewById(R.id.insideMenuPanel);
 
@@ -137,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         oneTimePrefs = getSharedPreferences("firstTime", Context.MODE_PRIVATE);
+        savedLifes = getSharedPreferences("savedLifes", Context.MODE_PRIVATE);
         foodRepository = new FoodRepository(this);
         hungerRepository = new HungerRepository(this);
         noFoodText = findViewById(R.id.noFoodText);
@@ -146,6 +176,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         backgroundRepository = new BackgroundRepository(this);
 
         petImage = findViewById(R.id.petImage);
+        dead = findViewById(R.id.dead);
+        dead.setVisibility(View.GONE);
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -285,8 +318,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (running) {
             float steps = event.values[0]; // toti pasii facuti de la ultimul reset
             totalSteps = (int) steps;
-
             if (!oneTimePrefs.contains("firstTime")) {
+                savedLifes.edit().putInt("life", 5).apply();
+                int startLife = savedLifes.getInt("life", 0);
+                String startLifeString = String.valueOf(startLife);
+                nrLifes.setText(startLifeString);
                 createNotificationChannel();
                 createNotification();
                 oneTimePrefs.edit().putString("firstTime", "true").apply();
@@ -300,8 +336,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
             int currentSteps = (totalSteps - sharedPreferences.getInt("prev", 0));
             sharedPreferences.edit().putInt("total", currentSteps).apply();
-            String currentStepsString = String.valueOf(currentSteps);
-            nrSteps.setText(currentStepsString);
+            int currentStepsString = currentSteps;
+            currentStepsString = currentStepsString % 10000;
+            nrSteps.setText(String.valueOf(currentStepsString));
         }
     }
 /*
