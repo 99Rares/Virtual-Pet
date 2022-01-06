@@ -9,10 +9,8 @@ import java.util.Map;
 public class BackgroundRepository {
 
     private SharedPreferences repository;
-    private Context context;
 
     public BackgroundRepository(Context context) {
-        this.context = context;
         repository = context.getSharedPreferences("backgrounds", Context.MODE_PRIVATE);
 
         initFirstBackground();

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -82,14 +81,11 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void turnOnSteps(){
-        stepSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    sharedPreferences.edit().putBoolean("steps",true).apply();
-                }else{
-                    sharedPreferences.edit().putBoolean("steps",false).apply();
-                }
+        stepSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked){
+                sharedPreferences.edit().putBoolean("steps",true).apply();
+            }else{
+                sharedPreferences.edit().putBoolean("steps",false).apply();
             }
         });
         setSwitch();
@@ -102,14 +98,11 @@ public class SettingsActivity extends AppCompatActivity {
      * @param panel       the panel to open
      */
     private void openPanel(@SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchPanel, CardView panel) {
-        switchPanel.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    panel.setVisibility(View.VISIBLE);
-                } else {
-                    panel.setVisibility(View.GONE);
-                }
+        switchPanel.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                panel.setVisibility(View.VISIBLE);
+            } else {
+                panel.setVisibility(View.GONE);
             }
         });
     }
@@ -118,11 +111,6 @@ public class SettingsActivity extends AppCompatActivity {
      * Sets up the go back button
      */
     private void goBack() {
-        goBackBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            }
-        });
+        goBackBtn.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), MainActivity.class)));
     }
 }

@@ -2,7 +2,6 @@ package com.example.virtualpetpompi;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +19,7 @@ public class ShopActivity extends AppCompatActivity {
     // displays the coins
     private TextView coinTextView;
 
-    // buttons that lead to other activites
+    // buttons that lead to other activities
     private CardView openFoodShopCardView, openBackgroundsCardView;
 
     // goes back to main
@@ -63,35 +62,20 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     /**
-     * sets up the cardview that opens the food shop
+     * sets up the cardView that opens the food shop
      */
     private void openFoodShop() {
-        openFoodShopCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), FoodActivity.class));
-            }
-        });
+        openFoodShopCardView.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), FoodActivity.class)));
     }
 
     private void openBackgroundShop() {
-        openBackgroundsCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), BackgroundActivity.class));
-            }
-        });
+        openBackgroundsCardView.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), BackgroundActivity.class)));
     }
 
     /**
      * Sets up the button that goes back to main activity
      */
     private void goBack() {
-        goBackBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            }
-        });
+        goBackBtn.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), MainActivity.class)));
     }
 }

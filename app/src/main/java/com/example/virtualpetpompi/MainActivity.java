@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager sensorManager = null;
     private boolean running = false;
     private int totalSteps = 0;
-    private int previousTotalSteps = 0;
 
     //SharedPrefs
     private SharedPreferences sharedPreferences;
@@ -92,9 +91,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         initData();
         requestActivityRecognition();
-        //resetSteps();
-        //onWakeUpAlarm();
-        //onWakeUpReset();
         openMenuPanel();
         openInventory();
         displayOwnedFood();
@@ -265,35 +261,28 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 cardView.addView(linearLayout);
 
                 // EATING METHOD!! WHEN TAPPING A FOOD ITEM, IT FEEDS THE PET
-                cardView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (hungerRepository.getHunger() >= 100) {
-                            //Toast.makeText(MainActivity.this, "Your pet is full already",
-                            //      Toast.LENGTH_SHORT).show();
-                            anim.stop();
-                            petImage.setBackgroundResource(R.drawable.full_anim);
-                            anim = (AnimationDrawable) petImage.getBackground();
-                            anim.start();
-                            playIdleAnimation();
+                cardView.setOnClickListener(v -> {
+                    if (hungerRepository.getHunger() >= 100) {
 
-                        } else {
-                            cardView.setVisibility(View.GONE);
-                            foodRepository.remove(entry.getValue().toString());
-                            hungerRepository.feed(Integer.parseInt(values[1]));
-                            displayHunger();
-                            if (foodRepository.getAll().size() == 0) {
-                                noFoodText.setVisibility(View.VISIBLE);
-                                inventoryCardView.setVisibility(View.GONE);
-                                inventoryOpened = false;
-                            }
-                            anim.stop();
-                            petImage.setBackgroundResource(R.drawable.feed_anim);
-                            anim = (AnimationDrawable) petImage.getBackground();
-                            anim.start();
-                            playIdleAnimation();
+                        anim.stop();
+                        petImage.setBackgroundResource(R.drawable.full_anim);
+
+                    } else {
+                        cardView.setVisibility(View.GONE);
+                        foodRepository.remove(entry.getValue().toString());
+                        hungerRepository.feed(Integer.parseInt(values[1]));
+                        displayHunger();
+                        if (foodRepository.getAll().size() == 0) {
+                            noFoodText.setVisibility(View.VISIBLE);
+                            inventoryCardView.setVisibility(View.GONE);
+                            inventoryOpened = false;
                         }
+                        anim.stop();
+                        petImage.setBackgroundResource(R.drawable.feed_anim);
                     }
+                    anim = (AnimationDrawable) petImage.getBackground();
+                    anim.start();
+                    playIdleAnimation();
                 });
                 inventoryLayout.addView(cardView);
             }
@@ -311,10 +300,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         } else {
             sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
         }
-//        hungerRepository.hunger();
-        //testPrefs = getSharedPreferences("testPrefs",Context.MODE_PRIVATE);
-        //testText.setText(testPrefs.getString("test", "empty"));
-        //loadData();
+
     }
 
     @Override
@@ -371,38 +357,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //sharedPreferences.edit().putInt("total", totalSteps).apply();
     }
 
-/*
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private void onWakeUpReset() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 18);
-        calendar.set(Calendar.MINUTE, 41);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-
-        PendingIntent pi = PendingIntent.getService(this, 0,
-                new Intent(this, ResetSteps.class), 0); //PendingIntent.FLAG_UPDATE_CURRENT
-
-        AlarmManager am = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), //sau .RTC
-                AlarmManager.INTERVAL_DAY, pi);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private void onWakeUpAlarm() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 18);
-        calendar.set(Calendar.MINUTE, 39);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-
-        PendingIntent pi = PendingIntent.getService(this, 0,
-                new Intent(this, Alarm.class), 0); //PendingIntent.FLAG_UPDATE_CURRENT
-
-        AlarmManager am = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        am.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),
-                AlarmManager.INTERVAL_DAY, pi);
-    }*/
 
     /**
      * Opens the menu panel
@@ -493,48 +447,37 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private void playIdleAnimation() {
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (hungerRepository.getHunger() >= 50) {
-                    petImage.setBackgroundResource(R.drawable.idle_anim);
-                } else {
-                    petImage.setBackgroundResource(R.drawable.hungry_anim);
-                }
-                anim = (AnimationDrawable) petImage.getBackground();
-                anim.start();
+        handler.postDelayed(() -> {
+            if (hungerRepository.getHunger() >= 50) {
+                petImage.setBackgroundResource(R.drawable.idle_anim);
+            } else {
+                petImage.setBackgroundResource(R.drawable.hungry_anim);
             }
+            anim = (AnimationDrawable) petImage.getBackground();
+            anim.start();
         }, 1300);
 
     }
 
     private void playDanceAnim() {
-        petImage.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if (hungerRepository.getHunger() >= 50) {
-                    anim.stop();
-                    petImage.setBackgroundResource(R.drawable.dance_anim);
-                    anim = (AnimationDrawable) petImage.getBackground();
-                    anim.start();
+        petImage.setOnLongClickListener(v -> {
+            if (hungerRepository.getHunger() >= 50) {
+                anim.stop();
+                petImage.setBackgroundResource(R.drawable.dance_anim);
+                anim = (AnimationDrawable) petImage.getBackground();
+                anim.start();
 
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            playIdleAnimation();
-                        }
-                    }, 200);
+                Handler handler = new Handler();
+                handler.postDelayed(this::playIdleAnimation, 200);
 
-                } else {
-                    anim.stop();
-                    petImage.setBackgroundResource(R.drawable.full_anim);
-                    anim = (AnimationDrawable) petImage.getBackground();
-                    anim.start();
-                    playIdleAnimation();
-                }
-                return false;
+            } else {
+                anim.stop();
+                petImage.setBackgroundResource(R.drawable.full_anim);
+                anim = (AnimationDrawable) petImage.getBackground();
+                anim.start();
+                playIdleAnimation();
             }
+            return false;
         });
     }
 

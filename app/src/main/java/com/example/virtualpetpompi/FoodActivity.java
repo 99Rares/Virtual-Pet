@@ -2,7 +2,6 @@ package com.example.virtualpetpompi;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -119,22 +118,19 @@ public class FoodActivity extends AppCompatActivity {
      * @param cost         how much it costs
      */
     private void buyFood(CardView foodCardView, String imageName, int hunger, int cost) {
-        foodCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (coins >= cost) {
-                    StringBuilder foodItem = new StringBuilder();
-                    foodItem.append(imageName).append("|");
-                    foodItem.append(hunger).append("|");
-                    foodItem.append(cost).append("|");
-                    foodRepository.add(foodItem.toString());
+        foodCardView.setOnClickListener(v -> {
+            if (coins >= cost) {
+                StringBuilder foodItem = new StringBuilder();
+                foodItem.append(imageName).append("|");
+                foodItem.append(hunger).append("|");
+                foodItem.append(cost).append("|");
+                foodRepository.add(foodItem.toString());
 
-                    substractAndResetCoins(cost);
+                subtractAndResetCoins(cost);
 
-                    Toast.makeText(FoodActivity.this, "Food bought!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(FoodActivity.this, "Not enough coins", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(FoodActivity.this, "Food bought!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(FoodActivity.this, "Not enough coins", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -142,9 +138,9 @@ public class FoodActivity extends AppCompatActivity {
     /**
      * After an item is bought, this refreshes amount of coins
      *
-     * @param cost
+     * @param cost the cost of an object
      */
-    private void substractAndResetCoins(int cost) {
+    private void subtractAndResetCoins(int cost) {
         coinRepository.removeAmount(cost);
         coins = coinRepository.getTotalCoins();
         displayCoins();
@@ -154,11 +150,6 @@ public class FoodActivity extends AppCompatActivity {
      * Sets up the button that goes back to the shop menu
      */
     private void goBack() {
-        goBackBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ShopActivity.class));
-            }
-        });
+        goBackBtn.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), ShopActivity.class)));
     }
 }
