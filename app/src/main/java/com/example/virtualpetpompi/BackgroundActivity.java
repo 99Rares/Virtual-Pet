@@ -42,7 +42,7 @@ public class BackgroundActivity extends AppCompatActivity {
         buyBackground(bg0, "bg0", 0);
         buyBackground(bg1, "bg1", 30);
         buyBackground(bg2, "bg2", 40);
-        buyBackground(bg3, "bg3", 45);
+        buyBackground(bg3, "bg3", 50);
         goBack();
     }
 

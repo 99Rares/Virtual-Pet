@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private FoodRepository foodRepository;
     private HungerRepository hungerRepository;
     private SharedPreferences savedLifes;
+    private SharedPreferences coinsSharedPrefs;
+    private SharedPreferences resetRecover;
 
     // Inventory
     private FloatingActionButton openInventoryBtn;
@@ -167,6 +169,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         oneTimePrefs = getSharedPreferences("firstTime", Context.MODE_PRIVATE);
         savedLifes = getSharedPreferences("savedLifes", Context.MODE_PRIVATE);
+        coinsSharedPrefs = getSharedPreferences("coins", Context.MODE_PRIVATE);
+        resetRecover = getSharedPreferences("recover", Context.MODE_PRIVATE);
         foodRepository = new FoodRepository(this);
         hungerRepository = new HungerRepository(this);
         noFoodText = findViewById(R.id.noFoodText);
@@ -335,21 +339,26 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 nrSteps.setText(String.valueOf(0));
             }
             int currentSteps = (totalSteps - sharedPreferences.getInt("prev", 0));
+            int currentStepsString = resetSteps(currentSteps);
             sharedPreferences.edit().putInt("total", currentSteps).apply();
-            int currentStepsString = currentSteps;
             currentStepsString = currentStepsString % 10000;
             nrSteps.setText(String.valueOf(currentStepsString));
         }
     }
-/*
-    public void resetSteps() {
-        nrSteps.setOnLongClickListener(v -> {
-            Toast.makeText(MainActivity.this, String.valueOf(sharedPreferences.getInt("total", 0)), Toast.LENGTH_SHORT).show();
-            testText.setText(String.valueOf(sharedPreferences.getInt("prev", 0)));
-            return true;
-        });
 
-    }*/
+    public int resetSteps(int steps) {
+        if (steps <= 0) {
+            int coins;
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("total", totalSteps);
+            editor.putInt("prev", totalSteps);
+            editor.apply();
+            coins = coinsSharedPrefs.getInt("totalCoins", 0);
+            steps = (totalSteps - sharedPreferences.getInt("prev", 0));
+            resetRecover.edit().putInt("prevCoins", coins).apply();
+        }
+        return steps;
+    }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
