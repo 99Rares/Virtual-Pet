@@ -3,7 +3,6 @@ package com.example.virtualpetpompi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
@@ -12,6 +11,9 @@ import java.time.temporal.ChronoUnit;
 
 /**
  * @author anrei.vasiu and rares.dan
+ * - contains the hunger algorithm
+ * - since the app is first opened, it sets up the 'getting hungry' method
+ * - holds data about hunger
  */
 public class HungerRepository {
 
@@ -28,6 +30,9 @@ public class HungerRepository {
         initData();
     }
 
+    /**
+     * Inits the data that is used to save hunger
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initData() {
         if (!hungerSharedPrefs.contains("hungerLevel")) {
@@ -42,6 +47,9 @@ public class HungerRepository {
         hunger();
     }
 
+    /**
+     * Substract 1% from hunger for every 20 min of inactivity
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void hunger() {
         // Iau timpul vechi si il compar cu timpul curent

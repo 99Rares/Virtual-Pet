@@ -39,27 +39,28 @@ public class FoodActivity extends AppCompatActivity {
         init();
         displayCoins();
 
+        // Set up the food
         buyFood(rice, "food1", 5, 5);
         buyFood(cirese, "cirese", 1, 2);
-        buyFood(clatitecucafea, "clatitecucafea", 28, 16);
-        buyFood(englishbreakfast, "englishbreakfast", 26, 16);
-        buyFood(fruits1, "fruits1", 15, 13);
-        buyFood(cafea, "cafea", 4, 4);
+        buyFood(clatitecucafea, "clatitecucafea", 28, 16); //16
+        buyFood(englishbreakfast, "englishbreakfast", 26, 16); //16
+        buyFood(fruits1, "fruits1", 15, 13); //13
+        buyFood(cafea, "cafea", 4, 4); //4
 
-        buyFood(carbonara, "carbonara", 15, 25);
-        buyFood(salad, "salad", 8, 15);
-        buyFood(soup, "soup", 10, 12);
-        buyFood(steak1, "steak1", 30, 35);
-        buyFood(steak2, "steak2", 20, 22);
+        buyFood(carbonara, "carbonara", 15, 25); //25
+        buyFood(salad, "salad", 8, 15); //15
+        buyFood(soup, "soup", 10, 12); //12
+        buyFood(steak1, "steak1", 30, 35); //35
+        buyFood(steak2, "steak2", 20, 22); //22
 
-        buyFood(cartofipai, "cartofipai", 7, 10);
-        buyFood(burger, "burger", 20, 27);
-        buyFood(cola, "cola", 4, 3);
-        buyFood(hotdog, "hotdog", 16, 20);
-        buyFood(nuggets, "nuggets", 10, 10);
-        buyFood(onionrings, "onionrings", 9, 8);
-        buyFood(gogosi, "gogosi", 12, 10);
-        buyFood(pizza, "pizza", 10, 9);
+        buyFood(cartofipai, "cartofipai", 7, 10); //10
+        buyFood(burger, "burger", 20, 27); //27
+        buyFood(cola, "cola", 4, 3); //3
+        buyFood(hotdog, "hotdog", 16, 20); //20
+        buyFood(nuggets, "nuggets", 10, 10); //10
+        buyFood(onionrings, "onionrings", 9, 8); //8
+        buyFood(gogosi, "gogosi", 12, 10); //10
+        buyFood(pizza, "pizza", 10, 9); //9
 
         goBack();
     }
@@ -111,6 +112,7 @@ public class FoodActivity extends AppCompatActivity {
 
     /**
      * Use this to define a new food item
+     * Method made so that is can define any kind of food
      *
      * @param foodCardView the existing food cardview
      * @param imageName    the image name, so that it can be seen in inventory

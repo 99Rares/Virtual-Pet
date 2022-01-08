@@ -11,6 +11,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * @author andrei.vasiu and dan.rares
+ * - Handles the activity that leads to the real shops
  * - background button that leads to another activity
  * - food btn that leads to another actitivty
  */

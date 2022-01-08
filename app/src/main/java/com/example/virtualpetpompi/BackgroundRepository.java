@@ -16,6 +16,9 @@ public class BackgroundRepository {
         initFirstBackground();
     }
 
+    /**
+     * Initialises the first background as bought and starts the repo index
+     */
     private void initFirstBackground() {
         if (!repository.contains("background")) {
             repository.edit().putString("background", "bg0").apply();
@@ -42,6 +45,11 @@ public class BackgroundRepository {
         repository.edit().putString(key, value).apply();
     }
 
+    /**
+     * Checks if a background is already bought
+     * @param name the name of the bg to check
+     * @return
+     */
     public boolean isBought(String name){
         for (Map.Entry<String, ?> entry : repository.getAll().entrySet()){
             if(entry.getValue().toString().equals(name)){
@@ -51,10 +59,18 @@ public class BackgroundRepository {
         return false;
     }
 
+    /**
+     * Gets current selected backgrounds
+     * @return a string with background name
+     */
     public String getCurrentBackground() {
         return repository.getString("currentBackground", "bg0");
     }
 
+    /**
+     * Sets the current background
+     * @param bg the name of the bg to select
+     */
     public void setCurrentBackground(String bg) {
         repository.edit().putString("currentBackground", bg).apply();
     }

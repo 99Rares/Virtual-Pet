@@ -8,11 +8,19 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-
+/**
+ * @author dan.rares and andrei.vasiu
+ */
 public class HungerNotification extends BroadcastReceiver {
     public HungerNotification() {
     }
 
+    /**
+     * Sets up the notification of the app
+     *
+     * @param context
+     * @param intent
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
 

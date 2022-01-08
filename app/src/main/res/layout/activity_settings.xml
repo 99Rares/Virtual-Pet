@@ -105,7 +105,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="text"
+                        android:text="You only need to feed your pet, easy right? Well, in order to do
+that you need to walk and walk and walk even more! To make money, you need to make steps,
+ and then you can buy food to feed your cute pet"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
@@ -172,7 +174,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Do not be shy, contact us."
+                        android:text="Steps = money"
                         android:textColor="@color/black"
                         android:textSize="18dp"
                         android:textStyle="bold" />
@@ -181,7 +183,35 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="*Insert fancy text here*"
+                        android:text="money = food"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="food = happy pet"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="If you manage to keep you pet happy, it means that you manage to walk enough
+to keep yourself healthy. Congrats!"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="For further questions do not be shy, contact us."
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
@@ -257,7 +287,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="*Insert fancy text here*"
+                        android:text="Your activity is not being recorded anywhere, so feel free
+to accept the permission and enjoy this amazing free virtual pet"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 

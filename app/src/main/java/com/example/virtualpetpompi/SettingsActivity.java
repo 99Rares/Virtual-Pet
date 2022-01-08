@@ -80,6 +80,9 @@ public class SettingsActivity extends AppCompatActivity {
         stepSwitch.setChecked(sharedPreferences.getBoolean("steps", true));
     }
 
+    /**
+     * Turns on the step view
+     */
     private void turnOnSteps(){
         stepSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if(isChecked){

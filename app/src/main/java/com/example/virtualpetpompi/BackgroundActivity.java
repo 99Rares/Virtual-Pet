@@ -41,7 +41,7 @@ public class BackgroundActivity extends AppCompatActivity {
         buyBackground(bg0, "bg0", 0);
         buyBackground(bg1, "bg1", 30);
         buyBackground(bg2, "bg2", 40);
-        buyBackground(bg3, "bg3", 50);
+        buyBackground(bg3, "bg3", 45);
         goBack();
     }
 
@@ -76,6 +76,10 @@ public class BackgroundActivity extends AppCompatActivity {
         coinText.setText(String.valueOf(coins));
     }
 
+    /**
+     * Shows which backgrounds are already owned by the user
+     * and which one is selected
+     */
     @SuppressLint("SetTextI18n")
     private void displayBoughtBackgrounds() {
         for (Map.Entry<String, ?> entry : backgroundRepository.getAll().entrySet()) {
@@ -113,6 +117,13 @@ public class BackgroundActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Handles the buying button
+     *
+     * @param bg        teh cardview that shows the background and cost
+     * @param imageName how the background is called
+     * @param cost      how much it costs
+     */
     private void buyBackground(CardView bg, String imageName, int cost) {
         bg.setOnClickListener(v -> {
             if (backgroundRepository.isBought(imageName)) {

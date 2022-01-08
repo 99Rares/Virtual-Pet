@@ -23,6 +23,9 @@ public class CoinRepository {
         calculateCoins();
     }
 
+    /**
+     * Init the repo index
+     */
     private void initData() {
         if (!coinsSharedPrefs.contains("totalCoins")) {
             coinsSharedPrefs.edit().putInt("totalCoins", 0).apply();
@@ -32,10 +35,18 @@ public class CoinRepository {
         }
     }
 
+    /**
+     * Get total amount of coins
+     *
+     * @return
+     */
     public int getTotalCoins() {
         return this.coinsSharedPrefs.getInt("totalCoins", 0);
     }
 
+    /**
+     * Sets the step - coin algorithm and calculates the total amount of coins
+     */
     private void calculateCoins() {
         int coins = stepsSharedPrefs.getInt("total", 0);
         int recoveredCoins = resetRecover.getInt("prevCoins", 0);
@@ -49,6 +60,11 @@ public class CoinRepository {
         coinsSharedPrefs.edit().putInt("totalCoins", coins).apply();
     }
 
+    /**
+     * When user buys smth, this is called to remove from the total
+     *
+     * @param amountToRemove how much to remove
+     */
     public void removeAmount(int amountToRemove) {
         coinsSharedPrefs.edit().putInt("spentCoins",
                 coinsSharedPrefs.getInt("spentCoins", 0) + amountToRemove).apply();

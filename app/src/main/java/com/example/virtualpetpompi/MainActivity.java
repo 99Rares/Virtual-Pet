@@ -43,6 +43,14 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import java.util.Calendar;
 import java.util.Map;
 
+/**
+ * @author andrei.vasiu and dan.rares
+ * - Holds repositories
+ * - Inventoy of food
+ * - Animations
+ * - notification channel
+ * - Step sensor
+ */
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
     ImageView stepsPoza;
@@ -116,6 +124,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
+    /**
+     * Manages pet's lives
+     * - Total amount of lives: 5
+     * - every time hunger reaches 0%, 1 life is substracted
+     * - Hunger is reseted to 100%
+     * - If lives reach 0 => pet dies and app becomes useless, as well as everything the user bought
+     */
     private void manageLifes() {
         if (savedLifes.contains("life")) {
             int hunger = hungerRepository.getHunger();
@@ -196,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     /**
      * Iterates the foodRepository and displays in inventory all available food
-     * that when touched is applied to the pets hunger level
+     * that when touched is applied to the pet's hunger level
      */
     private void displayOwnedFood() {
         if (foodRepository.getAll().size() == 0) {
@@ -303,6 +318,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
+    /**
+     * The step counter
+     * @param event
+     */
     @Override
     public final void onSensorChanged(SensorEvent event) {
         if (running) {
@@ -332,6 +351,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
+    /**
+     * Resets the steps
+     *
+     * @param steps
+     * @return
+     */
     public int resetSteps(int steps) {
         if (steps <= 0) {
             int coins;
@@ -438,6 +463,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 .check();
     }
 
+    /**
+     * Is called on wake up
+     */
     private void playWakeUpAnimation() {
         petImage.setBackgroundResource(R.drawable.wakeup_anim);
         anim = (AnimationDrawable) petImage.getBackground();
@@ -445,6 +473,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         anim.start();
     }
 
+    /**
+     * Switches between sad and happy idle animations
+     */
     private void playIdleAnimation() {
         Handler handler = new Handler();
         handler.postDelayed(() -> {
@@ -459,6 +490,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
+    /**
+     * Plays the dance animation only when the pet is happy (>= 50% hunger)
+     */
     private void playDanceAnim() {
         petImage.setOnLongClickListener(v -> {
             if (hungerRepository.getHunger() >= 50) {
@@ -481,6 +515,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         });
     }
 
+    /**
+     * Creates the channel notification
+     */
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
@@ -497,6 +534,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
+    /**
+     * Creates the time when a notification should be recieved
+     */
     private void createNotification() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
