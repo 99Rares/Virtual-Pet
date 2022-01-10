@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
      * Manages pet's lives
      * - Total amount of lives: 5
      * - every time hunger reaches 0%, 1 life is substracted
-     * - Hunger is reseted to 100%
+     * - Hunger is rested to 100%
      * - If lives reach 0 => pet dies and app becomes useless, as well as everything the user bought
      */
     private void manageLifes() {
@@ -345,7 +345,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
             int currentSteps = (totalSteps - sharedPreferences.getInt("prev", 0));
             int currentStepsString = resetSteps(currentSteps);
-            sharedPreferences.edit().putInt("total", currentSteps).apply();
+            sharedPreferences.edit().putInt("total", currentStepsString).apply();
             currentStepsString = currentStepsString % 10000;
             nrSteps.setText(String.valueOf(currentStepsString));
         }
@@ -358,7 +358,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
      * @return
      */
     public int resetSteps(int steps) {
-        if (steps <= 0) {
+        if (steps < 0) {
             int coins;
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("total", totalSteps);
