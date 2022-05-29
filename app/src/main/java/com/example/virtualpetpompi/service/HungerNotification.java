@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi;
+package com.example.virtualpetpompi.service;
 
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -8,8 +8,11 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.virtualpetpompi.R;
+import com.example.virtualpetpompi.activity.MainActivity;
+
 /**
- * @author dan.rares and andrei.vasiu
+ * @author dan.rares
  */
 public class HungerNotification extends BroadcastReceiver {
     public HungerNotification() {

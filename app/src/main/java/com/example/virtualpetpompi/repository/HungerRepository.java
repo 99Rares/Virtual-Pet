@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi;
+package com.example.virtualpetpompi.repository;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 /**
- * @author anrei.vasiu and rares.dan
+ * @author rares.dan
  * - contains the hunger algorithm
  * - since the app is first opened, it sets up the 'getting hungry' method
  * - holds data about hunger

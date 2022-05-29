@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/jade"
-    tools:context=".ShopActivity">
+    tools:context=".activity.ShopActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/goBackFromShopToMain"
@@ -15,6 +15,8 @@
         android:layout_marginTop="37dp"
         android:backgroundTint="@color/deep_space"
         android:clickable="true"
+        android:contentDescription="@string/back"
+        android:focusable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
@@ -26,17 +28,18 @@
         android:layout_marginTop="44dp"
         android:src="@drawable/coinimage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/coins" />
 
     <TextView
-        android:gravity="left"
         android:id="@+id/shopCoinTextView"
         android:layout_width="62dp"
         android:layout_height="27dp"
         android:layout_marginStart="320dp"
         android:layout_marginTop="44dp"
+        android:gravity="left"
         android:text="0"
-        android:textSize="19dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -67,7 +70,7 @@
                 <ImageView
                     android:layout_width="111dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/food1" />
+                    android:src="@drawable/rice" />
 
                 <TextView
                     android:layout_width="wrap_content"

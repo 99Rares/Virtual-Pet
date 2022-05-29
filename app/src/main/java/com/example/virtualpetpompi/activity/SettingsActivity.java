@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi;
+package com.example.virtualpetpompi.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,10 +11,11 @@ import android.widget.Switch;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.virtualpetpompi.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
- * @author andrei.vasiu & rares.dan
+ * @author rares.dan
  * - About
  * - Help and Support
  * - Privacy
@@ -72,7 +73,7 @@ public class SettingsActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
 
         if(!sharedPreferences.contains("steps")){
-            sharedPreferences.edit().putBoolean("steps",false).apply();
+            sharedPreferences.edit().putBoolean("steps",true).apply();
         }
     }
 

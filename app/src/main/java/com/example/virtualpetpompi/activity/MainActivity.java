@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi;
+package com.example.virtualpetpompi.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -19,7 +19,9 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -31,7 +33,16 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.virtualpetpompi.service.DataBase;
+import com.example.virtualpetpompi.service.HungerNotification;
+import com.example.virtualpetpompi.R;
+import com.example.virtualpetpompi.repository.BackgroundRepository;
+import com.example.virtualpetpompi.repository.FoodRepository;
+import com.example.virtualpetpompi.repository.HungerRepository;
+import com.example.virtualpetpompi.service.StepsService;
+import com.example.virtualpetpompi.util.Util;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -44,14 +55,14 @@ import java.util.Calendar;
 import java.util.Map;
 
 /**
- * @author andrei.vasiu and dan.rares
+ * @author dan.rares
  * - Holds repositories
  * - Inventoy of food
  * - Animations
  * - notification channel
  * - Step sensor
  */
-public class MainActivity extends AppCompatActivity implements SensorEventListener {
+public class MainActivity extends AppCompatActivity {
 
     ImageView stepsPoza;
     // opens the shop
@@ -61,12 +72,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     // open the menu panel
     private FloatingActionButton menuBtn;
     private boolean menuOpened;
-    private CardView menuPanel;
+    private CardView menuPanel, difficultyPanel;
     private TextView nrSteps, noFoodText, hungerTextView, nrLifes;
     // Sensor attributes
-    private SensorManager sensorManager = null;
-    private boolean running = false;
-    private int totalSteps = 0;
+
+    private Button easyMode;
+    private Button normalMode;
 
     //SharedPrefs
     private SharedPreferences sharedPreferences;
@@ -74,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private FoodRepository foodRepository;
     private HungerRepository hungerRepository;
     private SharedPreferences savedLifes;
-    private SharedPreferences coinsSharedPrefs;
     private SharedPreferences resetRecover;
 
     // Inventory
@@ -91,6 +101,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private ImageView petImage, dead;
     private AnimationDrawable anim;
 
+    //Database
+    private DataBase db;
+    int nrClicks = 0;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,12 +112,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
 
         initData();
-        requestActivityRecognition();
+        if (!oneTimePrefs.contains("firstTimeSetPermission")) {
+            requestActivityRecognition();
+            oneTimePrefs.edit().putString("firstTimeSetPermission", "true").apply();
+        }
+        startService(new Intent(this, StepsService.class));
         openMenuPanel();
         openInventory();
         displayOwnedFood();
         displayHunger();
         displayBackground();
+        setDifficulty();
         manageLifes();
         openSettings();
         playDanceAnim();
@@ -111,6 +130,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //Anim
         playWakeUpAnimation();
         playIdleAnimation();
+        setNotification();
+        updateSteps();
+        openStatistics();
 
         if (sharedPreferences.getBoolean("steps", false)) {
             nrSteps.setVisibility(View.VISIBLE);
@@ -119,9 +141,57 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             nrSteps.setVisibility(View.GONE);
             stepsPoza.setVisibility(View.GONE);
         }
-
         menuPanel.setOnClickListener(v -> menuPanel.setVisibility(View.GONE));
 
+    }
+
+    private void updateSteps() {
+        petImage.setOnClickListener(v -> {
+            nrClicks++;
+            Handler handler = new Handler();
+            Runnable runnable = () -> {
+                nrClicks = 0;
+                Toast.makeText(getApplicationContext(), "Double Click to update the number of Steps", Toast.LENGTH_SHORT).show();
+            };
+            if (nrClicks == 1) {
+                handler.postDelayed(runnable, 500);
+
+            } else if (nrClicks == 2) {
+                Toast.makeText(getApplicationContext(), "Double Click", Toast.LENGTH_SHORT).show();
+                nrSteps.setText(String.valueOf(Math.max(db.getCurrentSteps() + db.getSteps(Util.getToday()), 0)));
+                nrClicks = 0;
+            }
+        });
+    }
+
+    private void setNotification() {
+        if (!oneTimePrefs.contains("firstTimeSetNotification")) {
+            createNotificationChannel();
+            createNotification();
+            oneTimePrefs.edit().putString("firstTimeSetNotification", "true").apply();
+        }
+    }
+
+    private void setDifficulty() {
+        if (!oneTimePrefs.contains("firstTimeSetDifficulty")) {
+            sharedPreferences.edit().putBoolean("steps", true).apply();
+            difficultyPanel.setVisibility(View.VISIBLE);
+            easyMode.setOnClickListener(v -> {
+                savedLifes.edit().putInt("life", 1000).apply();
+                difficultyPanel.setVisibility(View.GONE);
+                int lifes = savedLifes.getInt("life", 0);
+                nrLifes.setText(String.valueOf(lifes));
+                resetRecover.edit().putInt("prevCoins", 100).apply();
+
+            });
+            normalMode.setOnClickListener(v -> {
+                savedLifes.edit().putInt("life", 5).apply();
+                difficultyPanel.setVisibility(View.GONE);
+                int lifes = savedLifes.getInt("life", 0);
+                nrLifes.setText(String.valueOf(lifes));
+            });
+            oneTimePrefs.edit().putString("firstTimeSetDifficulty", "true").apply();
+        }
     }
 
     /**
@@ -162,8 +232,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initData() {
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-
+        db = DataBase.getInstance(this);
         menuBtn = findViewById(R.id.menuBtn);
         shopBtn = findViewById(R.id.shopBtn);
         settingsBtn = findViewById(R.id.settingsBtn);
@@ -180,8 +249,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         oneTimePrefs = getSharedPreferences("firstTime", Context.MODE_PRIVATE);
         savedLifes = getSharedPreferences("savedLifes", Context.MODE_PRIVATE);
-        coinsSharedPrefs = getSharedPreferences("coins", Context.MODE_PRIVATE);
         resetRecover = getSharedPreferences("recover", Context.MODE_PRIVATE);
+
         foodRepository = new FoodRepository(this);
         hungerRepository = new HungerRepository(this);
         noFoodText = findViewById(R.id.noFoodText);
@@ -193,6 +262,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         petImage = findViewById(R.id.petImage);
         dead = findViewById(R.id.dead);
         dead.setVisibility(View.GONE);
+
+        easyMode = findViewById(R.id.easyBtn);
+        normalMode = findViewById(R.id.normalBtn);
+        difficultyPanel = findViewById(R.id.difficulty);
 
     }
 
@@ -308,72 +381,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onResume() {
         super.onResume();
-        running = true;
-        Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if (stepSensor == null) {
-            Toast.makeText(this, "No sensor detected on this device", Toast.LENGTH_SHORT).show();
-        } else {
-            sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
-        }
-
-    }
-
-    /**
-     * The step counter
-     * @param event
-     */
-    @Override
-    public final void onSensorChanged(SensorEvent event) {
-        if (running) {
-            float steps = event.values[0]; // toti pasii facuti de la ultimul reset
-            totalSteps = (int) steps;
-            if (!oneTimePrefs.contains("firstTime")) {
-                savedLifes.edit().putInt("life", 5).apply();
-                int startLife = savedLifes.getInt("life", 0);
-                String startLifeString = String.valueOf(startLife);
-                nrLifes.setText(startLifeString);
-                createNotificationChannel();
-                createNotification();
-                oneTimePrefs.edit().putString("firstTime", "true").apply();
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt("total", totalSteps);
-                editor.putInt("prev", totalSteps);
-                editor.apply();
-
-                //previousTotalSteps = totalSteps;
-                nrSteps.setText(String.valueOf(0));
-            }
-            int currentSteps = (totalSteps - sharedPreferences.getInt("prev", 0));
-            int currentStepsString = resetSteps(currentSteps);
-            sharedPreferences.edit().putInt("total", currentStepsString).apply();
-            currentStepsString = currentStepsString % 10000;
-            nrSteps.setText(String.valueOf(currentStepsString));
-        }
-    }
-
-    /**
-     * Resets the steps
-     *
-     * @param steps
-     * @return
-     */
-    public int resetSteps(int steps) {
-        if (steps < 0) {
-            int coins;
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("total", totalSteps);
-            editor.putInt("prev", totalSteps);
-            editor.apply();
-            coins = coinsSharedPrefs.getInt("totalCoins", 0);
-            steps = (totalSteps - sharedPreferences.getInt("prev", 0));
-            resetRecover.edit().putInt("prevCoins", coins).apply();
-        }
-        return steps;
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
+        nrSteps.setText(String.valueOf(Math.max(db.getCurrentSteps() + db.getSteps(Util.getToday()), 0)));
     }
 
     @Override
@@ -415,6 +423,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         settingsBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SettingsActivity.class)));
     }
 
+    private void openStatistics() {
+        nrSteps.setOnLongClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, StatisticsActivity.class));
+            return false;
+        });
+    }
+
     /**
      * sets up the button that opens and closes the inventory
      */
@@ -430,38 +445,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         });
     }
 
-    /**
-     * Requests Permission from user to user Activity Recognition for the step sensor
-     */
-    private void requestActivityRecognition() {
-        Dexter.withContext(this)
-                .withPermission(Manifest.permission.ACTIVITY_RECOGNITION)
-                .withListener(new PermissionListener() {
-                    @Override
-                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                        //Toast.makeText(MainActivity.this, "ba", Toast.LENGTH_SHORT).show();
-                        running = true;
-                        Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-                        if (stepSensor == null) {
-                            Toast.makeText(MainActivity.this, "No sensor detected on this device", Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            sensorManager.registerListener(MainActivity.this, stepSensor, SensorManager.SENSOR_DELAY_UI);
-                        }
-                    }
-
-                    @Override
-                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-                        Toast.makeText(MainActivity.this, "Please allow sensor to run", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                        permissionToken.continuePermissionRequest();
-                    }
-                })
-                .check();
-    }
 
     /**
      * Is called on wake up
@@ -553,4 +536,30 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //Toast.makeText(MainActivity.this, String.valueOf(calendar.getTimeInMillis()), Toast.LENGTH_SHORT).show();
     }
 
+
+    /**
+     * Requests Permission from user to user Activity Recognition for the step sensor
+     */
+    private void requestActivityRecognition() {
+        Dexter.withContext(this)
+                .withPermission(Manifest.permission.ACTIVITY_RECOGNITION)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                        Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                        Toast.makeText(MainActivity.this, "Please allow sensor to run", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                        permissionToken.continuePermissionRequest();
+                    }
+                })
+                .check();
+    }
 }

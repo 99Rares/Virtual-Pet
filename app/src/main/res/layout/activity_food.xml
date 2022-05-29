@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/jade"
-    tools:context=".FoodActivity">
+    tools:context=".activity.FoodActivity">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -18,7 +18,9 @@
         android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/homeAsUpIndicator" />
+        app:srcCompat="?attr/homeAsUpIndicator"
+        android:contentDescription="@string/back"
+        android:focusable="true" />
 
     <ImageView
         android:layout_width="31dp"
@@ -591,7 +593,7 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/food1" />
+                        android:src="@drawable/rice" />
 
                     <TextView
                         android:layout_width="wrap_content"

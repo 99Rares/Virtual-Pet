@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi;
+package com.example.virtualpetpompi.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,10 +7,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.virtualpetpompi.R;
+import com.example.virtualpetpompi.repository.CoinRepository;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
- * @author andrei.vasiu and dan.rares
+ * @author dan.rares
  * - Handles the activity that leads to the real shops
  * - background button that leads to another activity
  * - food btn that leads to another actitivty

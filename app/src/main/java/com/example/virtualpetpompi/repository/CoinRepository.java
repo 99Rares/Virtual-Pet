@@ -1,12 +1,12 @@
-package com.example.virtualpetpompi;
+package com.example.virtualpetpompi.repository;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * @author andrei.vasiu and rares.dan
+ * @author rares.dan
  * - Contains the algorithm to calculate the coins amount
- * - Contains the coins!
+ * - Contains the coins
  * - remove coins when item bought
  */
 public class CoinRepository {
@@ -50,7 +50,7 @@ public class CoinRepository {
     private void calculateCoins() {
         int coins = stepsSharedPrefs.getInt("total", 0);
         int recoveredCoins = resetRecover.getInt("prevCoins", 0);
-        coins = coins / 100; // ----------------------------------------------- COIN ALGORITHM
+        coins = coins / 10; // ----------------------------------------------- COIN ALGORITHM
         coins += recoveredCoins;
         coins -= coinsSharedPrefs.getInt("spentCoins", 0);
         if (coins <= 0) {
