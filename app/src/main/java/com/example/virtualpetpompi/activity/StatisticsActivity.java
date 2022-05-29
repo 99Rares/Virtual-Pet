@@ -268,16 +268,23 @@ public class StatisticsActivity extends AppCompatActivity implements SensorEvent
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
     @SuppressLint("SetTextI18n")
-    private void getRecord(){
+    private void getRecord() {
         DataBase db = DataBase.getInstance(this);
         Pair<Date, Integer> record = db.getRecordData();
-        ((TextView) findViewById(R.id.recordvalue)).setText(formatter.format(record.second) + " @ "
-                        + java.text.DateFormat.getDateInstance().format(record.first));
+        if (record.second > 0) {
+            ((TextView) findViewById(R.id.recordvalue)).setText(formatter.format(record.second) + " @ "
+                    + java.text.DateFormat.getDateInstance().format(record.first));
+        } else {
+            findViewById(R.id.recordvalue).setVisibility(View.GONE);
+            findViewById(R.id.record).setVisibility(View.GONE);
+        }
 
     }
+
     private void goBack() {
-        goBackBtn=findViewById(R.id.goBackFromStatisticsToMain);
+        goBackBtn = findViewById(R.id.goBackFromStatisticsToMain);
         goBackBtn.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), MainActivity.class)));
     }
 }
