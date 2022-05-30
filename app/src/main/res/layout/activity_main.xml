@@ -301,6 +301,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="36dp"
         android:gravity="center"
         android:text="@string/your_pet_died"
