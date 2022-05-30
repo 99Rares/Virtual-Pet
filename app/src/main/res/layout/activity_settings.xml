@@ -33,7 +33,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -99,20 +99,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Your cute virtual Pet"
+                        android:text="@string/your_cute"
                         android:textColor="@color/black"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="You only need to feed your pet, easy right? Well, in order to do
-that you need to walk and walk and walk even more! To make money, you need to make steps,
- and then you can buy food to feed your cute pet"
+                        android:text="@string/you_only"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -147,7 +145,7 @@ that you need to walk and walk and walk even more! To make money, you need to ma
                         android:id="@+id/helpSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="150dp"
+                        android:layout_marginStart="170dp"
                         android:checked="false"
                         android:thumbTint="@color/jade"
                         android:trackTint="@color/deep_space"
@@ -178,46 +176,45 @@ that you need to walk and walk and walk even more! To make money, you need to ma
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Steps = money"
+                        android:text="@string/steps_money"
                         android:textColor="@color/black"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="money = food"
+                        android:text="@string/money_food"
                         android:textColor="@color/black"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="food = happy pet"
+                        android:text="@string/food_happy_pet"
                         android:textColor="@color/black"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="If you manage to keep you pet happy, it means that you manage to walk enough
-to keep yourself healthy. Congrats!"
+                        android:text="@string/if_you_manage"
                         android:textColor="@color/black"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="For further questions do not be shy, contact us."
+                        android:text="@string/for_further"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -362,7 +359,7 @@ to keep yourself healthy. Congrats!"
                         android:layout_margin="5dp"
                         android:text="@string/developer_dan_rares"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

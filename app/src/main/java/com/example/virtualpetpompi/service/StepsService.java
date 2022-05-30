@@ -22,10 +22,8 @@ import com.example.virtualpetpompi.util.Util;
 
 public class StepsService extends Service implements SensorEventListener {
 
-    public final static int NOTIFICATION_ID = 12;
-    private final static long MICROSECONDS_IN_ONE_MINUTE = 60000000;
     private final static long SAVE_OFFSET_TIME = AlarmManager.INTERVAL_HOUR;
-    private final static int SAVE_OFFSET_STEPS = 5;
+    private final static int SAVE_OFFSET_STEPS = 100;
     private SensorManager mySensorManager;
     private Sensor myStepDetectorSensor;
     private int totalSteps = 0;
@@ -35,17 +33,14 @@ public class StepsService extends Service implements SensorEventListener {
     private SharedPreferences sharedPreferences;
     private SharedPreferences coinsSharedPrefs;
     private SharedPreferences resetRecover;
-    private SharedPreferences savedLifes;
     private SharedPreferences oneTimePrefs;
 
-    private SensorManager sensorManager = null;
     private static int steps;
     private static int lastSaveSteps;
     private static long lastSaveTime;
 
     // Creating a variable  which counts previous total
     // steps and it has also been given the value of 0 float
-    private int previousTotalSteps = 0;
 
 
     @Override
@@ -63,11 +58,9 @@ public class StepsService extends Service implements SensorEventListener {
     }
 
     private void init() {
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         oneTimePrefs = getSharedPreferences("firstTime", Context.MODE_PRIVATE);
-        savedLifes = getSharedPreferences("savedLifes", Context.MODE_PRIVATE);
         coinsSharedPrefs = getSharedPreferences("coins", Context.MODE_PRIVATE);
         resetRecover = getSharedPreferences("recover", Context.MODE_PRIVATE);
 
@@ -83,8 +76,8 @@ public class StepsService extends Service implements SensorEventListener {
     /**
      * Resets the steps
      *
-     * @param steps
-     * @return
+     * @param steps nr of steps
+     * @return steps
      */
     public int resetSteps(int steps) {
         if (steps < 0) {
@@ -117,7 +110,6 @@ public class StepsService extends Service implements SensorEventListener {
                 editor.putInt("total", totalSteps);
                 editor.putInt("prev", totalSteps);
                 editor.apply();
-                //nrSteps.setText(String.valueOf(0));
                 db.saveCurrentSteps(0);
                 oneTimePrefs.edit().putString("firstTime", "true").apply();
             }
@@ -145,14 +137,14 @@ public class StepsService extends Service implements SensorEventListener {
         // Restart service in 500 ms
         ((AlarmManager) getSystemService(Context.ALARM_SERVICE))
                 .set(AlarmManager.RTC, System.currentTimeMillis() + 500, PendingIntent
-                        .getService(this, 3, new Intent(this, SensorListener.class), 0));
+                        .getService(this, 3, new Intent(this, StepsService.class), 0));
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         if (BuildConfig.DEBUG)
-            Log.println(Log.DEBUG, "gg", "SensorListener onDestroy");
+            Log.println(Log.DEBUG, "gg", "StepsService onDestroy");
         try {
             SensorManager sm = (SensorManager) getSystemService(SENSOR_SERVICE);
             sm.unregisterListener(this);
@@ -164,7 +156,7 @@ public class StepsService extends Service implements SensorEventListener {
 
 
     /**
-     *
+     * updates steps if necessary
      */
     private void updateIfNecessary() {
         if (steps > lastSaveSteps + SAVE_OFFSET_STEPS ||
@@ -180,9 +172,7 @@ public class StepsService extends Service implements SensorEventListener {
                 }
             }
             if (db.getCurrentSteps() + db.getSteps(Util.getToday()) < 0) {
-                // no values for today
-                // we dont know when the reboot was, so set todays steps to 0 by
-                // initializing them with -STEPS_SINCE_BOOT
+                // we don't know when the reboot was, so set today's steps to 0 by
                 db.removeNegativeEntries();
                 db.insertNewDay(Util.getToday(), (int) steps);
             }

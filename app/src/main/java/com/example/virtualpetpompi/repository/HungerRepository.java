@@ -17,14 +17,11 @@ import java.time.temporal.ChronoUnit;
  */
 public class HungerRepository {
 
-    private Context context;
-
     private SharedPreferences timeSharedPrefs;
     private SharedPreferences hungerSharedPrefs;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public HungerRepository(Context context) {
-        this.context = context;
         hungerSharedPrefs = context.getSharedPreferences("hunger", Context.MODE_PRIVATE);
         timeSharedPrefs = context.getSharedPreferences("time", Context.MODE_PRIVATE);
         initData();

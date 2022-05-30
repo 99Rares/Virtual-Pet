@@ -1,11 +1,8 @@
 package com.example.virtualpetpompi.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -18,6 +15,8 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.virtualpetpompi.BuildConfig;
 import com.example.virtualpetpompi.R;
@@ -39,16 +38,17 @@ import java.util.Locale;
 public class StatisticsActivity extends AppCompatActivity implements SensorEventListener {
 
     final static int DEFAULT_GOAL = 10000;
+    @SuppressLint("ConstantLocale")
     final static float DEFAULT_STEP_SIZE = Locale.getDefault() == Locale.US ? 2.5f : 75f;
+    @SuppressLint("ConstantLocale")
     final static String DEFAULT_STEP_UNIT = Locale.getDefault() == Locale.US ? "ft" : "cm";
 
     private TextView stepsView, totalView, averageView;
     private PieModel sliceGoal, sliceCurrent;
     private PieChart pg;
 
-    private FloatingActionButton goBackBtn;
-
     private int todayOffset, total_start, goal, since_boot, total_days;
+    @SuppressLint("ConstantLocale")
     public final static NumberFormat formatter = NumberFormat.getInstance(Locale.getDefault());
     private boolean showSteps = true;
 
@@ -284,7 +284,7 @@ public class StatisticsActivity extends AppCompatActivity implements SensorEvent
     }
 
     private void goBack() {
-        goBackBtn = findViewById(R.id.goBackFromStatisticsToMain);
+        FloatingActionButton goBackBtn = findViewById(R.id.goBackFromStatisticsToMain);
         goBackBtn.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), MainActivity.class)));
     }
 }

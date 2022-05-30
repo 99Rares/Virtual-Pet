@@ -32,4 +32,21 @@
     <string name="contact">Contact</string>
     <string name="developer_dan_rares">Developer: Dan Rares</string>
     <string name="_0">0</string>
+    <string name="shop">shop</string>
+    <string name="settings">settings</string>
+    <string name="easy_mode">easy mode</string>
+    <string name="normal_mode">normal Mode</string>
+    <string name="background">background</string>
+    <string name="inventory">Inventory</string>
+    <string name="please_buy">Please buy me some food :(</string>
+    <string name="heart">heart</string>
+    <string name="pompi">POMPI</string>
+    <string name="hunger">hunger</string>
+    <string name="steps_money">Steps = money</string>
+    <string name="money_food">money = food</string>
+    <string name="food_happy_pet">food = happy pet</string>
+    <string name="if_you_manage">If you manage to keep you pet happy, it means that you manage to walk enough to keep yourself healthy. Congrats!</string>
+    <string name="for_further">For further questions do not be shy, contact us.</string>
+    <string name="you_only">You only need to feed your pet, easy right? Well, in order to do that you need to walk and walk and walk even more! To make money, you need to make steps, and then you can buy food to feed your cute pet</string>
+    <string name="your_cute">Your cute virtual Pet</string>
 </resources>

@@ -12,16 +12,10 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -33,14 +27,13 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.virtualpetpompi.service.DataBase;
-import com.example.virtualpetpompi.service.HungerNotification;
 import com.example.virtualpetpompi.R;
 import com.example.virtualpetpompi.repository.BackgroundRepository;
 import com.example.virtualpetpompi.repository.FoodRepository;
 import com.example.virtualpetpompi.repository.HungerRepository;
+import com.example.virtualpetpompi.service.DataBase;
+import com.example.virtualpetpompi.service.HungerNotification;
 import com.example.virtualpetpompi.service.StepsService;
 import com.example.virtualpetpompi.util.Util;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -340,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
                 text.setLayoutParams(paramsText);
                 text.setTextSize(16);
                 text.setTextColor(Color.BLACK);
-                text.setText(values[1] + "%");
+                text.setText(String.format("%s%%", values[1]));
 
                 // Adding to view
                 linearLayout.addView(image);
@@ -424,7 +417,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openStatistics() {
-        nrSteps.setOnLongClickListener(v -> {
+        findViewById(R.id.linearLayout3).setOnLongClickListener(v -> {
             startActivity(new Intent(MainActivity.this, StatisticsActivity.class));
             return false;
         });
@@ -541,25 +534,27 @@ public class MainActivity extends AppCompatActivity {
      * Requests Permission from user to user Activity Recognition for the step sensor
      */
     private void requestActivityRecognition() {
-        Dexter.withContext(this)
-                .withPermission(Manifest.permission.ACTIVITY_RECOGNITION)
-                .withListener(new PermissionListener() {
-                    @Override
-                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                        Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            Dexter.withContext(this)
+                    .withPermission(Manifest.permission.ACTIVITY_RECOGNITION)
+                    .withListener(new PermissionListener() {
+                        @Override
+                        public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                            Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
 
-                    }
+                        }
 
-                    @Override
-                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-                        Toast.makeText(MainActivity.this, "Please allow sensor to run", Toast.LENGTH_SHORT).show();
-                    }
+                        @Override
+                        public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                            Toast.makeText(MainActivity.this, "Please allow sensor to run", Toast.LENGTH_SHORT).show();
+                        }
 
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                        permissionToken.continuePermissionRequest();
-                    }
-                })
-                .check();
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                            permissionToken.continuePermissionRequest();
+                        }
+                    })
+                    .check();
+        }
     }
 }

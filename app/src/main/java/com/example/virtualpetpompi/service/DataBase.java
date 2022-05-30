@@ -10,11 +10,9 @@ import android.util.Pair;
 import com.example.virtualpetpompi.util.Util;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.logging.Logger;
 
 public class DataBase extends SQLiteOpenHelper {
 
@@ -58,24 +56,6 @@ public class DataBase extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE " + DB_NAME);
             db.execSQL("ALTER TABLE " + DB_NAME + "2 RENAME TO " + DB_NAME + "");
         }
-    }
-
-    /**
-     * Query the 'steps' table.
-     *
-     * @param columns       the colums
-     * @param selection     the selection
-     * @param selectionArgs the selction arguments
-     * @param groupBy       the group by statement
-     * @param having        the having statement
-     * @param orderBy       the order by statement
-     * @return the cursor
-     */
-    public Cursor query(final String[] columns, final String selection,
-                        final String[] selectionArgs, final String groupBy, final String having,
-                        final String orderBy, final String limit) {
-        return getReadableDatabase()
-                .query(DB_NAME, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
     }
 
     /**
@@ -141,7 +121,7 @@ public class DataBase extends SQLiteOpenHelper {
     }
 
     /**
-     * Get the maximum of steps walked in one day and the date that happend
+     * Get the maximum of steps walked in one day and the date that happened
      *
      * @return a pair containing the date (Date) in millis since 1970 and the
      * step value (Integer)
@@ -151,7 +131,7 @@ public class DataBase extends SQLiteOpenHelper {
                 .query(DB_NAME, new String[]{"date, steps"}, "date > 0", null, null, null,
                         "steps DESC", "1");
         c.moveToFirst();
-        Pair<Date, Integer> p = new Pair<Date, Integer>(new Date(c.getLong(0)), c.getInt(1));
+        Pair<Date, Integer> p = new Pair<>(new Date(c.getLong(0)), c.getInt(1));
         c.close();
         return p;
     }
@@ -194,6 +174,7 @@ public class DataBase extends SQLiteOpenHelper {
                 result.add(new Pair<>(c.getLong(0), c.getInt(1)));
             } while (c.moveToNext());
         }
+        c.close();
         return result;
     }
 
