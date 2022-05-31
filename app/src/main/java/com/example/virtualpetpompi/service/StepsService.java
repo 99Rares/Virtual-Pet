@@ -104,20 +104,22 @@ public class StepsService extends Service implements SensorEventListener {
     public final void onSensorChanged(SensorEvent event) {
         if (running) {
             steps = (int) event.values[0]; // toti pasii facuti de la ultimul reset
-            totalSteps = (int) steps;
+            totalSteps = steps;
             if (!oneTimePrefs.contains("firstTime")) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("total", totalSteps);
                 editor.putInt("prev", totalSteps);
                 editor.apply();
+                db.saveAchievement();
                 db.saveCurrentSteps(0);
                 oneTimePrefs.edit().putString("firstTime", "true").apply();
             }
             int currentSteps = (totalSteps - sharedPreferences.getInt("prev", 0));
+            db.saveUser(currentSteps);
             int currentStepsString = resetSteps(currentSteps);
             sharedPreferences.edit().putInt("total", currentStepsString).apply();
             //nrSteps.setText(String.valueOf(currentStepsString));
-            Toast.makeText(this, String.valueOf(currentSteps), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, String.valueOf(currentSteps), Toast.LENGTH_SHORT).show();
             if (event.values[0] > Integer.MAX_VALUE) {
                 Log.println(Log.DEBUG, "gg", "probably not a real value: " + event.values[0]);
             } else {

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.util.Pair;
 
 import com.example.virtualpetpompi.util.Util;
@@ -18,6 +19,9 @@ public class DataBase extends SQLiteOpenHelper {
 
     private final static String DB_NAME = "stepsData";
     private final static int DB_VERSION = 3;
+    private final static String DB_USER = "User";
+    private final static String DB_ACHIEV = "achievement";
+    private final static String DB_HAS_ACHIEV = "hasAchievement";
 
     private static DataBase instance;
     private static final AtomicInteger openCounter = new AtomicInteger();
@@ -44,6 +48,10 @@ public class DataBase extends SQLiteOpenHelper {
     @Override
     public void onCreate(final SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + DB_NAME + " (date INTEGER, steps INTEGER)");
+        db.execSQL("CREATE TABLE " + DB_USER + " (id INTEGER PRIMARY KEY,username TEXT DEFAULT 'User1', coins INTEGER)");
+        db.execSQL("CREATE TABLE " + DB_ACHIEV + " (id INTEGER PRIMARY KEY,name TEXT DEFAULT 'achievement', nrSteps INTEGER)");
+        db.execSQL("CREATE TABLE " + DB_HAS_ACHIEV + " (idUser INTEGER,idAchievement INTEGER,PRIMARY KEY (idUser, idAchievement),FOREIGN KEY (idUser)" + "REFERENCES " + DB_USER + " (id) ON DELETE CASCADE ON UPDATE NO ACTION, FOREIGN KEY (idAchievement)" + "REFERENCES " + DB_ACHIEV + " (id) ON DELETE CASCADE ON UPDATE NO ACTION)");
+
     }
 
     @Override
@@ -234,6 +242,68 @@ public class DataBase extends SQLiteOpenHelper {
             values.put("date", -1);
             getWritableDatabase().insert(DB_NAME, null, values);
         }
+    }
+
+    /**
+     * Saves the User in the database.
+     *
+     * @param steps since made in the app
+     */
+    public void saveUser(int steps) {
+        ContentValues values = new ContentValues();
+        int savedCoins = steps / 100;
+        values.put("coins", savedCoins);
+        if (getWritableDatabase().update(DB_USER, values, "username = 'User1'", null) == 0) {
+            getWritableDatabase().insert(DB_USER, null, values);
+        }
+    }
+
+    /**
+     * Saves the Achievements in the database.
+     */
+    public void saveAchievement() {
+        ContentValues values = new ContentValues();
+        values.put("nrSteps", 10000);
+        getWritableDatabase().insert(DB_ACHIEV, null, values);
+        ContentValues values2 = new ContentValues();
+        values2.put("nrSteps", 20000);
+        getWritableDatabase().insert(DB_ACHIEV, null, values2);
+        ContentValues values3 = new ContentValues();
+        values3.put("nrSteps", 30000);
+        getWritableDatabase().insert(DB_ACHIEV, null, values3);
+
+    }
+
+    /**
+     * Saves the Achievements the user has in the database.
+     */
+    public void saveHasAchievement(int user, int achievement) {
+        ContentValues values = new ContentValues();
+        values.put("idUser", user);
+        values.put("idAchievement", achievement);
+        getWritableDatabase().insert(DB_HAS_ACHIEV, null, values);
+
+    }
+
+    /**
+     * gets the Achievements the user has.
+     *
+     * @return top achievement
+     */
+    public int getAchievement() {
+        int p = 0;
+        try {
+            Cursor c = getReadableDatabase()
+                    .query(DB_HAS_ACHIEV, new String[]{"idAchievement"}, "idAchievement > 0", null, null, null,
+                            "idAchievement DESC", "1");
+            c.moveToFirst();
+            p = c.getInt(0);
+            c.close();
+        } catch (Exception e) {
+            Log.e("error", "no Database");
+        }
+
+        return p;
     }
 
     /**

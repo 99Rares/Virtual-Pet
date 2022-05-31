@@ -15,7 +15,6 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.virtualpetpompi.BuildConfig;
@@ -56,11 +55,11 @@ public class StatisticsActivity extends AppCompatActivity implements SensorEvent
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
-        stepsView = (TextView) findViewById(R.id.steps);
-        totalView = (TextView) findViewById(R.id.total);
-        averageView = (TextView) findViewById(R.id.average);
+        stepsView = findViewById(R.id.steps);
+        totalView = findViewById(R.id.total);
+        averageView = findViewById(R.id.average);
 
-        pg = (PieChart) findViewById(R.id.graph);
+        pg = findViewById(R.id.graph);
 
         // slice for the steps taken today
         sliceCurrent = new PieModel("", 0, Color.parseColor("#99CC00"));
@@ -115,7 +114,7 @@ public class StatisticsActivity extends AppCompatActivity implements SensorEvent
         total_days = db.getDays();
 
         db.close();
-
+        saveUserAchievement();
         stepsDistanceChanged();
     }
 
@@ -154,7 +153,7 @@ public class StatisticsActivity extends AppCompatActivity implements SensorEvent
 
     private void updateBars() {
         SimpleDateFormat df = new SimpleDateFormat("E", Locale.getDefault());
-        BarChart barChart = (BarChart) findViewById(R.id.bargraph);
+        BarChart barChart = findViewById(R.id.bargraph);
         if (barChart.getData().size() > 0) barChart.clearChart();
         int steps;
         float distance, stepsize = DEFAULT_STEP_SIZE;
@@ -271,20 +270,56 @@ public class StatisticsActivity extends AppCompatActivity implements SensorEvent
 
     @SuppressLint("SetTextI18n")
     private void getRecord() {
-        DataBase db = DataBase.getInstance(this);
-        Pair<Date, Integer> record = db.getRecordData();
-        if (record.second > 0) {
-            ((TextView) findViewById(R.id.recordvalue)).setText(formatter.format(record.second) + " @ "
-                    + java.text.DateFormat.getDateInstance().format(record.first));
-        } else {
-            findViewById(R.id.recordvalue).setVisibility(View.GONE);
-            findViewById(R.id.record).setVisibility(View.GONE);
+        try {
+            DataBase db = DataBase.getInstance(this);
+            Pair<Date, Integer> record = db.getRecordData();
+            if (record.second > 0) {
+                ((TextView) findViewById(R.id.recordvalue)).setText(formatter.format(record.second) + " @ "
+                        + java.text.DateFormat.getDateInstance().format(record.first));
+            } else {
+                findViewById(R.id.recordvalue).setVisibility(View.GONE);
+                findViewById(R.id.record).setVisibility(View.GONE);
+            }
+        }catch (Exception e){
+            Log.e("error","no record set");
         }
+
 
     }
 
     private void goBack() {
         FloatingActionButton goBackBtn = findViewById(R.id.goBackFromStatisticsToMain);
         goBackBtn.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), MainActivity.class)));
+    }
+    private void saveUserAchievement(){
+        DataBase db = DataBase.getInstance(this);
+        if (todayOffset + since_boot>10000){
+            db.saveHasAchievement(1,1);
+        }
+        if (todayOffset + since_boot>20000){
+            db.saveHasAchievement(1,2);
+        }
+        if (todayOffset + since_boot>30000){
+            db.saveHasAchievement(1,3);
+        }
+        if (db.getAchievement()==1){
+            findViewById(R.id.achievement).setVisibility(View.VISIBLE);
+            findViewById(R.id.achievements).setVisibility(View.VISIBLE);
+            findViewById(R.id.tenK).setVisibility(View.VISIBLE);
+        }
+        if (db.getAchievement()==2){
+            findViewById(R.id.achievement).setVisibility(View.VISIBLE);
+            findViewById(R.id.achievements).setVisibility(View.VISIBLE);
+            findViewById(R.id.tenK).setVisibility(View.VISIBLE);
+            findViewById(R.id.twentyK).setVisibility(View.VISIBLE);
+        }
+        if (db.getAchievement()==3){
+            findViewById(R.id.achievement).setVisibility(View.VISIBLE);
+            findViewById(R.id.achievements).setVisibility(View.VISIBLE);
+            findViewById(R.id.tenK).setVisibility(View.VISIBLE);
+            findViewById(R.id.twentyK).setVisibility(View.VISIBLE);
+            findViewById(R.id.thirtyK).setVisibility(View.VISIBLE);
+        }
+        db.close();
     }
 }

@@ -15,6 +15,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,16 +99,14 @@ public class MainActivity extends AppCompatActivity {
     private DataBase db;
     int nrClicks = 0;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         initData();
-        if (!oneTimePrefs.contains("firstTimeSetPermission")) {
+        if (!oneTimePrefs.getBoolean("firstTimeSetPermission", false)) {
             requestActivityRecognition();
-            oneTimePrefs.edit().putString("firstTimeSetPermission", "true").apply();
         }
         startService(new Intent(this, StepsService.class));
         openMenuPanel();
@@ -223,7 +222,6 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Initializes data
      */
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void initData() {
         db = DataBase.getInstance(this);
         menuBtn = findViewById(R.id.menuBtn);
@@ -370,7 +368,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onResume() {
         super.onResume();
@@ -416,6 +413,9 @@ public class MainActivity extends AppCompatActivity {
         settingsBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SettingsActivity.class)));
     }
 
+    /**
+     * Sets up the button that opens the Statistics
+     */
     private void openStatistics() {
         findViewById(R.id.linearLayout3).setOnLongClickListener(v -> {
             startActivity(new Intent(MainActivity.this, StatisticsActivity.class));
@@ -497,17 +497,15 @@ public class MainActivity extends AppCompatActivity {
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = getString(R.string.channel_name);
-            String description = getString(R.string.channel_description);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("hunger", name, importance);
-            channel.setDescription(description);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
+        CharSequence name = getString(R.string.channel_name);
+        String description = getString(R.string.channel_description);
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        NotificationChannel channel = new NotificationChannel("hunger", name, importance);
+        channel.setDescription(description);
+        // Register the channel with the system; you can't change the importance
+        // or other notification behaviors after this
+        NotificationManager notificationManager = getSystemService(NotificationManager.class);
+        notificationManager.createNotificationChannel(channel);
     }
 
     /**
@@ -541,12 +539,14 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
                             Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
+                            oneTimePrefs.edit().putBoolean("firstTimeSetPermission", true).apply();
 
                         }
 
                         @Override
                         public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
                             Toast.makeText(MainActivity.this, "Please allow sensor to run", Toast.LENGTH_SHORT).show();
+                            oneTimePrefs.edit().putBoolean("firstTimeSetPermission", false).apply();
                         }
 
                         @Override
