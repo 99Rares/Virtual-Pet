@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(runnable, 500);
 
             } else if (nrClicks == 2) {
-                Toast.makeText(getApplicationContext(), "Double Click", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Double Click", Toast.LENGTH_SHORT).show();
                 nrSteps.setText(String.valueOf(Math.max(db.getCurrentSteps() + db.getSteps(Util.getToday()), 0)));
                 nrClicks = 0;
             }
