@@ -20,7 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  * - Help and Support
  * - Privacy
  * - Credits
- * - show money in main Activity
+ * - show steps in main Activity
  */
 public class SettingsActivity extends AppCompatActivity {
 

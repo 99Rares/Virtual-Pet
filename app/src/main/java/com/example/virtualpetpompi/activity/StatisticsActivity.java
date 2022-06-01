@@ -187,7 +187,7 @@ public class StatisticsActivity extends AppCompatActivity implements SensorEvent
                     }
                     distance = Math.round(distance * 1000) / 1000f; // 3 decimals
                     bm.setValue(distance);
-                    bm.setColor(Color.parseColor("#99CC00"));
+                    bm.setColor(Color.parseColor("#9146FF"));
                 }
                 barChart.addBar(bm);
             }

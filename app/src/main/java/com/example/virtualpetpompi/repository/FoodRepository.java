@@ -8,7 +8,7 @@ import com.example.virtualpetpompi.model.Food;
 import java.util.Map;
 
 /**
- * @author andrei.vasiu and rares.dan
+ * @author rares.dan
  * - Holds data about the food that the user has bought
  */
 public class FoodRepository {

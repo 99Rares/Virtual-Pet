@@ -15,6 +15,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * @author dan.rares
+ * - Holds database tables
+ * - methods for managing the data
+ */
 public class DataBase extends SQLiteOpenHelper {
 
     private final static String DB_NAME = "stepsData";

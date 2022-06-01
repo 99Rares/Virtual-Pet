@@ -54,7 +54,6 @@ import java.util.Map;
  * - Inventoy of food
  * - Animations
  * - notification channel
- * - Step sensor
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -521,7 +520,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(getApplicationContext(), HungerNotification.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast
-                (getApplicationContext(), 666, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                (getApplicationContext(), 666, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
         //Toast.makeText(MainActivity.this, String.valueOf(calendar.getTimeInMillis()), Toast.LENGTH_SHORT).show();
