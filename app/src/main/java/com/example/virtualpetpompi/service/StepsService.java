@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -311,7 +312,10 @@ public class StepsService extends Service implements SensorEventListener {
         }
         notificationBuilder.setPriority(NotificationCompat.PRIORITY_DEFAULT).setShowWhen(false)
                 .setContentIntent(pendingIntent)
-                .setSmallIcon(R.drawable.a10).setOngoing(true);
+                .setSmallIcon(R.drawable.a10)
+                .setSilent(true)
+                .setColor(Color.BLUE)
+                .setOngoing(true);
         final NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build());
         return notificationBuilder.build();
