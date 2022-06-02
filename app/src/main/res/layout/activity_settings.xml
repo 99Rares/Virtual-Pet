@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/jade"
-    tools:context=".SettingsActivity">
+    tools:context=".activity.SettingsActivity">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -18,7 +18,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator"
-        android:backgroundTint="@color/deep_space"/>
+        android:backgroundTint="@color/deep_space"
+        android:contentDescription="@string/back"
+        android:focusable="true" />
 
 
     <ScrollView
@@ -31,7 +33,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -43,28 +45,29 @@
                 android:clickable="true"
                 android:elevation="50dp"
                 android:focusable="true"
+                android:minHeight="48dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="30dp"
                 app:contentPadding="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="30dp"
-                        android:text="About"
+                        android:fontFamily="@font/gluten_bold"
+                        android:text="@string/about"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/glutenbold"
-                        android:textSize="18dp" />
+                        android:textSize="30sp" />
 
                     <Switch
                         android:id="@+id/aboutSwitch"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="150dp"
                         android:checked="false"
                         android:thumbTint="@color/jade"
@@ -96,20 +99,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Your cute virtual Pet"
+                        android:text="@string/your_cute"
                         android:textColor="@color/black"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="You only need to feed your pet, easy right? Well, in order to do
-that you need to walk and walk and walk even more! To make money, you need to make steps,
- and then you can buy food to feed your cute pet"
+                        android:text="@string/you_only"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -122,28 +123,29 @@ that you need to walk and walk and walk even more! To make money, you need to ma
                 android:clickable="true"
                 android:elevation="50dp"
                 android:focusable="true"
+                android:minHeight="48dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="30dp"
                 app:contentPadding="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="30dp"
-                        android:text="Help"
+                        android:text="@string/help"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="30sp" />
 
                     <Switch
                         android:id="@+id/helpSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="150dp"
+                        android:layout_marginStart="170dp"
                         android:checked="false"
                         android:thumbTint="@color/jade"
                         android:trackTint="@color/deep_space"
@@ -174,46 +176,45 @@ that you need to walk and walk and walk even more! To make money, you need to ma
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Steps = money"
+                        android:text="@string/steps_money"
                         android:textColor="@color/black"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="money = food"
+                        android:text="@string/money_food"
                         android:textColor="@color/black"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="food = happy pet"
+                        android:text="@string/food_happy_pet"
                         android:textColor="@color/black"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="If you manage to keep you pet happy, it means that you manage to walk enough
-to keep yourself healthy. Congrats!"
+                        android:text="@string/if_you_manage"
                         android:textColor="@color/black"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="For further questions do not be shy, contact us."
+                        android:text="@string/for_further"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -226,22 +227,23 @@ to keep yourself healthy. Congrats!"
                 android:clickable="true"
                 android:elevation="50dp"
                 android:focusable="true"
+                android:minHeight="48dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="30dp"
                 app:contentPadding="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
-                        android:text="Privacy"
+                        android:text="@string/privacy"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="30sp" />
 
                     <Switch
                         android:id="@+id/privacySwitch"
@@ -278,19 +280,18 @@ to keep yourself healthy. Congrats!"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="We do not collect any user data!"
+                        android:text="@string/we_do_not"
                         android:textColor="@color/black"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Your activity is not being recorded anywhere, so feel free
-to accept the permission and enjoy this amazing free virtual pet"
+                        android:text="@string/your_activity_is_not"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -303,22 +304,23 @@ to accept the permission and enjoy this amazing free virtual pet"
                 android:clickable="true"
                 android:elevation="50dp"
                 android:focusable="true"
+                android:minHeight="48dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="30dp"
                 app:contentPadding="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
-                        android:text="Credits"
+                        android:text="@string/credits"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="30sp" />
 
                     <Switch
                         android:id="@+id/creditsSwitch"
@@ -355,9 +357,9 @@ to accept the permission and enjoy this amazing free virtual pet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Developers: Andrei Vasiu, Dan Rares"
+                        android:text="@string/developer_dan_rares"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -370,22 +372,23 @@ to accept the permission and enjoy this amazing free virtual pet"
                 android:clickable="true"
                 android:elevation="50dp"
                 android:focusable="true"
+                android:minHeight="48dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="30dp"
                 app:contentPadding="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
-                        android:text="Contact"
+                        android:text="@string/contact"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="30sp" />
 
                     <Switch
                         android:id="@+id/contactSwitch"
@@ -422,9 +425,9 @@ to accept the permission and enjoy this amazing free virtual pet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="pompi.ls.love@pompi.com"
+                        android:text="@string/pompi_ls"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -437,29 +440,30 @@ to accept the permission and enjoy this amazing free virtual pet"
                 android:clickable="true"
                 android:elevation="50dp"
                 android:focusable="true"
+                android:minHeight="48dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="30dp"
                 app:contentPadding="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
-                        android:text="Show Steps"
+                        android:text="@string/show_steps"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="30sp" />
 
                     <Switch
                         android:id="@+id/stepSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="100dp"
-                        android:checked="false"
+                        android:checked="true"
                         android:thumbTint="@color/jade"
                         android:trackTint="@color/deep_space"
                         tools:ignore="UseSwitchCompatOrMaterialXml" />

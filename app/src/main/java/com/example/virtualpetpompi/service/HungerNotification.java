@@ -1,5 +1,6 @@
-package com.example.virtualpetpompi;
+package com.example.virtualpetpompi.service;
 
+import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,8 +9,11 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.virtualpetpompi.R;
+import com.example.virtualpetpompi.activity.MainActivity;
+
 /**
- * @author dan.rares and andrei.vasiu
+ * @author dan.rares
  */
 public class HungerNotification extends BroadcastReceiver {
     public HungerNotification() {
@@ -18,14 +22,18 @@ public class HungerNotification extends BroadcastReceiver {
     /**
      * Sets up the notification of the app
      *
-     * @param context
-     * @param intent
+     * @param context context
+     * @param intent  intent
      */
     @Override
     public void onReceive(Context context, Intent intent) {
 
         Intent notifyIntent = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 666, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        @SuppressLint("UnspecifiedImmutableFlag")
+        PendingIntent pendingIntent = PendingIntent.getActivity(context,
+                666,
+                notifyIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "hunger")
                 .setSmallIcon(R.drawable.a10)

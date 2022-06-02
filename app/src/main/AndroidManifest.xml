@@ -12,25 +12,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VirtualPetPompi">
         <activity
-            android:name=".BackgroundActivity"
+            android:name=".activity.StatisticsActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".FoodActivity"
+            android:name=".activity.BackgroundActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ShopActivity"
+            android:name=".activity.FoodActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activity.ShopActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
-
-
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -40,7 +42,11 @@
             </intent-filter>
         </activity>
 
-       <receiver android:name=".HungerNotification"/>
+        <service
+            android:name=".service.StepsService"
+            android:label="StepsService" />
+
+        <receiver android:name=".service.HungerNotification" />
     </application>
 
 </manifest>

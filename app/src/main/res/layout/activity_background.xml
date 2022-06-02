@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/jade"
-    tools:context=".BackgroundActivity">
+    tools:context=".activity.BackgroundActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/goBackFromBackgroundToShop"
@@ -17,7 +17,9 @@
         android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/homeAsUpIndicator" />
+        app:srcCompat="?attr/homeAsUpIndicator"
+        android:contentDescription="@string/back"
+        android:focusable="true" />
 
     <ImageView
         android:layout_width="31dp"

@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi;
+package com.example.virtualpetpompi.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,12 +9,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.virtualpetpompi.R;
+import com.example.virtualpetpompi.repository.BackgroundRepository;
+import com.example.virtualpetpompi.repository.CoinRepository;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Map;
 
 /**
- * @author andrei.vasiu and rares.dan
+ * @author rares.dan
  * - Holds backgrounds
  * - lets the user buy backgrounds
  */
@@ -34,14 +37,13 @@ public class BackgroundActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_background);
-
         init();
         displayCoins();
         displayBoughtBackgrounds();
         buyBackground(bg0, "bg0", 0);
-        buyBackground(bg1, "bg1", 30);
+        buyBackground(bg1, "bg1", 45);
         buyBackground(bg2, "bg2", 40);
-        buyBackground(bg3, "bg3", 45);
+        buyBackground(bg3, "bg3", 30);
         goBack();
     }
 

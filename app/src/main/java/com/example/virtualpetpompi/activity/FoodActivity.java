@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi;
+package com.example.virtualpetpompi.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.virtualpetpompi.R;
+import com.example.virtualpetpompi.model.Food;
+import com.example.virtualpetpompi.repository.CoinRepository;
+import com.example.virtualpetpompi.repository.FoodRepository;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
- * @author andrei.vasiu and rares.dan
+ * @author rares.dan
  * - contains food types
  * - user can buy food from here!
  */
@@ -40,27 +44,27 @@ public class FoodActivity extends AppCompatActivity {
         displayCoins();
 
         // Set up the food
-        buyFood(rice, "food1", 5, 5);
-        buyFood(cirese, "cirese", 1, 2);
-        buyFood(clatitecucafea, "clatitecucafea", 28, 16); //16
-        buyFood(englishbreakfast, "englishbreakfast", 26, 16); //16
-        buyFood(fruits1, "fruits1", 15, 13); //13
-        buyFood(cafea, "cafea", 4, 4); //4
+        buyFood(rice, new Food("rice", 5, 5));
+        buyFood(cirese, new Food("cirese", 1, 2));//"cirese", 1, 2
+        buyFood(clatitecucafea, new Food("clatitecucafea", 20, 16)); //16 "clatitecucafea", 28, 16
+        buyFood(englishbreakfast, new Food("englishbreakfast", 26, 16)); //"englishbreakfast", 26, 16
+        buyFood(fruits1, new Food("fruits1", 15, 13)); //13 "fruits1", 15, 13
+        buyFood(cafea, new Food("fruits1", 15, 13)); //4 "fruits1", 15, 13
 
-        buyFood(carbonara, "carbonara", 15, 25); //25
-        buyFood(salad, "salad", 8, 15); //15
-        buyFood(soup, "soup", 10, 12); //12
-        buyFood(steak1, "steak1", 30, 35); //35
-        buyFood(steak2, "steak2", 20, 22); //22
+        buyFood(carbonara, new Food("carbonara", 15, 25)); //25 "carbonara", 15, 25
+        buyFood(salad, new Food("salad", 8, 15)); //15 "salad", 8, 15
+        buyFood(soup, new Food("soup", 10, 12)); //12
+        buyFood(steak1, new Food("steak1", 30, 35)); //35
+        buyFood(steak2, new Food("steak2", 20, 22)); //22
 
-        buyFood(cartofipai, "cartofipai", 7, 10); //10
-        buyFood(burger, "burger", 20, 27); //27
-        buyFood(cola, "cola", 4, 3); //3
-        buyFood(hotdog, "hotdog", 16, 20); //20
-        buyFood(nuggets, "nuggets", 10, 10); //10
-        buyFood(onionrings, "onionrings", 9, 8); //8
-        buyFood(gogosi, "gogosi", 12, 10); //10
-        buyFood(pizza, "pizza", 10, 9); //9
+        buyFood(cartofipai, new Food("cartofipai", 7, 10)); //10
+        buyFood(burger, new Food("burger", 20, 27)); //27
+        buyFood(cola, new Food("cola", 4, 3)); //3
+        buyFood(hotdog, new Food("hotdog", 16, 20)); //20
+        buyFood(nuggets, new Food("nuggets", 10, 10)); //10
+        buyFood(onionrings, new Food("onionrings", 9, 8)); //8
+        buyFood(gogosi, new Food("gogosi", 12, 10)); //10
+        buyFood(pizza, new Food("pizza", 10, 9)); //9
 
         goBack();
     }
@@ -115,20 +119,18 @@ public class FoodActivity extends AppCompatActivity {
      * Method made so that is can define any kind of food
      *
      * @param foodCardView the existing food cardview
-     * @param imageName    the image name, so that it can be seen in inventory
-     * @param hunger       how much it helps with the hunger
-     * @param cost         how much it costs
+     * @param food         properties of the food
      */
-    private void buyFood(CardView foodCardView, String imageName, int hunger, int cost) {
+    private void buyFood(CardView foodCardView, Food food) {
         foodCardView.setOnClickListener(v -> {
-            if (coins >= cost) {
+            if (coins >= food.getPrice()) {
                 StringBuilder foodItem = new StringBuilder();
-                foodItem.append(imageName).append("|");
-                foodItem.append(hunger).append("|");
-                foodItem.append(cost).append("|");
+                foodItem.append(food.getFotoName()).append("|");
+                foodItem.append(food.getFullness()).append("|");
+                foodItem.append(food.getPrice()).append("|");
                 foodRepository.add(foodItem.toString());
 
-                subtractAndResetCoins(cost);
+                subtractAndResetCoins(food.getPrice());
 
                 Toast.makeText(FoodActivity.this, "Food bought!", Toast.LENGTH_SHORT).show();
             } else {

@@ -1,12 +1,14 @@
-package com.example.virtualpetpompi;
+package com.example.virtualpetpompi.repository;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.virtualpetpompi.model.Food;
+
 import java.util.Map;
 
 /**
- * @author andrei.vasiu and rares.dan
+ * @author rares.dan
  * - Holds data about the food that the user has bought
  */
 public class FoodRepository {
@@ -16,6 +18,8 @@ public class FoodRepository {
 
     // holds current value that is incremented to save values
     private SharedPreferences currentValue;
+
+    private Food food;
 
     public FoodRepository(Context context) {
         sharedPreferences = context.getSharedPreferences("food", Context.MODE_PRIVATE);
