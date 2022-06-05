@@ -44,30 +44,11 @@ public class FoodActivity extends AppCompatActivity {
         displayCoins();
 
         // Set up the food
-        buyFood(rice, new Food("rice", 5, 5));
-        buyFood(cirese, new Food("cirese", 1, 2));//"cirese", 1, 2
-        buyFood(clatitecucafea, new Food("clatitecucafea", 20, 16)); //16 "clatitecucafea", 28, 16
-        buyFood(englishbreakfast, new Food("englishbreakfast", 26, 16)); //"englishbreakfast", 26, 16
-        buyFood(fruits1, new Food("fruits1", 15, 13)); //13 "fruits1", 15, 13
-        buyFood(cafea, new Food("fruits1", 15, 13)); //4 "fruits1", 15, 13
-
-        buyFood(carbonara, new Food("carbonara", 15, 25)); //25 "carbonara", 15, 25
-        buyFood(salad, new Food("salad", 8, 15)); //15 "salad", 8, 15
-        buyFood(soup, new Food("soup", 10, 12)); //12
-        buyFood(steak1, new Food("steak1", 30, 35)); //35
-        buyFood(steak2, new Food("steak2", 20, 22)); //22
-
-        buyFood(cartofipai, new Food("cartofipai", 7, 10)); //10
-        buyFood(burger, new Food("burger", 20, 27)); //27
-        buyFood(cola, new Food("cola", 4, 3)); //3
-        buyFood(hotdog, new Food("hotdog", 16, 20)); //20
-        buyFood(nuggets, new Food("nuggets", 10, 10)); //10
-        buyFood(onionrings, new Food("onionrings", 9, 8)); //8
-        buyFood(gogosi, new Food("gogosi", 12, 10)); //10
-        buyFood(pizza, new Food("pizza", 10, 9)); //9
+        setUpFooD();
 
         goBack();
     }
+
 
     /**
      * Initialize data
@@ -137,6 +118,33 @@ public class FoodActivity extends AppCompatActivity {
                 Toast.makeText(FoodActivity.this, "Not enough coins", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    /**
+     * Set up the food
+     */
+    private void setUpFooD() {
+        buyFood(rice, new Food("rice", 5, 5));
+        buyFood(cirese, new Food("cirese", 1, 2));//"cirese", 1, 2
+        buyFood(clatitecucafea, new Food("clatitecucafea", 20, 16)); //16 "clatitecucafea", 28, 16
+        buyFood(englishbreakfast, new Food("englishbreakfast", 26, 16)); //"englishbreakfast", 26, 16
+        buyFood(fruits1, new Food("fruits1", 15, 13)); //13 "fruits1", 15, 13
+        buyFood(cafea, new Food("cafea", 4, 4)); //4 "cafea", 4, 4
+
+        buyFood(carbonara, new Food("carbonara", 15, 25)); //25 "carbonara", 15, 25
+        buyFood(salad, new Food("salad", 8, 15)); //15 "salad", 8, 15
+        buyFood(soup, new Food("soup", 10, 12)); //12
+        buyFood(steak1, new Food("steak1", 30, 35)); //35
+        buyFood(steak2, new Food("steak2", 20, 22)); //22
+
+        buyFood(cartofipai, new Food("cartofipai", 7, 10)); //10
+        buyFood(burger, new Food("burger", 20, 27)); //27
+        buyFood(cola, new Food("cola", 4, 3)); //3
+        buyFood(hotdog, new Food("hotdog", 16, 20)); //20
+        buyFood(nuggets, new Food("nuggets", 10, 10)); //10
+        buyFood(onionrings, new Food("onionrings", 9, 8)); //8
+        buyFood(gogosi, new Food("gogosi", 12, 10)); //10
+        buyFood(pizza, new Food("pizza", 10, 9)); //9
     }
 
     /**
