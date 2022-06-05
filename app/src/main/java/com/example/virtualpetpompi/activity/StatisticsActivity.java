@@ -15,6 +15,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.virtualpetpompi.BuildConfig;
@@ -280,8 +281,8 @@ public class StatisticsActivity extends AppCompatActivity implements SensorEvent
                 findViewById(R.id.recordvalue).setVisibility(View.GONE);
                 findViewById(R.id.record).setVisibility(View.GONE);
             }
-        }catch (Exception e){
-            Log.e("error","no record set");
+        } catch (Exception e) {
+            Log.e("error", "no record set");
         }
 
 
@@ -291,29 +292,31 @@ public class StatisticsActivity extends AppCompatActivity implements SensorEvent
         FloatingActionButton goBackBtn = findViewById(R.id.goBackFromStatisticsToMain);
         goBackBtn.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), MainActivity.class)));
     }
-    private void saveUserAchievement(){
+
+    private void saveUserAchievement() {
         DataBase db = DataBase.getInstance(this);
-        if (todayOffset + since_boot>10000){
-            db.saveHasAchievement(1,1);
+        Pair<Date, Integer> record = db.getRecordData();
+        if (record.second > 10000) {
+            db.saveHasAchievement(1, 1);
         }
-        if (todayOffset + since_boot>20000){
-            db.saveHasAchievement(1,2);
+        if (record.second > 20000) {
+            db.saveHasAchievement(1, 2);
         }
-        if (todayOffset + since_boot>30000){
-            db.saveHasAchievement(1,3);
+        if (record.second > 30000) {
+            db.saveHasAchievement(1, 3);
         }
-        if (db.getAchievement()==1){
+        if (db.getAchievement() == 1) {
             findViewById(R.id.achievement).setVisibility(View.VISIBLE);
             findViewById(R.id.achievements).setVisibility(View.VISIBLE);
             findViewById(R.id.tenK).setVisibility(View.VISIBLE);
         }
-        if (db.getAchievement()==2){
+        if (db.getAchievement() == 2) {
             findViewById(R.id.achievement).setVisibility(View.VISIBLE);
             findViewById(R.id.achievements).setVisibility(View.VISIBLE);
             findViewById(R.id.tenK).setVisibility(View.VISIBLE);
             findViewById(R.id.twentyK).setVisibility(View.VISIBLE);
         }
-        if (db.getAchievement()==3){
+        if (db.getAchievement() == 3) {
             findViewById(R.id.achievement).setVisibility(View.VISIBLE);
             findViewById(R.id.achievements).setVisibility(View.VISIBLE);
             findViewById(R.id.tenK).setVisibility(View.VISIBLE);

@@ -202,6 +202,13 @@ public class DataBase extends SQLiteOpenHelper {
     }
 
     /**
+     * Removes all entries from the future.
+     */
+    void removeFutureEntries() {
+        getWritableDatabase().delete(DB_NAME, "date > ?", new String[]{String.valueOf(Util.getToday())});
+    }
+
+    /**
      * Get the number of 'valid' days (= days with a step value > 0).
      * <p/>
      * The current day is not added to this number.

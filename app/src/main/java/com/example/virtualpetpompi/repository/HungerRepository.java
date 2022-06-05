@@ -20,7 +20,6 @@ public class HungerRepository {
     private SharedPreferences timeSharedPrefs;
     private SharedPreferences hungerSharedPrefs;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public HungerRepository(Context context) {
         hungerSharedPrefs = context.getSharedPreferences("hunger", Context.MODE_PRIVATE);
         timeSharedPrefs = context.getSharedPreferences("time", Context.MODE_PRIVATE);
@@ -30,12 +29,10 @@ public class HungerRepository {
     /**
      * Inits the data that is used to save hunger
      */
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void initData() {
         if (!hungerSharedPrefs.contains("hungerLevel")) {
             hungerSharedPrefs.edit().putInt("hungerLevel", 100).apply();
         }
-
         // Iau timpul curent si la prima utilizare il salvez
         LocalDateTime currentDate = LocalDateTime.now();
         if (!timeSharedPrefs.contains("currentDate")) {
@@ -47,7 +44,6 @@ public class HungerRepository {
     /**
      * Substract 1% from hunger for every 20 min of inactivity
      */
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public void hunger() {
         // Iau timpul vechi si il compar cu timpul curent
         LocalDateTime oldDate = LocalDateTime.parse(timeSharedPrefs.getString("currentDate", "empty"));
@@ -62,7 +58,6 @@ public class HungerRepository {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void calculateHunger(int minutes) {
         int hunger = hungerSharedPrefs.getInt("hungerLevel", 0);
         // ca in 48h sa moara de foame, ar trebui sa setam aprox: hunger -= minutes/25
@@ -87,5 +82,10 @@ public class HungerRepository {
 
     public int getHunger() {
         return hungerSharedPrefs.getInt("hungerLevel", 0);
+    }
+
+    public void deleteHunger(){
+        hungerSharedPrefs.edit().clear().apply();
+        timeSharedPrefs.edit().clear().apply();
     }
 }

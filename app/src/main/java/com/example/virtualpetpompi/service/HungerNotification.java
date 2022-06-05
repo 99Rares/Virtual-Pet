@@ -1,6 +1,5 @@
 package com.example.virtualpetpompi.service;
 
-import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -29,16 +28,18 @@ public class HungerNotification extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         Intent notifyIntent = new Intent(context, MainActivity.class);
-        @SuppressLint("UnspecifiedImmutableFlag")
         PendingIntent pendingIntent = PendingIntent.getActivity(context,
                 666,
                 notifyIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        String description = context.getResources().getString(R.string.description_check);
+        String text = context.getResources().getString(R.string.description_title);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "hunger")
                 .setSmallIcon(R.drawable.a10)
-                .setContentTitle("Check on your pet!")
-                .setContentText("Your pet might be hungry go and feed it.")
+                .setContentTitle(description)
+                .setContentText(text)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);

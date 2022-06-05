@@ -145,7 +145,7 @@ public class StepsService extends Service implements SensorEventListener {
      * @param steps nr of steps
      * @return steps
      */
-    public int resetSteps(int steps) {
+    private int resetSteps(int steps) {
         if (steps < 0) {
             int coins;
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -202,7 +202,7 @@ public class StepsService extends Service implements SensorEventListener {
         // Restart service in 500 ms
         ((AlarmManager) getSystemService(Context.ALARM_SERVICE))
                 .set(AlarmManager.RTC, System.currentTimeMillis() + 500, PendingIntent
-                        .getService(this, 3, new Intent(this, StepsService.class), PendingIntent.FLAG_IMMUTABLE));
+                        .getService(this, 3, new Intent(this, StepsService.class), 0));
     }
 
     @Override
@@ -238,11 +238,6 @@ public class StepsService extends Service implements SensorEventListener {
                     sharedPreferences.edit().putInt("pauseCount", steps).apply();
                 }
             }
-            if (db.getCurrentSteps() + db.getSteps(Util.getToday()) < 0) {
-                // we don't know when the reboot was, so set today's steps to 0 by
-                db.removeNegativeEntries();
-                db.insertNewDay(Util.getToday(), steps);
-            }
             db.saveCurrentSteps(steps);
             db.close();
             lastSaveSteps = steps;
@@ -263,10 +258,11 @@ public class StepsService extends Service implements SensorEventListener {
         }
     }
 
-
+    /**
+     * Create the NotificationChannel, but only on API 26+ because
+     * the NotificationChannel class is new and not in the support library
+     */
     private void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
         CharSequence name = getString(R.string.channel_name_steps);
         String description = getString(R.string.channel_description_steps);
         int importance = NotificationManager.IMPORTANCE_DEFAULT;

@@ -15,26 +15,32 @@
             android:name=".activity.StatisticsActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activity.BackgroundActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activity.FoodActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activity.ShopActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activity.SettingsActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activity.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

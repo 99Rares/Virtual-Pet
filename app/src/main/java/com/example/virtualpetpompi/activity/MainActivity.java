@@ -15,7 +15,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +24,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.virtualpetpompi.R;
 import com.example.virtualpetpompi.repository.BackgroundRepository;
@@ -36,6 +35,7 @@ import com.example.virtualpetpompi.repository.HungerRepository;
 import com.example.virtualpetpompi.service.DataBase;
 import com.example.virtualpetpompi.service.HungerNotification;
 import com.example.virtualpetpompi.service.StepsService;
+import com.example.virtualpetpompi.util.OnSwipeTouchListener;
 import com.example.virtualpetpompi.util.Util;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.karumi.dexter.Dexter;
@@ -79,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
     private HungerRepository hungerRepository;
     private SharedPreferences savedLifes;
     private SharedPreferences resetRecover;
+    private SharedPreferences coinsSharedPrefs;
+    private SharedPreferences foodSharedPrefs;
+    private SharedPreferences backgroundSharedPrefs;
 
     // Inventory
     private FloatingActionButton openInventoryBtn;
@@ -98,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
     private DataBase db;
     int nrClicks = 0;
 
+    ConstraintLayout layout;
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,32 +162,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setNotification() {
-        if (!oneTimePrefs.contains("firstTimeSetNotification")) {
+        if (!oneTimePrefs.getBoolean("firstTimeSetNotification", false)) {
             createNotificationChannel();
             createNotification();
-            oneTimePrefs.edit().putString("firstTimeSetNotification", "true").apply();
+            oneTimePrefs.edit().putBoolean("firstTimeSetNotification", true).apply();
         }
     }
 
     private void setDifficulty() {
-        if (!oneTimePrefs.contains("firstTimeSetDifficulty")) {
+        if (!oneTimePrefs.getBoolean("firstTimeSetDifficulty", false)) {
             sharedPreferences.edit().putBoolean("steps", true).apply();
             difficultyPanel.setVisibility(View.VISIBLE);
             easyMode.setOnClickListener(v -> {
+                hungerRepository.deleteHunger();
+                foodSharedPrefs.edit().clear().apply();
+                backgroundSharedPrefs.edit().clear().apply();
                 savedLifes.edit().putInt("life", 1000).apply();
                 difficultyPanel.setVisibility(View.GONE);
                 int lifes = savedLifes.getInt("life", 0);
                 nrLifes.setText(String.valueOf(lifes));
+                coinsSharedPrefs.edit()
+                        .putInt("divide", 10)
+                        .putInt("totalCoins", 0)
+                        .putInt("spentCoins", 0).apply();
                 resetRecover.edit().putInt("prevCoins", 100).apply();
+                displayOwnedFood();
+                displayBackground();
 
             });
             normalMode.setOnClickListener(v -> {
+                hungerRepository.deleteHunger();
+                foodSharedPrefs.edit().clear().apply();
+                backgroundSharedPrefs.edit().clear().apply();
                 savedLifes.edit().putInt("life", 5).apply();
                 difficultyPanel.setVisibility(View.GONE);
                 int lifes = savedLifes.getInt("life", 0);
                 nrLifes.setText(String.valueOf(lifes));
+                coinsSharedPrefs.edit()
+                        .putInt("divide", 100)
+                        .putInt("totalCoins", 0)
+                        .putInt("spentCoins", 0).apply();
+                resetRecover.edit().putInt("prevCoins", 5).apply();
+                displayOwnedFood();
+                displayBackground();
             });
-            oneTimePrefs.edit().putString("firstTimeSetDifficulty", "true").apply();
+            oneTimePrefs.edit().putBoolean("firstTimeSetDifficulty", true).apply();
         }
     }
 
@@ -222,6 +247,8 @@ public class MainActivity extends AppCompatActivity {
      * Initializes data
      */
     private void initData() {
+
+        layout = findViewById(R.id.ConstraintLayout);
         db = DataBase.getInstance(this);
         menuBtn = findViewById(R.id.menuBtn);
         shopBtn = findViewById(R.id.shopBtn);
@@ -240,6 +267,9 @@ public class MainActivity extends AppCompatActivity {
         oneTimePrefs = getSharedPreferences("firstTime", Context.MODE_PRIVATE);
         savedLifes = getSharedPreferences("savedLifes", Context.MODE_PRIVATE);
         resetRecover = getSharedPreferences("recover", Context.MODE_PRIVATE);
+        coinsSharedPrefs = getSharedPreferences("coins", Context.MODE_PRIVATE);
+        foodSharedPrefs = getSharedPreferences("food", Context.MODE_PRIVATE);
+        backgroundSharedPrefs = getSharedPreferences("backgrounds", Context.MODE_PRIVATE);
 
         foodRepository = new FoodRepository(this);
         hungerRepository = new HungerRepository(this);
@@ -259,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @SuppressLint("SetTextI18n")
+
     private void displayHunger() {
         hungerTextView.setText(hungerRepository.getHunger() + "%");
     }
@@ -415,10 +445,23 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Sets up the button that opens the Statistics
      */
+    @SuppressLint("ClickableViewAccessibility")
     private void openStatistics() {
         findViewById(R.id.linearLayout3).setOnLongClickListener(v -> {
             startActivity(new Intent(MainActivity.this, StatisticsActivity.class));
             return false;
+        });
+        layout.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
+            @Override
+            public void onSwipeLeft() {
+                super.onSwipeLeft();
+                startActivity(new Intent(MainActivity.this, StatisticsActivity.class));
+            }
+            @Override
+            public void onSwipeRight() {
+                super.onSwipeRight();
+                Toast.makeText(MainActivity.this, "Swipe Right gesture detected", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -499,7 +542,7 @@ public class MainActivity extends AppCompatActivity {
         CharSequence name = getString(R.string.channel_name);
         String description = getString(R.string.channel_description);
         int importance = NotificationManager.IMPORTANCE_DEFAULT;
-        NotificationChannel channel = new NotificationChannel("hunger", name, importance);
+        NotificationChannel channel = new NotificationChannel(getString(R.string.channel_id), name, importance);
         channel.setDescription(description);
         // Register the channel with the system; you can't change the importance
         // or other notification behaviors after this
@@ -523,7 +566,7 @@ public class MainActivity extends AppCompatActivity {
                 (getApplicationContext(), 666, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        //Toast.makeText(MainActivity.this, String.valueOf(calendar.getTimeInMillis()), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(MainActivity.this, String.valueOf(calendar.getTimeInMillis()), Toast.LENGTH_SHORT).show();
     }
 
 

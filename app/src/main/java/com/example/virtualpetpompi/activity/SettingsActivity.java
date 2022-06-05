@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Switch;
 
@@ -13,6 +15,8 @@ import androidx.cardview.widget.CardView;
 
 import com.example.virtualpetpompi.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author rares.dan
@@ -29,7 +33,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Switch aboutSwitch, creditsSwitch, privacySwitch, contactSwitch, helpSwitch, stepSwitch;
 
     // panels
-    private CardView aboutPanel, creditsPanel, privacyPanel, contactPanel, helpPanel;
+    private CardView aboutPanel, creditsPanel, privacyPanel, contactPanel, helpPanel, changeDiff;
 
     // buttons
     private FloatingActionButton goBackBtn;
@@ -49,6 +53,7 @@ public class SettingsActivity extends AppCompatActivity {
         openPanel(contactSwitch, contactPanel);
         setSwitch();
         turnOnSteps();
+        setChangeDiff();
         goBack();
     }
 
@@ -61,38 +66,60 @@ public class SettingsActivity extends AppCompatActivity {
         privacyPanel = findViewById(R.id.privacyPanel);
         contactPanel = findViewById(R.id.contactPanel);
         helpPanel = findViewById(R.id.helpPanel);
+        changeDiff = findViewById(R.id.difficultyChange);
 
         aboutSwitch = findViewById(R.id.aboutSwitch);
         creditsSwitch = findViewById(R.id.creditsSwitch);
         privacySwitch = findViewById(R.id.privacySwitch);
         contactSwitch = findViewById(R.id.contactSwitch);
         helpSwitch = findViewById(R.id.helpSwitch);
-        stepSwitch =findViewById(R.id.stepSwitch);
+        stepSwitch = findViewById(R.id.stepSwitch);
 
         goBackBtn = findViewById(R.id.goBackToMainActivity);
         sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
 
-        if(!sharedPreferences.contains("steps")){
-            sharedPreferences.edit().putBoolean("steps",true).apply();
+        if (!sharedPreferences.contains("steps")) {
+            sharedPreferences.edit().putBoolean("steps", true).apply();
         }
     }
 
-    private void setSwitch(){
+    private void setSwitch() {
         stepSwitch.setChecked(sharedPreferences.getBoolean("steps", true));
     }
 
     /**
      * Turns on the step view
      */
-    private void turnOnSteps(){
+    private void turnOnSteps() {
         stepSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if(isChecked){
-                sharedPreferences.edit().putBoolean("steps",true).apply();
-            }else{
-                sharedPreferences.edit().putBoolean("steps",false).apply();
+            if (isChecked) {
+                sharedPreferences.edit().putBoolean("steps", true).apply();
+            } else {
+                sharedPreferences.edit().putBoolean("steps", false).apply();
             }
         });
         setSwitch();
+    }
+
+    private void setChangeDiff() {
+        changeDiff.setOnClickListener(v -> {
+            AtomicInteger nrClicks = new AtomicInteger();
+            nrClicks.getAndIncrement();
+            Handler handler = new Handler();
+            Runnable runnable = () -> {
+                nrClicks.set(0);
+                changeDiff.setCardBackgroundColor(getColor(R.color.myrtle_green));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            };
+            if (nrClicks.get() == 1) {
+                changeDiff.setCardBackgroundColor(Color.WHITE);
+                handler.postDelayed(runnable, 100);
+                SharedPreferences preferences = getSharedPreferences("firstTime", 0);
+                preferences.edit().remove("firstTimeSetDifficulty").apply();
+
+
+            }
+        });
     }
 
     /**
@@ -101,7 +128,7 @@ public class SettingsActivity extends AppCompatActivity {
      * @param switchPanel the switch that opens a panel
      * @param panel       the panel to open
      */
-    private void openPanel(@SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchPanel, CardView panel) {
+    private void openPanel(Switch switchPanel, CardView panel) {
         switchPanel.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 panel.setVisibility(View.VISIBLE);

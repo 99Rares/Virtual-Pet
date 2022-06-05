@@ -6,7 +6,7 @@
     <string name="notification_text">%s steps to go</string>
     <string name="steps">steps</string>
     <string name="your_progress_will_be_shown_here_soon">Your progress will be shown here soon</string>
-    <string name="notification_title">Pedometer is counting</string>
+    <string name="notification_title">The virtual pet is counting your steps</string>
     <string name="average">Average</string>
     <string name="total_last_7_days">Total last 7 days</string>
     <string name="average_last_7_days">Average last 7 days</string>
@@ -54,5 +54,11 @@
     <string name="_20k">20K</string>
     <string name="_30k">30K</string>
     <string name="channel_name_steps">Steps Notification</string>
-    <string name="channel_description_steps">get the number of taken steps</string>
+    <string name="channel_description_steps">Get the number of steps taken</string>
+    <string name="description_check">Check on your pet!</string>
+    <string name="description_title">Your pet might be hungry go and feed it.</string>
+    <string name="channel_id">hunger</string>
+    <string name="change_the_difficulty">Change the Difficulty</string>
+    <string name="caution">Caution!!! If you change the difficulty, all progress will be erased!!</string>
+    <string name="left">←←←←←←←←←←←←</string>
 </resources>

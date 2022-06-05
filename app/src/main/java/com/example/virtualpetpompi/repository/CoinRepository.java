@@ -38,7 +38,6 @@ public class CoinRepository {
     /**
      * Get total amount of coins
      *
-     * @return
      */
     public int getTotalCoins() {
         return this.coinsSharedPrefs.getInt("totalCoins", 0);
@@ -49,8 +48,9 @@ public class CoinRepository {
      */
     private void calculateCoins() {
         int coins = stepsSharedPrefs.getInt("total", 0);
+        int divide= coinsSharedPrefs.getInt("divide",100);
         int recoveredCoins = resetRecover.getInt("prevCoins", 0);
-        coins = coins / 10; // ----------------------------------------------- COIN ALGORITHM
+        coins = coins / divide; // ----------------------------------------------- COIN ALGORITHM
         coins += recoveredCoins;
         coins -= coinsSharedPrefs.getInt("spentCoins", 0);
         if (coins <= 0) {
