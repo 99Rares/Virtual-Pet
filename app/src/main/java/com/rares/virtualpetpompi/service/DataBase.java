@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi.service;
+package com.rares.virtualpetpompi.service;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.util.Pair;
 
-import com.example.virtualpetpompi.util.Util;
+import com.rares.virtualpetpompi.util.Util;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -140,11 +140,16 @@ public class DataBase extends SQLiteOpenHelper {
      * step value (Integer)
      */
     public Pair<Date, Integer> getRecordData() {
+        Pair<Date, Integer> p;
         Cursor c = getReadableDatabase()
                 .query(DB_NAME, new String[]{"date, steps"}, "date > 0", null, null, null,
                         "steps DESC", "1");
         c.moveToFirst();
-        Pair<Date, Integer> p = new Pair<>(new Date(c.getLong(0)), c.getInt(1));
+        try {p = new Pair<>(new Date(c.getLong(0)), c.getInt(1));
+
+        }catch (Exception e){
+            p=new Pair<>(new Date(Util.getToday()), Integer.MIN_VALUE);
+        }
         c.close();
         return p;
     }

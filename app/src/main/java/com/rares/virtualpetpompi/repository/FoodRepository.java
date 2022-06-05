@@ -1,9 +1,9 @@
-package com.example.virtualpetpompi.repository;
+package com.rares.virtualpetpompi.repository;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.virtualpetpompi.model.Food;
+import com.rares.virtualpetpompi.model.Food;
 
 import java.util.Map;
 

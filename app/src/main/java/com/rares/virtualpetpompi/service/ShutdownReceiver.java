@@ -1,12 +1,12 @@
-package com.example.virtualpetpompi.service;
+package com.rares.virtualpetpompi.service;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.example.virtualpetpompi.BuildConfig;
-import com.example.virtualpetpompi.util.Util;
+import com.rares.virtualpetpompi.BuildConfig;
+import com.rares.virtualpetpompi.util.Util;
 
 public class ShutdownReceiver extends BroadcastReceiver {
 

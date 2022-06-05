@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/jade"
-    tools:context=".activity.BackgroundActivity">
+    tools:context="com.rares.virtualpetpompi.activity.BackgroundActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/goBackFromBackgroundToShop"

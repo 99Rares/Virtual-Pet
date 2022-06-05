@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi.activity;
+package com.rares.virtualpetpompi.activity;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -18,11 +18,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.virtualpetpompi.BuildConfig;
-import com.example.virtualpetpompi.R;
-import com.example.virtualpetpompi.service.DataBase;
-import com.example.virtualpetpompi.util.Util;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.rares.virtualpetpompi.BuildConfig;
+import com.rares.virtualpetpompi.R;
+import com.rares.virtualpetpompi.service.DataBase;
+import com.rares.virtualpetpompi.util.Util;
 
 import org.eazegraph.lib.charts.BarChart;
 import org.eazegraph.lib.charts.PieChart;

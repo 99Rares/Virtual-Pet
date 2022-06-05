@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi.service;
+package com.rares.virtualpetpompi.service;
 
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -8,8 +8,8 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.example.virtualpetpompi.R;
-import com.example.virtualpetpompi.activity.MainActivity;
+import com.rares.virtualpetpompi.R;
+import com.rares.virtualpetpompi.activity.MainActivity;
 
 /**
  * @author dan.rares

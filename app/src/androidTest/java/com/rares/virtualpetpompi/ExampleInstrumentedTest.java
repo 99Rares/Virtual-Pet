@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi;
+package com.rares.virtualpetpompi;
 
 import android.content.Context;
 

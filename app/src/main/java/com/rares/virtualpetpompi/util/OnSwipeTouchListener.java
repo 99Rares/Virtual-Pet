@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi.util;
+package com.rares.virtualpetpompi.util;
 
 import android.content.Context;
 import android.view.GestureDetector;

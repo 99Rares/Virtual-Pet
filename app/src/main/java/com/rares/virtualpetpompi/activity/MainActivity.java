@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi.activity;
+package com.rares.virtualpetpompi.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -28,15 +28,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.virtualpetpompi.R;
-import com.example.virtualpetpompi.repository.BackgroundRepository;
-import com.example.virtualpetpompi.repository.FoodRepository;
-import com.example.virtualpetpompi.repository.HungerRepository;
-import com.example.virtualpetpompi.service.DataBase;
-import com.example.virtualpetpompi.service.HungerNotification;
-import com.example.virtualpetpompi.service.StepsService;
-import com.example.virtualpetpompi.util.OnSwipeTouchListener;
-import com.example.virtualpetpompi.util.Util;
+import com.rares.virtualpetpompi.R;
+import com.rares.virtualpetpompi.repository.BackgroundRepository;
+import com.rares.virtualpetpompi.repository.FoodRepository;
+import com.rares.virtualpetpompi.repository.HungerRepository;
+import com.rares.virtualpetpompi.service.DataBase;
+import com.rares.virtualpetpompi.service.HungerNotification;
+import com.rares.virtualpetpompi.service.StepsService;
+import com.rares.virtualpetpompi.util.OnSwipeTouchListener;
+import com.rares.virtualpetpompi.util.Util;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;

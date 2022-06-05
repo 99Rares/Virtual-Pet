@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi.model;
+package com.rares.virtualpetpompi.model;
 
 public class Food {
     private String fotoName;

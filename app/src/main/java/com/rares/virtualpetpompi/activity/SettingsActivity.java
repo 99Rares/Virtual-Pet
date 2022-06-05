@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi.activity;
+package com.rares.virtualpetpompi.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,8 +13,8 @@ import android.widget.Switch;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.example.virtualpetpompi.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.rares.virtualpetpompi.R;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

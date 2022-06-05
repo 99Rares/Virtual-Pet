@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi.service;
+package com.rares.virtualpetpompi.service;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
@@ -25,10 +25,10 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.example.virtualpetpompi.BuildConfig;
-import com.example.virtualpetpompi.R;
-import com.example.virtualpetpompi.activity.MainActivity;
-import com.example.virtualpetpompi.util.Util;
+import com.rares.virtualpetpompi.BuildConfig;
+import com.rares.virtualpetpompi.R;
+import com.rares.virtualpetpompi.activity.MainActivity;
+import com.rares.virtualpetpompi.util.Util;
 
 import java.text.NumberFormat;
 import java.util.Date;

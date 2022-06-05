@@ -1,4 +1,4 @@
-package com.example.virtualpetpompi.activity;
+package com.rares.virtualpetpompi.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.example.virtualpetpompi.R;
-import com.example.virtualpetpompi.model.Food;
-import com.example.virtualpetpompi.repository.CoinRepository;
-import com.example.virtualpetpompi.repository.FoodRepository;
+import com.rares.virtualpetpompi.R;
+import com.rares.virtualpetpompi.model.Food;
+import com.rares.virtualpetpompi.repository.CoinRepository;
+import com.rares.virtualpetpompi.repository.FoodRepository;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
