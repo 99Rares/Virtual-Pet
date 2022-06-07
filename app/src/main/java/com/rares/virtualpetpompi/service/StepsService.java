@@ -106,9 +106,9 @@ public class StepsService extends Service implements SensorEventListener {
                 (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
         PendingIntent pi = PendingIntent
                 .getService(getApplicationContext(), 2, new Intent(this, StepsService.class),
-                        PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
-        am.setAndAllowWhileIdle(AlarmManager.RTC, nextUpdate, pi);
-        return START_STICKY;
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+        am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextUpdate, pi);
+        return Service.START_STICKY;
     }
 
     private void registerBroadcastReceiver() {
@@ -277,7 +277,6 @@ public class StepsService extends Service implements SensorEventListener {
     public static Notification getNotification(final Context context) {
 
         Intent notifyIntent = new Intent(context, MainActivity.class);
-        @SuppressLint("UnspecifiedImmutableFlag")
         PendingIntent pendingIntent = PendingIntent.getActivity(context,
                 666,
                 notifyIntent,

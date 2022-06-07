@@ -171,6 +171,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setDifficulty() {
         if (!oneTimePrefs.getBoolean("firstTimeSetDifficulty", false)) {
+            getSharedPreferences("firstTime",Context.MODE_PRIVATE).edit()
+                    .remove("firstTimeSetNotification").apply();
             sharedPreferences.edit().putBoolean("steps", true).apply();
             difficultyPanel.setVisibility(View.VISIBLE);
             easyMode.setOnClickListener(v -> {
@@ -457,6 +459,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onSwipeLeft();
                 startActivity(new Intent(MainActivity.this, StatisticsActivity.class));
             }
+
             @Override
             public void onSwipeRight() {
                 super.onSwipeRight();
@@ -560,10 +563,9 @@ public class MainActivity extends AppCompatActivity {
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 1);
 
-
         Intent intent = new Intent(getApplicationContext(), HungerNotification.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast
-                (getApplicationContext(), 666, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+                (getApplicationContext(), 666, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 //        Toast.makeText(MainActivity.this, String.valueOf(calendar.getTimeInMillis()), Toast.LENGTH_SHORT).show();

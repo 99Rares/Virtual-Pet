@@ -22,6 +22,8 @@ public class ShutdownReceiver extends BroadcastReceiver {
         // set to true
         context.getSharedPreferences("pedometer", Context.MODE_PRIVATE).edit()
                 .putBoolean("correctShutdown", true).apply();
+        context.getSharedPreferences("firstTime",Context.MODE_PRIVATE).edit()
+                .remove("firstTimeSetNotification").apply();
 
         DataBase db = DataBase.getInstance(context);
         // if it's already a new day, add the temp. steps to the last one

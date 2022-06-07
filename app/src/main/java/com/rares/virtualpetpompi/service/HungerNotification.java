@@ -31,7 +31,7 @@ public class HungerNotification extends BroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getActivity(context,
                 666,
                 notifyIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent.FLAG_UPDATE_CURRENT);
 
         String description = context.getResources().getString(R.string.description_check);
         String text = context.getResources().getString(R.string.description_title);
