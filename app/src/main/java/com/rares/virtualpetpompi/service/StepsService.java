@@ -1,6 +1,5 @@
 package com.rares.virtualpetpompi.service;
 
-import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -181,7 +180,6 @@ public class StepsService extends Service implements SensorEventListener {
                 oneTimePrefs.edit().putString("firstTime", "true").apply();
             }
             int currentSteps = (totalSteps - sharedPreferences.getInt("prev", 0));
-            db.saveUser(currentSteps);
             int currentStepsString = resetSteps(currentSteps);
             sharedPreferences.edit().putInt("total", currentStepsString).apply();
             if (event.values[0] > Integer.MAX_VALUE) {

@@ -96,8 +96,8 @@ public class FoodActivity extends AppCompatActivity {
     }
 
     /**
-     * Use this to define a new food item
-     * Method made so that is can define any kind of food
+     * Use this to buy a new food item
+     * Method made so that is can buy any kind of food
      *
      * @param foodCardView the existing food cardview
      * @param food         properties of the food
@@ -105,11 +105,10 @@ public class FoodActivity extends AppCompatActivity {
     private void buyFood(CardView foodCardView, Food food) {
         foodCardView.setOnClickListener(v -> {
             if (coins >= food.getPrice()) {
-                StringBuilder foodItem = new StringBuilder();
-                foodItem.append(food.getFotoName()).append("|");
-                foodItem.append(food.getFullness()).append("|");
-                foodItem.append(food.getPrice()).append("|");
-                foodRepository.add(foodItem.toString());
+                String foodItem = food.getFotoName() + "|" +
+                        food.getFullness() + "|" +
+                        food.getPrice() + "|";
+                foodRepository.add(foodItem);
 
                 subtractAndResetCoins(food.getPrice());
 

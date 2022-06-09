@@ -17,7 +17,7 @@
     <string name="no_sensor_explain">This app requires a dedicated hardware step sensor - which your device does not have. This app won\'t run on your device.</string>
     <string name="_10_000">10.000</string>
     <string name="steps_record">Steps Record</string>
-    <string name="your_pet_died">Your pet died! \n Reinstall the app</string>
+    <string name="your_pet_died">Your pet died! \n Reset the app</string>
     <string name="_100">100%</string>
     <string name="back">back</string>
     <string name="coins">coins</string>

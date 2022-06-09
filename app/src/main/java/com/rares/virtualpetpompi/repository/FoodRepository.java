@@ -68,6 +68,11 @@ public class FoodRepository {
         }
     }
 
+    public void clearFood() {
+        sharedPreferences.edit().clear().apply();
+        currentValue.edit().clear().apply();
+    }
+
     /**
      * Changes value in the repository
      *

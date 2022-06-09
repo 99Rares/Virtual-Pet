@@ -24,12 +24,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.rares.virtualpetpompi.R;
 import com.rares.virtualpetpompi.repository.BackgroundRepository;
+import com.rares.virtualpetpompi.repository.CoinRepository;
 import com.rares.virtualpetpompi.repository.FoodRepository;
 import com.rares.virtualpetpompi.repository.HungerRepository;
 import com.rares.virtualpetpompi.service.DataBase;
@@ -71,17 +73,19 @@ public class MainActivity extends AppCompatActivity {
 
     private Button easyMode;
     private Button normalMode;
+    private Button reset;
 
     //SharedPrefs
     private SharedPreferences sharedPreferences;
     private SharedPreferences oneTimePrefs;
-    private FoodRepository foodRepository;
-    private HungerRepository hungerRepository;
     private SharedPreferences savedLifes;
     private SharedPreferences resetRecover;
     private SharedPreferences coinsSharedPrefs;
     private SharedPreferences foodSharedPrefs;
     private SharedPreferences backgroundSharedPrefs;
+    private FoodRepository foodRepository;
+    private HungerRepository hungerRepository;
+    private CoinRepository coinRepository;
 
     // Inventory
     private FloatingActionButton openInventoryBtn;
@@ -171,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setDifficulty() {
         if (!oneTimePrefs.getBoolean("firstTimeSetDifficulty", false)) {
-            getSharedPreferences("firstTime",Context.MODE_PRIVATE).edit()
+            getSharedPreferences("firstTime", Context.MODE_PRIVATE).edit()
                     .remove("firstTimeSetNotification").apply();
             sharedPreferences.edit().putBoolean("steps", true).apply();
             difficultyPanel.setVisibility(View.VISIBLE);
@@ -214,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Manages pet's lives
-     * - Total amount of lives: 5
+     * - Total amount of lives: 5 or 100
      * - every time hunger reaches 0%, 1 life is substracted
      * - Hunger is rested to 100%
      * - If lives reach 0 => pet dies and app becomes useless, as well as everything the user bought
@@ -239,10 +243,25 @@ public class MainActivity extends AppCompatActivity {
                 openInventoryBtn.setVisibility(View.GONE);
                 petImage.setVisibility(View.GONE);
                 dead.setVisibility(View.VISIBLE);
-
-                Toast.makeText(this, "Reinstall the app", Toast.LENGTH_SHORT).show();
+                reset.setOnClickListener(v -> {
+                    deleteEverithing();
+                    recreate();
+                });
+                Toast.makeText(this, "Reset the app", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private void deleteEverithing() {
+        sharedPreferences.edit().clear().apply();
+        oneTimePrefs.edit().clear().apply();
+        savedLifes.edit().clear().apply();
+        resetRecover.edit().clear().apply();
+        foodSharedPrefs.edit().clear().apply();
+        backgroundSharedPrefs.edit().clear().apply();
+        hungerRepository.deleteHunger();
+        foodRepository.clearFood();
+        coinRepository.clearCoins();
     }
 
     /**
@@ -275,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
 
         foodRepository = new FoodRepository(this);
         hungerRepository = new HungerRepository(this);
+        coinRepository = new CoinRepository(this);
         noFoodText = findViewById(R.id.noFoodText);
         hungerTextView = findViewById(R.id.hungerTextView);
 
@@ -288,6 +308,7 @@ public class MainActivity extends AppCompatActivity {
         easyMode = findViewById(R.id.easyBtn);
         normalMode = findViewById(R.id.normalBtn);
         difficultyPanel = findViewById(R.id.difficulty);
+        reset = findViewById(R.id.button5);
 
     }
 
@@ -313,67 +334,12 @@ public class MainActivity extends AppCompatActivity {
             noFoodText.setVisibility(View.VISIBLE);
         } else {
             for (Map.Entry<String, ?> entry : foodRepository.getAll().entrySet()) {
-
                 String value = entry.getValue().toString();
                 String[] values = value.split("\\|");
-
-                // CardView
-                CardView cardView = new CardView(this);
-                LinearLayout.LayoutParams paramsCard = new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
-                );
-                paramsCard.leftMargin = 20;
-                paramsCard.topMargin = 20;
-                paramsCard.bottomMargin = 20;
-                cardView.setLayoutParams(paramsCard);
-                cardView.setCardBackgroundColor(Color.WHITE);
-                cardView.setContentPadding(5, 5, 5, 5);
-
-                // Layout
-                LinearLayout linearLayout = new LinearLayout(this);
-                LinearLayout.LayoutParams paramsLayout = new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
-                );
-                paramsLayout.gravity = Gravity.CENTER;
-                linearLayout.setLayoutParams(paramsLayout);
-                linearLayout.setOrientation(LinearLayout.VERTICAL);
-
-                // Image
-                ImageView image = new ImageView(this);
-                LinearLayout.LayoutParams paramsImage = new LinearLayout.LayoutParams(
-                        140,
-                        140
-                );
-                image.setLayoutParams(paramsImage);
-                int id = this.getResources().
-                        getIdentifier(values[0], "drawable", getPackageName());
-                Drawable drawable = getResources().getDrawable(id);
-                image.setImageDrawable(drawable);
-
-                // Text
-                TextView text = new TextView(this);
-                LinearLayout.LayoutParams paramsText = new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
-                );
-                paramsText.gravity = Gravity.CENTER;
-                text.setLayoutParams(paramsText);
-                text.setTextSize(16);
-                text.setTextColor(Color.BLACK);
-                text.setText(String.format("%s%%", values[1]));
-
-                // Adding to view
-                linearLayout.addView(image);
-                linearLayout.addView(text);
-
-                cardView.addView(linearLayout);
-
+                CardView cardView = getCardView(values);
                 // EATING METHOD!! WHEN TAPPING A FOOD ITEM, IT FEEDS THE PET
                 cardView.setOnClickListener(v -> {
                     if (hungerRepository.getHunger() >= 100) {
-
                         anim.stop();
                         petImage.setBackgroundResource(R.drawable.full_anim);
 
@@ -397,6 +363,63 @@ public class MainActivity extends AppCompatActivity {
                 inventoryLayout.addView(cardView);
             }
         }
+    }
+
+    @NonNull
+    private CardView getCardView(String[] values) {
+        // CardView
+        CardView cardView = new CardView(this);
+        LinearLayout.LayoutParams paramsCard = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        paramsCard.leftMargin = 20;
+        paramsCard.topMargin = 20;
+        paramsCard.bottomMargin = 20;
+        cardView.setLayoutParams(paramsCard);
+        cardView.setCardBackgroundColor(Color.WHITE);
+        cardView.setContentPadding(5, 5, 5, 5);
+
+        // Layout
+        LinearLayout linearLayout = new LinearLayout(this);
+        LinearLayout.LayoutParams paramsLayout = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        paramsLayout.gravity = Gravity.CENTER;
+        linearLayout.setLayoutParams(paramsLayout);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+
+        // Image
+        ImageView image = new ImageView(this);
+        LinearLayout.LayoutParams paramsImage = new LinearLayout.LayoutParams(
+                140,
+                140
+        );
+        image.setLayoutParams(paramsImage);
+        int id = this.getResources().
+                getIdentifier(values[0], "drawable", getPackageName());
+        Drawable drawable = getResources().getDrawable(id);
+        image.setImageDrawable(drawable);
+
+        // Text
+        TextView text = new TextView(this);
+        LinearLayout.LayoutParams paramsText = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        paramsText.gravity = Gravity.CENTER;
+        text.setLayoutParams(paramsText);
+        text.setTextSize(16);
+        text.setTextColor(Color.BLACK);
+        text.setText(String.format("%s%%", values[1]));
+
+        // Adding to view
+        linearLayout.addView(image);
+        linearLayout.addView(text);
+
+        cardView.addView(linearLayout);
+        return cardView;
     }
 
     @Override

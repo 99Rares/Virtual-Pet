@@ -264,12 +264,11 @@ public class DataBase extends SQLiteOpenHelper {
     /**
      * Saves the User in the database.
      *
-     * @param steps since made in the app
+     * @param coins since made in the app
      */
-    public void saveUser(int steps) {
+    public void saveUserCoins(int coins) {
         ContentValues values = new ContentValues();
-        int savedCoins = steps / 100;
-        values.put("coins", savedCoins);
+        values.put("coins", coins);
         if (getWritableDatabase().update(DB_USER, values, "username = 'User1'", null) == 0) {
             getWritableDatabase().insert(DB_USER, null, values);
         }
