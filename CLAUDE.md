@@ -20,7 +20,7 @@ Toolchain (upgraded 2026-11-04): AGP 9.5.0, Gradle 9.8.2, compileSdk 37, targetS
 
 Environment on the Mac: the Android SDK is at `/opt/homebrew/share/android-commandlinetools` (Homebrew cask; platform 35 and 37.0, build-tools 35.0.0 and 36.0.0). `local.properties` (gitignored) points `sdk.dir` there; recreate it on a fresh checkout. Repositories are `google()` and `mavenCentral()` only (jcenter removed); `eazegraph` still resolves from Central.
 
-`./gradlew lintDebug` passes (0 errors, about 200 warnings, mostly deprecations). It has not been exercised on a real device or emulator yet: no emulator image is installed.
+`./gradlew lintDebug` passes (0 errors, about 200 warnings, mostly deprecations). Smoke-tested on an API 37 emulator on 2026-11-04 (launches, health foreground service runs with its notification, insets fine, no crashes). Emulator setup: AVD `pet37` (system image `android-37.0;google_apis;arm64-v8a`); run `emulator -avd pet37 -no-audio -gpu swiftshader_indirect` from `$ANDROID_HOME/emulator`, then `./gradlew installDebug`. The emulator has no real step sensor, so the step-to-coin flow is untested end to end.
 
 The only tests are the Android Studio template stubs (`ExampleUnitTest`, `ExampleInstrumentedTest`). There is effectively no test coverage.
 
