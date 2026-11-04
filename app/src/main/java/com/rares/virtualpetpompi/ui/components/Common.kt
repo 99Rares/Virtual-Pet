@@ -1,9 +1,6 @@
 package com.rares.virtualpetpompi.ui.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -77,17 +74,8 @@ fun IconValue(
 
 val ScreenPadding = PaddingValues(horizontal = 20.dp)
 
-/** Some of the original food art has an opaque white background, so every dish sits on a white plate. */
+/** Transparent food artwork sits directly on the surrounding pantry or shop surface. */
 @Composable
 fun FoodImage(@androidx.annotation.DrawableRes res: Int, modifier: Modifier = Modifier) {
-    androidx.compose.foundation.layout.Box(
-        modifier
-            .roundedPlate()
-            .background(androidx.compose.ui.graphics.Color.White),
-    ) {
-        Image(painterResource(res), null, Modifier.fillMaxSize().padding(4.dp))
-    }
+    Image(painterResource(res), null, modifier.padding(4.dp))
 }
-
-private fun Modifier.roundedPlate(): Modifier =
-    this.clip(androidx.compose.foundation.shape.RoundedCornerShape(18.dp))
