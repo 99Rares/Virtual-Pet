@@ -11,8 +11,8 @@
     <application
         android:name=".PetApp"
         android:allowBackup="false"
-        android:icon="@drawable/icon1"
-        android:roundIcon="@drawable/icon1"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.VirtualPetPompi">
