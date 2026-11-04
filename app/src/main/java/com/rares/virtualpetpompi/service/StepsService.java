@@ -10,7 +10,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.Manifest;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -21,6 +23,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -69,6 +73,9 @@ public class StepsService extends Service implements SensorEventListener {
         super.onCreate();
         init();
         running = true;
+        // registered once for the lifetime of the service (system broadcast, not exported)
+        ContextCompat.registerReceiver(this, shutdownReceiver,
+                new IntentFilter(Intent.ACTION_SHUTDOWN), ContextCompat.RECEIVER_NOT_EXPORTED);
         SensorManager mySensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         Sensor myStepDetectorSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if (myStepDetectorSensor == null) {
@@ -92,7 +99,6 @@ public class StepsService extends Service implements SensorEventListener {
     public int onStartCommand(Intent intent, int flags, int
             startId) {
         reRegisterSensor();
-        registerBroadcastReceiver();
         if (!updateIfNecessary()) {
             showNotification();
         }
@@ -105,16 +111,10 @@ public class StepsService extends Service implements SensorEventListener {
                 (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
         PendingIntent pi = PendingIntent
                 .getService(getApplicationContext(), 2, new Intent(this, StepsService.class),
-                        PendingIntent.FLAG_UPDATE_CURRENT);
-        am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextUpdate, pi);
+                        PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        // inexact: exact alarms need a special permission on Android 12+ and an hourly save does not need it
+        am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextUpdate, pi);
         return Service.START_STICKY;
-    }
-
-    private void registerBroadcastReceiver() {
-        if (BuildConfig.DEBUG) Log.d("gg", "register broadcast receiver");
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_SHUTDOWN);
-        registerReceiver(shutdownReceiver, filter);
     }
 
     private void reRegisterSensor() {
@@ -200,7 +200,8 @@ public class StepsService extends Service implements SensorEventListener {
         // Restart service in 500 ms
         ((AlarmManager) getSystemService(Context.ALARM_SERVICE))
                 .set(AlarmManager.RTC, System.currentTimeMillis() + 500, PendingIntent
-                        .getService(this, 3, new Intent(this, StepsService.class), 0));
+                        .getService(this, 3, new Intent(this, StepsService.class),
+                                PendingIntent.FLAG_IMMUTABLE));
     }
 
     @Override
@@ -208,6 +209,11 @@ public class StepsService extends Service implements SensorEventListener {
         super.onDestroy();
         if (BuildConfig.DEBUG)
             Log.println(Log.DEBUG, "gg", "StepsService onDestroy");
+        try {
+            unregisterReceiver(shutdownReceiver);
+        } catch (IllegalArgumentException ignored) {
+            // not registered
+        }
         try {
             SensorManager sm = (SensorManager) getSystemService(SENSOR_SERVICE);
             sm.unregisterListener(this);
@@ -278,7 +284,7 @@ public class StepsService extends Service implements SensorEventListener {
         PendingIntent pendingIntent = PendingIntent.getActivity(context,
                 666,
                 notifyIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         SharedPreferences prefs = context.getSharedPreferences("pedometer", Context.MODE_PRIVATE);
         int goal = prefs.getInt("goal", 10000);
@@ -309,9 +315,14 @@ public class StepsService extends Service implements SensorEventListener {
                 .setSilent(true)
                 .setColor(Color.BLUE)
                 .setOngoing(true);
-        final NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build());
-        return notificationBuilder.build();
+        final Notification notification = notificationBuilder.build();
+        // startForeground() posts the notification; notify() is only for refreshing it
+        // when called from elsewhere, and needs POST_NOTIFICATIONS on Android 13+.
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+                == PackageManager.PERMISSION_GRANTED) {
+            NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, notification);
+        }
+        return notification;
     }
 
     @Override

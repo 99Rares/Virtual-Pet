@@ -1,10 +1,13 @@
 package com.rares.virtualpetpompi.service;
 
+import android.Manifest;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -31,7 +34,7 @@ public class HungerNotification extends BroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getActivity(context,
                 666,
                 notifyIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         String description = context.getResources().getString(R.string.description_check);
         String text = context.getResources().getString(R.string.description_title);
@@ -43,7 +46,10 @@ public class HungerNotification extends BroadcastReceiver {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(666, builder.build());
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+            return; // user declined notifications
+        }
+        NotificationManagerCompat.from(context).notify(666, builder.build());
     }
 }

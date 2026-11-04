@@ -56,6 +56,7 @@ public class StatisticsActivity extends AppCompatActivity implements SensorEvent
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
+        com.rares.virtualpetpompi.util.Util.applySystemBarInsets(this);
         stepsView = findViewById(R.id.steps);
         totalView = findViewById(R.id.total);
         averageView = findViewById(R.id.average);

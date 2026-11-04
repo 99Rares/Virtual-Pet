@@ -35,6 +35,7 @@ public class ShopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
+        com.rares.virtualpetpompi.util.Util.applySystemBarInsets(this);
 
         init();
         displayCoins();

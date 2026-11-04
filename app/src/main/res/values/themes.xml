@@ -9,8 +9,6 @@
         <item name="colorSecondary">@color/jade</item>
         <item name="colorSecondaryVariant">@color/green</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

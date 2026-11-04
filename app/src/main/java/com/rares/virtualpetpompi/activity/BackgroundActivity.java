@@ -37,6 +37,7 @@ public class BackgroundActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_background);
+        com.rares.virtualpetpompi.util.Util.applySystemBarInsets(this);
         init();
         displayCoins();
         displayBoughtBackgrounds();

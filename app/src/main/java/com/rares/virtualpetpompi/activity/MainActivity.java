@@ -28,6 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import com.rares.virtualpetpompi.R;
 import com.rares.virtualpetpompi.repository.BackgroundRepository;
@@ -112,12 +113,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        com.rares.virtualpetpompi.util.Util.applySystemBarInsets(this);
 
         initData();
         if (!oneTimePrefs.getBoolean("firstTimeSetPermission", false)) {
             requestActivityRecognition();
         }
-        startService(new Intent(this, StepsService.class));
+        requestPostNotifications();
+        ContextCompat.startForegroundService(this, new Intent(this, StepsService.class));
         openMenuPanel();
         openInventory();
         displayOwnedFood();
@@ -588,12 +591,39 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(getApplicationContext(), HungerNotification.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast
-                (getApplicationContext(), 666, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                (getApplicationContext(), 666, intent,
+                        PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 //        Toast.makeText(MainActivity.this, String.valueOf(calendar.getTimeInMillis()), Toast.LENGTH_SHORT).show();
     }
 
+
+    /**
+     * Android 13+ requires runtime consent before any notification (step progress, hunger
+     * reminders) is shown. Denial is fine: the notification code checks the permission itself.
+     */
+    private void requestPostNotifications() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            Dexter.withContext(this)
+                    .withPermission(Manifest.permission.POST_NOTIFICATIONS)
+                    .withListener(new PermissionListener() {
+                        @Override
+                        public void onPermissionGranted(PermissionGrantedResponse response) {
+                        }
+
+                        @Override
+                        public void onPermissionDenied(PermissionDeniedResponse response) {
+                        }
+
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(PermissionRequest request, PermissionToken token) {
+                            token.continuePermissionRequest();
+                        }
+                    })
+                    .check();
+        }
+    }
 
     /**
      * Requests Permission from user to user Activity Recognition for the step sensor
