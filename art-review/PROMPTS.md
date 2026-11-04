@@ -10,3 +10,7 @@ Shared direction: soft sculpted storybook illustration, broad smooth satin shadi
 4. Coin: one nearly face-on thick gold coin with tiny lower-right bevel, honey #E8B44F, highlight #FFE3A0, ochre #B5782B. One embossed paw with large pad and four toe pads, rounded raised rim, minimal detail. No letters, currency glyph, numbers, milling, glitter or stack. Square canvas, centered, about 75% occupied width. Readable at 22px.
 
 Generation is followed by deterministic resizing/compositing for review. The original generated PNGs remain in samples/*-source.png. Production prompts should use the approved image as a visual reference as well as these written constraints.
+
+## Rice colour revision
+
+User requested better bowl contrast. Built-in imagegen edit of rice-source.png: change only ceramic from pale celadon to muted cobalt/slate blue #365B91, upper-left highlights #7095C1 and lower-right shading #263E64. Preserve warm ivory rice, geometry, rim, perspective, composition, size and lighting. Keep genuine transparency, no floor, external shadow, new objects or text. Same canvas/margins. Updated sample exports and review sheets; previous version is retained in git history.

@@ -6,7 +6,7 @@ Status: proposed, awaiting approval of four samples. Glass stays in UI chrome; a
 - Palette: warm porcelain #F7F3EB, cool shaded ivory #D4DCE1, charcoal #252B35 with lifted lit edges #465361. Restrained blush #E9ADA4. Food uses appetising muted ochre, terracotta and leaf green. Coin: honey #E8B44F, light #FFE3A0, shade #B5782B. Red panda: russet #B95E38, amber #DA9059, cream markings and charcoal legs.
 - Shape/line: continuous rounded silhouettes; use a fine darker local-colour edge where necessary, never a thick black sticker border. A subtle cool rim separates dark limbs from near-black rooms; slightly darker ivory edges preserve pale-on-pale contrast. No external glow.
 - Light: broad soft key from upper left, shadow lower right. Low gloss, no plastic specular blobs, grain, photographic texture or baked ground plane. Transparent outside each object, including between limbs.
-- Food: one compact serving, three-quarter view with a consistent shallow viewing angle. Broad ingredient shapes survive 64dp. Rice sample uses one celadon bowl, no chopsticks or extra props. Genuine transparency.
+- Food: one compact serving, three-quarter view with a consistent shallow viewing angle. Broad ingredient shapes survive 64dp. Rice sample uses one muted cobalt-blue bowl (#365B91), with lighter blue edges for dark-backdrop separation, no chopsticks or extra props. Genuine transparency.
 - UI icons: simple silhouettes with the same shallow satin volume; no text or currency symbols. Paw-embossed single coin, coral heart, friendly skull.
 - Rooms: opaque portrait gradients and simple natural silhouettes; no text, calm lower 60%. Broad green variants should complement the code-painted rooms.
 
