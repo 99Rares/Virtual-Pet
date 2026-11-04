@@ -120,6 +120,40 @@ class GameRepositoryTest {
     }
 
     @Test
+    fun reviveCostsCoinsAndKeepsEverythingElse() = runBlocking {
+        repo.onboard(Difficulty.NORMAL)                                      // 5 starter coins
+        repo.recordCounter(0)
+        repo.recordCounter(10_000)                                           // +100 coins
+        repo.buyRoom("bg3")                                                  // 30 coins
+        repo.buyFood("rice")                                                 // 5 coins
+        now += 600 * PetRules.MILLIS_PER_HUNGER_POINT
+        repo.settle()
+        assertTrue(state().pet.isDead)
+        assertEquals(70, state().coins)
+
+        assertEquals(BuyResult.OK, repo.revive())                            // 50 coins
+        val s = state()
+        assertFalse(s.pet.isDead)
+        assertEquals(100, s.pet.hunger)
+        assertEquals(3, s.pet.lives)
+        assertEquals(20, s.coins)
+        assertEquals(1, s.pantry["rice"])
+        assertTrue("bg3" in s.ownedRooms)
+    }
+
+    @Test
+    fun reviveNeedsCoinsAndADeadPet() = runBlocking {
+        repo.onboard(Difficulty.NORMAL)
+        assertEquals("alive pet cannot be revived", BuyResult.ALREADY_OWNED, repo.revive())
+        now += 600 * PetRules.MILLIS_PER_HUNGER_POINT
+        repo.settle()
+        assertTrue(state().pet.isDead)
+        assertEquals(BuyResult.NOT_ENOUGH_COINS, repo.revive())              // only 5 coins
+        assertTrue(state().pet.isDead)
+        assertEquals(5, state().coins)
+    }
+
+    @Test
     fun roomsCanBeBoughtOnceAndSelected() = runBlocking {
         repo.onboard(Difficulty.EASY)                                        // 100 starter coins
         assertEquals(BuyResult.OK, repo.buyRoom("bg1"))                      // 45

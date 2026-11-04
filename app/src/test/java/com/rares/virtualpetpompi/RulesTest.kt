@@ -75,6 +75,12 @@ class PetRulesTest {
     @Test fun `feeding adds fullness`() =
         assertEquals(60, PetRules.feed(PetState(30, 5), 30).hunger)
 
+    @Test fun `revived pet is full with the revive lives`() {
+        assertEquals(PetState(100, 3), PetRules.revive(Difficulty.NORMAL))
+        assertEquals(PetState(100, 500), PetRules.revive(Difficulty.EASY))
+        assertFalse(PetRules.revive(Difficulty.NORMAL).isDead)
+    }
+
     @Test fun `fresh pet is full and alive`() {
         val pet = PetState.fresh(Difficulty.EASY)
         assertEquals(100, pet.hunger)

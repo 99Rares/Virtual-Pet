@@ -50,6 +50,6 @@ The UI follows Rares's Liquid Glass design guide in `~/AiMemmory/DESIGN.md`, por
 
 - The pet sprite frames (`idle*`, `hungry*`, `dance*`, `feed*`, `a1..a10` for waking up) and food art are the original assets. Frame sequences and timings are in `PetSprite.kt`. Some food JPGs have opaque white backgrounds, which is why `FoodImage` draws every dish on a white plate.
 - Food and room ids (`rice`, `bg1`, ...) are stored in the database, so renaming one orphans owned items.
-- Dead pet (`lives == 0`) can only be revived with "Start over", which calls `GameRepository.restart()`: it clears game state and pantry but keeps step history and the sensor baseline.
+- Dead pet (`lives == 0`): the overlay offers "Bring back" (`GameRepository.revive()`, costs `Difficulty.reviveCost` coins, restores full hunger and `reviveLives`, keeps pantry, rooms and remaining coins) or "Start over" (`restart()`: clears game state and pantry, keeps step history and the sensor baseline). To see the overlay on the emulator, `adb root` and set the date forward (`adb shell date 112012002026.00`); the pet then starves while the app is closed.
 - The launcher icon still uses `@drawable/icon1` directly; lint reports the old mipmap icons as unused and misplaced. An adaptive icon has not been made yet.
 - Not verified on real hardware: live step counting with a real sensor, and the hunger notification path through `PetCheckWorker` (tested only by reading the code).

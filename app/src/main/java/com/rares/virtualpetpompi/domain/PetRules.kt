@@ -48,6 +48,9 @@ object PetRules {
         return PetState(hunger, lives)
     }
 
+    /** A revived pet is full again with [Difficulty.reviveLives] lives. */
+    fun revive(difficulty: Difficulty) = PetState(PetState.MAX_HUNGER, difficulty.reviveLives)
+
     fun feed(state: PetState, fullness: Int): PetState =
         if (state.isDead) state else state.copy(hunger = min(PetState.MAX_HUNGER, state.hunger + fullness))
 

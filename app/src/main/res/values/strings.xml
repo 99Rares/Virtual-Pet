@@ -25,7 +25,9 @@
     <string name="bought">Added to pantry</string>
     <string name="inventory_empty">Nothing to eat. Buy food in the shop.</string>
     <string name="pet_dead_title">Pompi is gone</string>
-    <string name="pet_dead_body">It ran out of lives. Start again and walk more this time.</string>
+    <string name="pet_dead_body">It ran out of lives. Bring it back and keep everything you own, or start from scratch.</string>
+    <string name="revive">Bring back</string>
+    <string name="revive_not_enough">You need %1$s coins to bring Pompi back.</string>
     <string name="start_over">Start over</string>
     <string name="permission_banner">Allow activity access so Pompi can count your steps.</string>
     <string name="permission_allow">Allow</string>

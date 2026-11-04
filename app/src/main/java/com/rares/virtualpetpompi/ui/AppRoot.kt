@@ -117,6 +117,7 @@ fun AppRoot(container: AppContainer, vm: PetViewModel) {
                                     stepSensorAvailable = container.stepCounter.isAvailable,
                                     onRequestPermission = { requestPermissions() },
                                     onFeed = vm::feed,
+                                    onRevive = { vm.revive() },
                                     onRestart = vm::restart,
                                 )
                                 1 -> ShopScreen(s, vm::buyFood, vm::buyRoom, vm::selectRoom)

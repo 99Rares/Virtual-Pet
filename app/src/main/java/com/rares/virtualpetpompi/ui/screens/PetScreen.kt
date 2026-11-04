@@ -78,6 +78,7 @@ fun PetScreen(
     stepSensorAvailable: Boolean,
     onRequestPermission: () -> Unit,
     onFeed: suspend (String) -> Boolean,
+    onRevive: suspend () -> Unit,
     onRestart: () -> Unit,
 ) {
     val c = PetTheme.colors
@@ -180,7 +181,14 @@ fun PetScreen(
             Spacer(Modifier.navigationBarsPadding())
         }
 
-        if (state.pet.isDead) DeadOverlay(onRestart)
+        if (state.pet.isDead) {
+            DeadOverlay(
+                coins = state.coins,
+                cost = state.difficulty?.reviveCost ?: 0,
+                onRevive = { scope.launch { onRevive() } },
+                onRestart = onRestart,
+            )
+        }
     }
 
     if (showPantry) {
@@ -288,7 +296,8 @@ private fun Pantry(state: GameState, onEat: (String) -> Unit) {
 }
 
 @Composable
-private fun DeadOverlay(onRestart: () -> Unit) {
+private fun DeadOverlay(coins: Int, cost: Int, onRevive: () -> Unit, onRestart: () -> Unit) {
+    val affordable = coins >= cost
     Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.7f)), contentAlignment = Alignment.Center) {
         Column(
             Modifier.padding(32.dp),
@@ -299,11 +308,31 @@ private fun DeadOverlay(onRestart: () -> Unit) {
             Text(stringResource(R.string.pet_dead_title), style = MaterialTheme.typography.headlineMedium, color = Color.White)
             Text(stringResource(R.string.pet_dead_body), style = MaterialTheme.typography.bodyLarge, color = Color.White.copy(alpha = 0.8f), textAlign = TextAlign.Center)
             Spacer(Modifier.height(8.dp))
+            Row(
+                Modifier
+                    .clip(CircleShape)
+                    .background(Color.White.copy(alpha = if (affordable) 1f else 0.35f))
+                    .pressable(enabled = affordable, onClick = onRevive)
+                    .padding(horizontal = 28.dp, vertical = 14.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                Text(stringResource(R.string.revive), style = MaterialTheme.typography.titleMedium, color = Color(0xFF12131A))
+                IconValue(R.drawable.coinimage, formatInt(cost), iconSize = 18.dp, color = Color(0xFF12131A))
+            }
+            if (!affordable) {
+                Text(
+                    stringResource(R.string.revive_not_enough, formatInt(cost)),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = PetTheme.colors.negative,
+                    textAlign = TextAlign.Center,
+                )
+            }
             Text(
                 stringResource(R.string.start_over),
                 style = MaterialTheme.typography.titleMedium,
-                color = Color(0xFF12131A),
-                modifier = Modifier.clip(CircleShape).background(Color.White).pressable { onRestart() }.padding(horizontal = 32.dp, vertical = 14.dp),
+                color = Color.White.copy(alpha = 0.85f),
+                modifier = Modifier.clip(CircleShape).pressable { onRestart() }.padding(horizontal = 24.dp, vertical = 12.dp),
             )
         }
     }

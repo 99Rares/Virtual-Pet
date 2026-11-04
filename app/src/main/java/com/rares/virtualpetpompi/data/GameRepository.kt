@@ -194,6 +194,22 @@ class GameRepository(
         true
     }
 
+    /** Brings a dead pet back for coins, keeping food, rooms and the remaining coins. */
+    suspend fun revive(): BuyResult = mutex.withLock {
+        val snap = store.current()
+        val difficulty = snap.difficulty ?: return BuyResult.NOT_ENOUGH_COINS
+        if (!snap.pet.isDead) return BuyResult.ALREADY_OWNED
+        if (CoinRules.balance(snap.stepsEarned, difficulty, snap.spentCoins) < difficulty.reviveCost) {
+            return BuyResult.NOT_ENOUGH_COINS
+        }
+        store.edit {
+            it.setSpentCoins(snap.spentCoins + difficulty.reviveCost)
+            it.setPet(PetRules.revive(difficulty), nowMillis())
+            it.setReminderSent(false)
+        }
+        BuyResult.OK
+    }
+
     suspend fun setDailyGoal(goal: Int) = mutex.withLock {
         store.edit { it.setDailyGoal(goal.coerceIn(1_000, 50_000)) }
     }
