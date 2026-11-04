@@ -1,0 +1,32 @@
+{
+  "jdk": "Corretto 17.0.11",
+  "command": "./gradlew clean assembleDebug testDebugUnitTest lintDebug",
+  "build": "SUCCESS",
+  "unit": {
+    "tests": 38,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "Warning": 241,
+    "Hint": 1
+  },
+  "lint_errors": 0,
+  "lint_issue_ids": {
+    "InlinedApi": 3,
+    "GradleDependency": 4,
+    "LockedOrientationActivity": 1,
+    "ModifierParameter": 1,
+    "DiscouragedApi": 1,
+    "PluralsCandidate": 4,
+    "ExportedReceiver": 1,
+    "DataExtractionRules": 1,
+    "ObsoleteSdkInt": 2,
+    "AutoboxingStateCreation": 1,
+    "UnusedResources": 85,
+    "UseOfNonLambdaOffsetOverload": 1,
+    "IconLocation": 132,
+    "IconDuplicates": 5
+  }
+}

@@ -1,4 +1,4 @@
-# Proposed direction: soft sculpted storybook
+# Approved direction: soft sculpted storybook
 
 Status: approved by the user after the blue rice-bowl revision; production authorised unsupervised. Glass stays in UI chrome; artwork uses a satin finish with broad, soft shading.
 
@@ -14,7 +14,7 @@ Status: approved by the user after the blue rice-bowl revision; production autho
 
 All pet/skin canvases 600×650. Nominal centre x=300, ground-contact baseline y=590. Target seated silhouette about 430px wide and 465px tall; preserve head scale in standing poses and keep hands/ears within margins. Breathing moves torso/head only; feet stay anchored. Wake-up sleep poses flatten around the same baseline. Generate the classic master first, then edit the exact corresponding classic pose for each skin. Register outputs explicitly; an image prompt alone cannot guarantee pixel registration.
 
-Classic names/counts and PetSprite.kt playback stay unchanged. Skin names/counts follow the request. Red-panda tail must fit within the shared canvas and not displace the torso. Production exports will be lossless WebP if needed to meet <100 KB skin / ~150 KB other-image budgets.
+Classic names/counts and PetSprite.kt playback stay unchanged. Skin names/counts follow the request. Red-panda tail must fit within the shared canvas and not displace the torso. Shipping exports use WebP quality 92 with lossless alpha (lower quality only when required by the size budget). High-resolution generated sources and registered PNG masters are retained outside res/.
 
 ## Checkpoint and next stage
 

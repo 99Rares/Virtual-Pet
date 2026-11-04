@@ -1,0 +1,128 @@
+[
+  {
+    "name": "idle2",
+    "pose": "Same seated idle pose as reference, very subtle breathing: torso expands slightly while head, ears and both feet stay registered. Eyes are half-closed in a gentle blink.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/idle2.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "idle3",
+    "pose": "Same seated idle pose as reference, eyes gently closed for the blink, tiny smile. Head, ears and both feet stay registered, torso relaxes.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/idle3.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "hungry1",
+    "pose": "Same seated panda, sad hungry expression with gently drooping eyelids and little downturned mouth. Arms hang loosely, shoulders sag. Both feet remain exactly anchored.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/hungry1.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "hungry2",
+    "pose": "Same seated hungry panda, sad droopy eyes look slightly downward, small lip tremble and hands closer to belly. Subtle change only, feet fixed.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/hungry2.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "dance1",
+    "pose": "Happy standing dance pose, same head diameter and character anatomy, short legs straighten, both feet contact same ground baseline. Both arms extended out sideways at shoulder height, smiling.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/dance1.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "dance2",
+    "pose": "Happy standing dance pose, same head diameter, short legs, both feet contact same ground baseline. BOTH ARMS RAISED UP beside head in an enthusiastic arms-up beat. Wide happy smile, face unobscured.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/dance2.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "dance3",
+    "pose": "Happy standing dance pose, same head diameter, short legs, both feet contact same ground baseline. Arms lower to diagonally outward, gentle lean of torso to image right, happy eyes.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/dance3.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "feed1",
+    "pose": "Seated eating pose: both paws lifted close to mouth, mouth slightly open in a small happy bite, eyes gently smiling. No food prop; communicate eating through paws and mouth.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/feed1.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "feed2",
+    "pose": "Seated eating pose: both paws near lower cheeks and mouth now closed with softly puffed cheeks, eyes gently closed in contentment, chewing beat. No food prop.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/feed2.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "a1",
+    "pose": "Wake-up frame 1 of 10: sleeping panda lying low on belly, head resting on both front paws, eyes closed. Keep same head diameter as master; body extends behind head to image right. Whole animal low in lower half, ground contact unchanged at 91%.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/a1.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "a2",
+    "pose": "Wake-up frame 2 of 10: lying on belly, head lifted just a little off front paws, eyes tiny sleepy slits. Same head diameter, body extends behind head to right. Low pose, ground contact unchanged.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/a2.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "a3",
+    "pose": "Wake-up frame 3 of 10: pushing chest up on both front paws, sleepy half-open eyes, head raised, back legs tucked behind to right. Same head diameter, still crouched and low, ground contact fixed.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/a3.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "a4",
+    "pose": "Wake-up frame 4 of 10: panda now seated upright with both feet forward, hands lowered, eyes half open, tiny yawning open mouth. Same head diameter and feet baseline.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/a4.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "a5",
+    "pose": "Wake-up frame 5 of 10: seated stretch beginning, both arms extended horizontally sideways, eyes gently closed and yawning mouth. Keep seated feet and same head scale.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/a5.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "a6",
+    "pose": "Wake-up frame 6 of 10: full seated morning stretch, both arms raised up beside ears with paws overhead, eyes closed, happy yawning mouth. Keep head scale and seated feet registered, all paws within margins.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/a6.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "a7",
+    "pose": "Wake-up frame 7 of 10: seated stretch release, arms diagonally outward at head height, eyes opening and mouth smiling. Same head scale, feet fixed.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/a7.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "a8",
+    "pose": "Wake-up frame 8 of 10: seated panda lowering arms to shoulder height, eyes open with a small smile. Same head scale, feet fixed.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/a8.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  },
+  {
+    "name": "a9",
+    "pose": "Wake-up frame 9 of 10: seated panda lowering hands almost to sides, eyes open, calm small smile. Nearly the reference idle pose, feet fixed.",
+    "reference": "art-review/samples/classic-idle1.png",
+    "source": "art-review/generated/classic/a9.png",
+    "notes": "Built-in imagegen edit. Preserve character identity, head diameter, light, 600:650 canvas and ground contact. Full common art-direction prompt is in art-review/PROMPTS.md."
+  }
+]

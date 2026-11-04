@@ -1,0 +1,2378 @@
+[
+  {
+    "file": "a1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 25904,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      56,
+      285,
+      547,
+      590
+    ]
+  },
+  {
+    "file": "a10.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 32444,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      97,
+      67,
+      508,
+      590
+    ]
+  },
+  {
+    "file": "a2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 28168,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      31,
+      239,
+      530,
+      590
+    ]
+  },
+  {
+    "file": "a3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 37752,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      86,
+      110,
+      504,
+      590
+    ]
+  },
+  {
+    "file": "a4.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 34790,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      94,
+      59,
+      507,
+      590
+    ]
+  },
+  {
+    "file": "a5.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 38340,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      81,
+      64,
+      526,
+      590
+    ]
+  },
+  {
+    "file": "a6.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 44752,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      55,
+      67,
+      557,
+      590
+    ]
+  },
+  {
+    "file": "a7.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 39638,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      64,
+      547,
+      590
+    ]
+  },
+  {
+    "file": "a8.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 37234,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      97,
+      64,
+      503,
+      590
+    ]
+  },
+  {
+    "file": "a9.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 35892,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      96,
+      65,
+      505,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_dance1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 51112,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      87,
+      51,
+      522,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_dance2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 51208,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      90,
+      56,
+      519,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_dance3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 52404,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      114,
+      65,
+      504,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_feed1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 49764,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      96,
+      39,
+      490,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_feed2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 55056,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      93,
+      47,
+      507,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_hungry1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 49092,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      92,
+      58,
+      504,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_hungry2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 49306,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      97,
+      61,
+      496,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_idle1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 55576,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      37,
+      506,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_idle2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 49568,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      98,
+      47,
+      491,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_idle3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 49218,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      96,
+      49,
+      498,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_preview.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 55576,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      37,
+      506,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_wake1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 33598,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      59,
+      291,
+      544,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_wake10.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 55576,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      37,
+      506,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_wake2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 40138,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      29,
+      223,
+      536,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_wake3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 47120,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      86,
+      121,
+      507,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_wake4.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 51870,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      96,
+      39,
+      505,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_wake5.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 51364,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      86,
+      50,
+      518,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_wake6.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 50590,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      62,
+      63,
+      550,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_wake7.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 62848,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      69,
+      61,
+      533,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_wake8.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 76064,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      96,
+      46,
+      505,
+      590
+    ]
+  },
+  {
+    "file": "astronaut_wake9.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 50100,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      37,
+      503,
+      590
+    ]
+  },
+  {
+    "file": "bg0.webp",
+    "size": [
+      1500,
+      2500
+    ],
+    "bytes": 35472,
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "solid_bounds": [
+      0,
+      0,
+      1500,
+      2500
+    ]
+  },
+  {
+    "file": "bg1.webp",
+    "size": [
+      1500,
+      2500
+    ],
+    "bytes": 42850,
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "solid_bounds": [
+      0,
+      0,
+      1500,
+      2500
+    ]
+  },
+  {
+    "file": "bg2.webp",
+    "size": [
+      1500,
+      2500
+    ],
+    "bytes": 58118,
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "solid_bounds": [
+      0,
+      0,
+      1500,
+      2500
+    ]
+  },
+  {
+    "file": "bg3.webp",
+    "size": [
+      1500,
+      2500
+    ],
+    "bytes": 34870,
+    "alpha_extrema": [
+      255,
+      255
+    ],
+    "solid_bounds": [
+      0,
+      0,
+      1500,
+      2500
+    ]
+  },
+  {
+    "file": "burger.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 39416,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      69,
+      67,
+      529,
+      534
+    ]
+  },
+  {
+    "file": "cafea.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 30752,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      115,
+      534,
+      485
+    ]
+  },
+  {
+    "file": "carbonara.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 34080,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      132,
+      534,
+      468
+    ]
+  },
+  {
+    "file": "cartofipai.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 44326,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      81,
+      67,
+      519,
+      533
+    ]
+  },
+  {
+    "file": "cirese.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 37700,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      75,
+      67,
+      526,
+      534
+    ]
+  },
+  {
+    "file": "classic_preview.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 32444,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      97,
+      67,
+      508,
+      590
+    ]
+  },
+  {
+    "file": "clatitecucafea.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 35888,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      129,
+      534,
+      471
+    ]
+  },
+  {
+    "file": "coinimage.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 35944,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      72,
+      66,
+      528,
+      534
+    ]
+  },
+  {
+    "file": "cola.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 32028,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      126,
+      66,
+      473,
+      534
+    ]
+  },
+  {
+    "file": "cozy_dance1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 40998,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      90,
+      26,
+      519,
+      590
+    ]
+  },
+  {
+    "file": "cozy_dance2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 38392,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      90,
+      44,
+      514,
+      590
+    ]
+  },
+  {
+    "file": "cozy_dance3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 40200,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      109,
+      49,
+      502,
+      590
+    ]
+  },
+  {
+    "file": "cozy_feed1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 38548,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      93,
+      52,
+      492,
+      590
+    ]
+  },
+  {
+    "file": "cozy_feed2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 52370,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      94,
+      43,
+      489,
+      590
+    ]
+  },
+  {
+    "file": "cozy_hungry1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 37828,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      101,
+      53,
+      500,
+      590
+    ]
+  },
+  {
+    "file": "cozy_hungry2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 38140,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      99,
+      46,
+      501,
+      590
+    ]
+  },
+  {
+    "file": "cozy_idle1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 39418,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      99,
+      48,
+      498,
+      590
+    ]
+  },
+  {
+    "file": "cozy_idle2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 37552,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      104,
+      62,
+      498,
+      590
+    ]
+  },
+  {
+    "file": "cozy_idle3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 35698,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      99,
+      48,
+      498,
+      590
+    ]
+  },
+  {
+    "file": "cozy_preview.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 39418,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      99,
+      48,
+      498,
+      590
+    ]
+  },
+  {
+    "file": "cozy_wake1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 29352,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      57,
+      254,
+      547,
+      590
+    ]
+  },
+  {
+    "file": "cozy_wake10.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 39418,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      99,
+      48,
+      498,
+      590
+    ]
+  },
+  {
+    "file": "cozy_wake2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 32042,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      34,
+      208,
+      533,
+      590
+    ]
+  },
+  {
+    "file": "cozy_wake3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 40568,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      93,
+      83,
+      506,
+      590
+    ]
+  },
+  {
+    "file": "cozy_wake4.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 39908,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      97,
+      44,
+      501,
+      590
+    ]
+  },
+  {
+    "file": "cozy_wake5.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 41562,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      92,
+      55,
+      524,
+      590
+    ]
+  },
+  {
+    "file": "cozy_wake6.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 40966,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      61,
+      43,
+      554,
+      590
+    ]
+  },
+  {
+    "file": "cozy_wake7.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 41198,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      82,
+      48,
+      536,
+      590
+    ]
+  },
+  {
+    "file": "cozy_wake8.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 40794,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      102,
+      55,
+      502,
+      590
+    ]
+  },
+  {
+    "file": "cozy_wake9.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 39324,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      99,
+      46,
+      500,
+      590
+    ]
+  },
+  {
+    "file": "dance1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 35452,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      83,
+      57,
+      525,
+      590
+    ]
+  },
+  {
+    "file": "dance2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 39958,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      74,
+      51,
+      530,
+      590
+    ]
+  },
+  {
+    "file": "dance3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 39524,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      104,
+      54,
+      508,
+      590
+    ]
+  },
+  {
+    "file": "englishbreakfast.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 34848,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      123,
+      534,
+      477
+    ]
+  },
+  {
+    "file": "feed1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 35822,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      63,
+      500,
+      590
+    ]
+  },
+  {
+    "file": "feed2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 35758,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      63,
+      505,
+      590
+    ]
+  },
+  {
+    "file": "fruits1.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 34930,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      120,
+      534,
+      480
+    ]
+  },
+  {
+    "file": "gogosi.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 32440,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      67,
+      100,
+      533,
+      499
+    ]
+  },
+  {
+    "file": "heart.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 29616,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      96,
+      534,
+      503
+    ]
+  },
+  {
+    "file": "hotdog.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 30794,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      129,
+      534,
+      471
+    ]
+  },
+  {
+    "file": "hungry1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 35908,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      93,
+      67,
+      503,
+      590
+    ]
+  },
+  {
+    "file": "hungry2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 36038,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      65,
+      501,
+      590
+    ]
+  },
+  {
+    "file": "ic_launcher_foreground.webp",
+    "size": [
+      1080,
+      1080
+    ],
+    "bytes": 33990,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      334,
+      278,
+      745,
+      801
+    ]
+  },
+  {
+    "file": "idle1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 32444,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      97,
+      67,
+      508,
+      590
+    ]
+  },
+  {
+    "file": "idle2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 33362,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      93,
+      63,
+      502,
+      590
+    ]
+  },
+  {
+    "file": "idle3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 32602,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      65,
+      507,
+      590
+    ]
+  },
+  {
+    "file": "nuggets.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 35074,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      67,
+      85,
+      534,
+      514
+    ]
+  },
+  {
+    "file": "onionrings.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 41760,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      119,
+      534,
+      481
+    ]
+  },
+  {
+    "file": "pizza.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 36434,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      83,
+      534,
+      516
+    ]
+  },
+  {
+    "file": "polar_bear_dance1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 45228,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      82,
+      62,
+      526,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_dance2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 38474,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      72,
+      48,
+      528,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_dance3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 43864,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      105,
+      54,
+      515,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_feed1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 40302,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      91,
+      58,
+      499,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_feed2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 38130,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      91,
+      64,
+      502,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_hungry1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 40854,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      66,
+      505,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_hungry2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 38456,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      92,
+      58,
+      505,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_idle1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 41786,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      65,
+      507,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_idle2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 37088,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      64,
+      506,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_idle3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 35590,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      68,
+      500,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_preview.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 41786,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      65,
+      507,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_wake1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 28446,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      60,
+      282,
+      546,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_wake10.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 41786,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      95,
+      65,
+      507,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_wake2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 30624,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      33,
+      235,
+      535,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_wake3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 39066,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      87,
+      107,
+      515,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_wake4.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 36208,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      98,
+      65,
+      502,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_wake5.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 45446,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      82,
+      66,
+      526,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_wake6.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 40662,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      61,
+      68,
+      554,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_wake7.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 44474,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      64,
+      55,
+      542,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_wake8.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 38782,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      94,
+      67,
+      504,
+      590
+    ]
+  },
+  {
+    "file": "polar_bear_wake9.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 37850,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      97,
+      69,
+      507,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_dance1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 47254,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      81,
+      59,
+      523,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_dance2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 43724,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      77,
+      64,
+      523,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_dance3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 45188,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      106,
+      54,
+      508,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_feed1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 46252,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      90,
+      61,
+      515,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_feed2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 44444,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      102,
+      70,
+      511,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_hungry1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 43994,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      99,
+      73,
+      512,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_hungry2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 46710,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      99,
+      69,
+      508,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_idle1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 40200,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      108,
+      76,
+      520,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_idle2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 47798,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      104,
+      75,
+      523,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_idle3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 43602,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      104,
+      77,
+      519,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_preview.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 40200,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      108,
+      76,
+      520,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_wake1.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 32580,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      65,
+      285,
+      548,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_wake10.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 40200,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      108,
+      76,
+      520,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_wake2.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 39830,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      42,
+      242,
+      545,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_wake3.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 46540,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      93,
+      110,
+      514,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_wake4.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 44938,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      96,
+      67,
+      508,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_wake5.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 45798,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      74,
+      74,
+      517,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_wake6.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 48834,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      49,
+      71,
+      546,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_wake7.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 47368,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      68,
+      70,
+      543,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_wake8.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 47962,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      94,
+      68,
+      496,
+      590
+    ]
+  },
+  {
+    "file": "red_panda_wake9.webp",
+    "size": [
+      600,
+      650
+    ],
+    "bytes": 45906,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      103,
+      74,
+      516,
+      590
+    ]
+  },
+  {
+    "file": "rice.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 30436,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      86,
+      534,
+      513
+    ]
+  },
+  {
+    "file": "salad.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 34760,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      110,
+      534,
+      490
+    ]
+  },
+  {
+    "file": "skull.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 32042,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      66,
+      534,
+      534
+    ]
+  },
+  {
+    "file": "soup.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 32936,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      105,
+      534,
+      494
+    ]
+  },
+  {
+    "file": "steak1.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 36484,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      118,
+      533,
+      480
+    ]
+  },
+  {
+    "file": "steak2.webp",
+    "size": [
+      600,
+      600
+    ],
+    "bytes": 39658,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "solid_bounds": [
+      66,
+      122,
+      534,
+      477
+    ]
+  }
+]

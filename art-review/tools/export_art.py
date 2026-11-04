@@ -64,6 +64,9 @@ def objects(group):
 def skins(skin):
     for src in sorted((GEN/'skins'/skin).glob('*.png')):
         name=src.stem
+        master=REGISTERED/'skins'/skin/(name+'.png')
+        if master.exists() and (RES/(name+'.webp')).exists() and master.stat().st_mtime >= src.stat().st_mtime:
+            continue
         frame=name[len(skin)+1:]
         reference=frame.replace('wake','a')
         classic=Image.open(REGISTERED/'classic'/(reference+'.png')).convert('RGBA')

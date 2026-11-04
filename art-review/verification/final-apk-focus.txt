@@ -1,0 +1,1 @@
+  mCurrentFocus=Window{b4c309 u0 com.rares.virtualpetpompi/com.rares.virtualpetpompi.MainActivity}
