@@ -1,0 +1,8 @@
+{
+  "name": "cozy_idle1",
+  "group": "skins/cozy",
+  "ref": "art-review/registered/classic/idle1.png",
+  "prompt": "Edit image 1, the approved classic Pompi panda idle1, into this specific complete skin look: Classic black-and-white Pompi wearing a muted teal knitted beanie with a small rounded pom-pom and a warm terracotta scarf with two short ends. Hat follows head position, ears remain recognisable, scarf stays close to body without hiding arms or mouth. Broad soft knit suggestion, no detailed fabric texture. Preserve exact seated pose, body position, head centre, expression, paws and feet, the same 600:650 portrait canvas framing, soft sculpted storybook satin shading, upper-left lighting. Do not change camera or ground contact at 91% height. Outfit/species adapts tightly to the original silhouette; keep everything inside margins. Genuine transparent background, no floor, no cast shadow, no text or props. This becomes the master appearance for every matching animation frame.",
+  "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-20f7cae8-1b73-4e2b-87f2-f0435302ffc2.png",
+  "saved": "art-review/generated/skins/cozy/cozy_idle1.png"
+}

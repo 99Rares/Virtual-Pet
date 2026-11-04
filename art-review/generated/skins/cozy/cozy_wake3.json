@@ -1,0 +1,11 @@
+{
+  "name": "cozy_wake3",
+  "group": "skins/cozy",
+  "refs": [
+    "art-review/registered/classic/a3.png",
+    "art-review/generated/skins/cozy/cozy_idle1.png"
+  ],
+  "prompt": "Precise matching animation skin edit. IMAGE 1 is the exact CLASSIC FRAME TO EDIT; preserve its pose, expression, eyelids, mouth shape, head/body/limb positions, perspective, canvas framing and feet baseline. IMAGE 2 is this skin's APPEARANCE MASTER ONLY: transfer its species/outfit, palette, materials and details onto image 1 WITHOUT transferring its idle pose. Skin: Classic black-and-white Pompi wearing a muted teal knitted beanie with a small rounded pom-pom and a warm terracotta scarf with two short ends. Hat follows head position, ears remain recognisable, scarf stays close to body without hiding arms or mouth. Broad soft knit suggestion, no detailed fabric texture. Frame a3: Wake-up frame 3 of 10: pushing chest up on both front paws, sleepy half-open eyes, head raised, back legs tucked behind to right. Same head diameter, still crouched and low, ground contact fixed. The output must pose like image 1, NOT image 2. Keep identical body centre and approximate head scale, 600:650 portrait canvas, ground at 91% height. Preserve upper-left lighting and soft sculpted storybook shading. All accessories follow the pose; no extra limbs. Genuine transparent background including gaps; no floor, cast shadow, text, watermark or props. Keep full silhouette inside margins.",
+  "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-109fc8dc-3790-47d0-ba07-f0d82e5140e3.png",
+  "saved": "art-review/generated/skins/cozy/cozy_wake3.png"
+}
