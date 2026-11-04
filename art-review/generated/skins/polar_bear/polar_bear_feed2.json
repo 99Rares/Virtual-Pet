@@ -1,0 +1,11 @@
+{
+  "name": "polar_bear_feed2",
+  "group": "skins/polar_bear",
+  "refs": [
+    "art-review/registered/classic/feed2.png",
+    "art-review/generated/skins/polar_bear/polar_bear_idle1.png"
+  ],
+  "prompt": "Precise matching animation skin edit. IMAGE 1 is the exact CLASSIC FRAME TO EDIT; preserve its pose, expression, eyelids, mouth shape, head/body/limb positions, perspective, canvas framing and feet baseline. IMAGE 2 is this skin's APPEARANCE MASTER ONLY: transfer its species/outfit, palette, materials and details onto image 1 WITHOUT transferring its idle pose. Skin: Fluffy polar bear cub species: warm ivory-white fur all over, no black panda patches or black ears, gentle cool blue-grey shadows that keep white silhouette visible on pale backgrounds, tiny charcoal nose and matching dark expressive eyes, subtle pale rose paw pads. Same head and body proportions; fluff is broad soft tufts, no hair texture. Frame feed2: Seated eating pose: both paws near lower cheeks and mouth now closed with softly puffed cheeks, eyes gently closed in contentment, chewing beat. No food prop. The output must pose like image 1, NOT image 2. Keep identical body centre and approximate head scale, 600:650 portrait canvas, ground at 91% height. Preserve upper-left lighting and soft sculpted storybook shading. All accessories follow the pose; no extra limbs. Genuine transparent background including gaps; no floor, cast shadow, text, watermark or props. Keep full silhouette inside margins.",
+  "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-6cb34a84-390e-4d0e-bd0d-9d69d1a45f07.png",
+  "saved": "art-review/generated/skins/polar_bear/polar_bear_feed2.png"
+}
