@@ -3,6 +3,7 @@ package com.rares.virtualpetpompi.data
 import com.rares.virtualpetpompi.domain.Catalog
 import com.rares.virtualpetpompi.domain.CoinRules
 import com.rares.virtualpetpompi.domain.Difficulty
+import com.rares.virtualpetpompi.domain.MiniGameRules
 import com.rares.virtualpetpompi.domain.PetRules
 import com.rares.virtualpetpompi.domain.PetState
 import com.rares.virtualpetpompi.domain.StepRules
@@ -29,6 +30,8 @@ data class GameState(
     val pantry: Map<String, Int>,
     val dailyGoal: Int,
     val todaySteps: Int,
+    /** Profit the mini-game may still pay out today. */
+    val gameWinsLeftToday: Int,
 ) {
     val isOnboarded: Boolean get() = difficulty != null
 }
@@ -80,12 +83,14 @@ class GameRepository(
             GameState(
                 difficulty = snap.difficulty,
                 pet = snap.pet,
-                coins = snap.difficulty?.let { CoinRules.balance(snap.stepsEarned, it, snap.spentCoins) } ?: 0,
+                coins = snap.difficulty?.let { CoinRules.balance(snap.stepsEarned, it, snap.spentCoins, snap.bonusCoins) } ?: 0,
                 selectedRoom = snap.selectedRoom,
                 ownedRooms = snap.ownedRooms,
                 pantry = pantry.associate { it.foodId to it.count },
                 dailyGoal = snap.dailyGoal,
                 todaySteps = days.firstOrNull { it.epochDay == date.toEpochDay() }?.steps ?: 0,
+                gameWinsLeftToday = MiniGameRules.DAILY_WIN_CAP -
+                    (if (snap.gameWinsEpochDay == date.toEpochDay()) snap.gameWinsToday else 0),
             )
         }
     }
@@ -150,7 +155,7 @@ class GameRepository(
         val food = Catalog.food(foodId) ?: return BuyResult.NOT_ENOUGH_COINS
         val snap = store.current()
         val difficulty = snap.difficulty ?: return BuyResult.NOT_ENOUGH_COINS
-        if (CoinRules.balance(snap.stepsEarned, difficulty, snap.spentCoins) < food.price) {
+        if (CoinRules.balance(snap.stepsEarned, difficulty, snap.spentCoins, snap.bonusCoins) < food.price) {
             return BuyResult.NOT_ENOUGH_COINS
         }
         store.edit { it.setSpentCoins(snap.spentCoins + food.price) }
@@ -163,7 +168,7 @@ class GameRepository(
         val snap = store.current()
         val difficulty = snap.difficulty ?: return BuyResult.NOT_ENOUGH_COINS
         if (room.id in snap.ownedRooms) return BuyResult.ALREADY_OWNED
-        if (CoinRules.balance(snap.stepsEarned, difficulty, snap.spentCoins) < room.price) {
+        if (CoinRules.balance(snap.stepsEarned, difficulty, snap.spentCoins, snap.bonusCoins) < room.price) {
             return BuyResult.NOT_ENOUGH_COINS
         }
         store.edit {
@@ -199,7 +204,7 @@ class GameRepository(
         val snap = store.current()
         val difficulty = snap.difficulty ?: return BuyResult.NOT_ENOUGH_COINS
         if (!snap.pet.isDead) return BuyResult.ALREADY_OWNED
-        if (CoinRules.balance(snap.stepsEarned, difficulty, snap.spentCoins) < difficulty.reviveCost) {
+        if (CoinRules.balance(snap.stepsEarned, difficulty, snap.spentCoins, snap.bonusCoins) < difficulty.reviveCost) {
             return BuyResult.NOT_ENOUGH_COINS
         }
         store.edit {
@@ -208,6 +213,31 @@ class GameRepository(
             it.setReminderSent(false)
         }
         BuyResult.OK
+    }
+
+    /** Takes the bet up front, so quitting mid-round counts as a loss. */
+    suspend fun startRound(bet: Int): BuyResult = mutex.withLock {
+        val snap = store.current()
+        val difficulty = snap.difficulty ?: return BuyResult.NOT_ENOUGH_COINS
+        if (bet !in MiniGameRules.bets || snap.pet.isDead) return BuyResult.NOT_ENOUGH_COINS
+        if (CoinRules.balance(snap.stepsEarned, difficulty, snap.spentCoins, snap.bonusCoins) < bet) {
+            return BuyResult.NOT_ENOUGH_COINS
+        }
+        store.edit { it.setBonusCoins(snap.bonusCoins - bet) }
+        BuyResult.OK
+    }
+
+    /** Pays out a finished round whose [bet] was taken by [startRound]. */
+    suspend fun finishRound(bet: Int, score: Int): MiniGameRules.Result = mutex.withLock {
+        val snap = store.current()
+        val epochDay = today().toEpochDay()
+        val winsToday = if (snap.gameWinsEpochDay == epochDay) snap.gameWinsToday else 0
+        val result = MiniGameRules.settle(bet, score, winsToday)
+        store.edit {
+            it.setBonusCoins(snap.bonusCoins + result.payout)
+            it.setGameWins(epochDay, winsToday + result.net.coerceAtLeast(0))
+        }
+        result
     }
 
     suspend fun setDailyGoal(goal: Int) = mutex.withLock {

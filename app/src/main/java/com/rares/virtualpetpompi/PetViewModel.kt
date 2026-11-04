@@ -34,6 +34,8 @@ class PetViewModel(private val repo: GameRepository) : ViewModel() {
     suspend fun buyRoom(id: String): BuyResult = repo.buyRoom(id)
     suspend fun feed(id: String): Boolean = repo.feed(id)
     suspend fun revive(): BuyResult = repo.revive()
+    suspend fun startRound(bet: Int): BuyResult = repo.startRound(bet)
+    suspend fun finishRound(bet: Int, score: Int) = repo.finishRound(bet, score)
 
     companion object {
         fun factory(container: AppContainer) = viewModelFactory {

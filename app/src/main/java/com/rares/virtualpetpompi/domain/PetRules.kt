@@ -60,9 +60,9 @@ object PetRules {
 }
 
 object CoinRules {
-    /** Coins the player can spend right now. Never negative. */
-    fun balance(stepsEarned: Long, difficulty: Difficulty, spentCoins: Int): Int {
-        val earned = stepsEarned / difficulty.stepsPerCoin + difficulty.starterCoins
+    /** Coins the player can spend right now. [bonusCoins] is the running net of mini-game results. Never negative. */
+    fun balance(stepsEarned: Long, difficulty: Difficulty, spentCoins: Int, bonusCoins: Int = 0): Int {
+        val earned = stepsEarned / difficulty.stepsPerCoin + difficulty.starterCoins + bonusCoins
         return max(0L, earned - spentCoins).toInt()
     }
 }

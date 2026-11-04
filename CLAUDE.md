@@ -36,6 +36,8 @@ Three layers under `app/src/main/java/com/rares/virtualpetpompi/`, wired by hand
 - `ui/`: Compose, single activity, four tabs in a floating glass tab bar (no Navigation library). `AppRoot` owns the permission flow, the haze blur source, and a lifecycle-scoped loop that samples the step sensor and calls `settle()` while the app is on screen. Screens are in `ui/screens`, shared pieces in `ui/components`, tokens in `ui/theme`.
 - `work/`: `PetCheckWorker` (WorkManager, every 30 minutes) samples the step counter, settles hunger, and posts one "Pompi is hungry" reminder at 30% hunger (re-armed after feeding). There is no foreground service and no permanent notification: the hardware step counter keeps counting while the app is not running.
 
+Mini-game ("Catch", from the thesis's future work): `domain/MiniGame.kt` has `CatchGame`, a pure simulation in normalised 0..1 coordinates advanced by `step(dt)` (the screen only draws it and feeds drag input), and `MiniGameRules` (bets 5/10/20; 12 catches refunds, 20 pays 1.5x, 30 pays 2x). The bet is taken at `startRound`, so quitting mid-round loses it. Net results are stored as `bonusCoins`, which `CoinRules.balance` adds. **Profit is capped at 30 coins per calendar day** (`DAILY_WIN_CAP`) on purpose, so the game cannot replace walking as the way to earn coins; keep that when changing payouts. `MiniGameScreen` is a full-screen mode that hides the tab bar.
+
 Step pipeline: sensor value, `StepRules.delta` against the stored last counter, then `StepDay` (history and charts) plus `stepsEarned` (coins). The first reading only sets a baseline; steps taken while the app never ran are attributed to the day of the next reading.
 
 ## Design system

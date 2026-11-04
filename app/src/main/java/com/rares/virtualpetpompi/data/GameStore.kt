@@ -29,6 +29,10 @@ data class GameSnapshot(
     val hungerAnchor: Long,
     val stepsEarned: Long,
     val spentCoins: Int,
+    /** Net coins won (positive) or lost (negative) in the mini-game. */
+    val bonusCoins: Int,
+    val gameWinsEpochDay: Long,
+    val gameWinsToday: Int,
     val lastCounter: Long?,
     val ownedRooms: Set<String>,
     val selectedRoom: String,
@@ -59,6 +63,9 @@ class GameStore(private val store: DataStore<Preferences>) {
             hungerAnchor = this[HUNGER_ANCHOR] ?: 0L,
             stepsEarned = this[STEPS_EARNED] ?: 0L,
             spentCoins = this[SPENT_COINS] ?: 0,
+            bonusCoins = this[BONUS_COINS] ?: 0,
+            gameWinsEpochDay = this[GAME_WINS_DAY] ?: 0L,
+            gameWinsToday = this[GAME_WINS_TODAY] ?: 0,
             lastCounter = this[LAST_COUNTER],
             ownedRooms = this[OWNED_ROOMS] ?: setOf(Catalog.DEFAULT_ROOM_ID),
             selectedRoom = this[SELECTED_ROOM] ?: Catalog.DEFAULT_ROOM_ID,
@@ -77,6 +84,11 @@ class GameStore(private val store: DataStore<Preferences>) {
         }
         fun setStepsEarned(value: Long) { p[STEPS_EARNED] = value }
         fun setSpentCoins(value: Int) { p[SPENT_COINS] = value }
+        fun setBonusCoins(value: Int) { p[BONUS_COINS] = value }
+        fun setGameWins(epochDay: Long, wins: Int) {
+            p[GAME_WINS_DAY] = epochDay
+            p[GAME_WINS_TODAY] = wins
+        }
         fun setLastCounter(value: Long) { p[LAST_COUNTER] = value }
         fun setOwnedRooms(value: Set<String>) { p[OWNED_ROOMS] = value }
         fun setSelectedRoom(value: String) { p[SELECTED_ROOM] = value }
@@ -101,6 +113,9 @@ class GameStore(private val store: DataStore<Preferences>) {
         private val HUNGER_ANCHOR = longPreferencesKey("hunger_anchor")
         private val STEPS_EARNED = longPreferencesKey("steps_earned")
         private val SPENT_COINS = intPreferencesKey("spent_coins")
+        private val BONUS_COINS = intPreferencesKey("bonus_coins")
+        private val GAME_WINS_DAY = longPreferencesKey("game_wins_day")
+        private val GAME_WINS_TODAY = intPreferencesKey("game_wins_today")
         private val LAST_COUNTER = longPreferencesKey("last_counter")
         private val OWNED_ROOMS = stringSetPreferencesKey("owned_rooms")
         private val SELECTED_ROOM = stringPreferencesKey("selected_room")

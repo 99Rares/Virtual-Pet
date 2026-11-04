@@ -154,6 +154,45 @@ class GameRepositoryTest {
     }
 
     @Test
+    fun roundTakesTheBetAndPaysOutByScore() = runBlocking {
+        repo.onboard(Difficulty.EASY)                                        // 100 coins
+        assertEquals(BuyResult.OK, repo.startRound(20))
+        assertEquals(80, state().coins)
+        val win = repo.finishRound(20, 30)                                   // perfect: 2x = 40
+        assertEquals(20, win.net)
+        assertEquals(120, state().coins)
+        assertEquals(10, state().gameWinsLeftToday)                          // 30 cap, 20 won
+
+        assertEquals(BuyResult.OK, repo.startRound(10))
+        val lose = repo.finishRound(10, 3)
+        assertEquals(-10, lose.net)
+        assertEquals(110, state().coins)
+    }
+
+    @Test
+    fun dailyWinCapAppliesAndResetsTomorrow() = runBlocking {
+        repo.onboard(Difficulty.EASY)
+        repeat(2) { repo.startRound(20); repo.finishRound(20, 30) }          // +20 then capped +10
+        assertEquals(0, state().gameWinsLeftToday)
+        repo.startRound(20)
+        val capped = repo.finishRound(20, 30)
+        assertEquals(0, capped.net)
+        assertTrue(capped.capped)
+
+        now += 24 * 3_600_000L
+        assertEquals(30, state().gameWinsLeftToday)
+    }
+
+    @Test
+    fun cannotBetWhatYouDoNotHaveOrInvalidAmounts() = runBlocking {
+        repo.onboard(Difficulty.NORMAL)                                      // 5 coins
+        assertEquals(BuyResult.NOT_ENOUGH_COINS, repo.startRound(10))
+        assertEquals(BuyResult.NOT_ENOUGH_COINS, repo.startRound(7))         // not an allowed bet
+        assertEquals(BuyResult.OK, repo.startRound(5))
+        assertEquals(0, state().coins)
+    }
+
+    @Test
     fun roomsCanBeBoughtOnceAndSelected() = runBlocking {
         repo.onboard(Difficulty.EASY)                                        // 100 starter coins
         assertEquals(BuyResult.OK, repo.buyRoom("bg1"))                      // 45

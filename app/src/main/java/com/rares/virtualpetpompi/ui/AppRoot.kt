@@ -43,6 +43,7 @@ import com.rares.virtualpetpompi.ui.components.GlassTabBar
 import com.rares.virtualpetpompi.ui.components.Icon
 import com.rares.virtualpetpompi.ui.components.LocalHazeState
 import com.rares.virtualpetpompi.ui.components.TabItem
+import com.rares.virtualpetpompi.ui.screens.MiniGameScreen
 import com.rares.virtualpetpompi.ui.screens.OnboardingScreen
 import com.rares.virtualpetpompi.ui.screens.PetScreen
 import com.rares.virtualpetpompi.ui.screens.SettingsScreen
@@ -65,6 +66,7 @@ fun AppRoot(container: AppContainer, vm: PetViewModel) {
     val context = LocalContext.current
     val hazeState = rememberHazeState()
     var tab by rememberSaveable { mutableStateOf(0) }
+    var playing by rememberSaveable { mutableStateOf(false) }
     var hasActivity by remember { mutableStateOf(hasActivityPermission(context)) }
     LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { hasActivity = hasActivityPermission(context) }
 
@@ -118,6 +120,7 @@ fun AppRoot(container: AppContainer, vm: PetViewModel) {
                                     onRequestPermission = { requestPermissions() },
                                     onFeed = vm::feed,
                                     onRevive = { vm.revive() },
+                                    onPlay = { playing = true },
                                     onRestart = vm::restart,
                                 )
                                 1 -> ShopScreen(s, vm::buyFood, vm::buyRoom, vm::selectRoom)
@@ -126,7 +129,10 @@ fun AppRoot(container: AppContainer, vm: PetViewModel) {
                             }
                         }
                     }
-                    if (state?.isOnboarded == true) {
+                    val current = state
+                    if (playing && current != null && current.isOnboarded) {
+                        MiniGameScreen(current, vm::startRound, vm::finishRound) { playing = false }
+                    } else if (state?.isOnboarded == true) {
                         GlassTabBar(
                             items = listOf(
                                 TabItem(stringResource(R.string.tab_pet)) { Icon(Icons.Filled.Favorite, it) },

@@ -79,6 +79,7 @@ fun PetScreen(
     onRequestPermission: () -> Unit,
     onFeed: suspend (String) -> Boolean,
     onRevive: suspend () -> Unit,
+    onPlay: () -> Unit,
     onRestart: () -> Unit,
 ) {
     val c = PetTheme.colors
@@ -158,24 +159,34 @@ fun PetScreen(
             Spacer(Modifier.weight(0.5f))
 
             val pantryCount = state.pantry.values.sum()
-            Row(
-                Modifier
-                    .materialize(2)
-                    .glass(CircleShape, RoomGlass)
-                    .pressable { showPantry = true }
-                    .padding(horizontal = 28.dp, vertical = 14.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
-            ) {
-                Text(stringResource(R.string.feed), style = MaterialTheme.typography.titleMedium, color = OnRoom)
-                if (pantryCount > 0) {
-                    Text(
-                        pantryCount.toString(),
-                        style = MaterialTheme.typography.labelLarge,
-                        color = OnRoom,
-                        modifier = Modifier.clip(CircleShape).background(Color.White.copy(alpha = 0.22f)).padding(horizontal = 8.dp, vertical = 2.dp),
-                    )
+            Row(Modifier.materialize(2), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                Row(
+                    Modifier
+                        .glass(CircleShape, RoomGlass)
+                        .pressable { showPantry = true }
+                        .padding(horizontal = 28.dp, vertical = 14.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    Text(stringResource(R.string.feed), style = MaterialTheme.typography.titleMedium, color = OnRoom)
+                    if (pantryCount > 0) {
+                        Text(
+                            pantryCount.toString(),
+                            style = MaterialTheme.typography.labelLarge,
+                            color = OnRoom,
+                            modifier = Modifier.clip(CircleShape).background(Color.White.copy(alpha = 0.22f)).padding(horizontal = 8.dp, vertical = 2.dp),
+                        )
+                    }
                 }
+                Text(
+                    stringResource(R.string.play),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = OnRoom,
+                    modifier = Modifier
+                        .glass(CircleShape, RoomGlass)
+                        .pressable(onClick = onPlay)
+                        .padding(horizontal = 28.dp, vertical = 14.dp),
+                )
             }
             Spacer(Modifier.height(TabBarInset + 8.dp))
             Spacer(Modifier.navigationBarsPadding())
