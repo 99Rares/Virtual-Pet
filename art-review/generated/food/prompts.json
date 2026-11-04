@@ -1,0 +1,164 @@
+[
+  {
+    "name": "cirese",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one compact pair of ripe red cherries joined by curved dark stems and a single small green leaf; smooth rounded forms, no plate. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-f718a87a-8e71-4567-819c-013bc2011076.png",
+    "saved": "art-review/generated/food/cirese.png"
+  },
+  {
+    "name": "clatitecucafea",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one serving of two rolled French crêpes with a restrained coffee-coloured cream drizzle on a simple muted cobalt-blue plate; clearly thin rolled crêpes, no separate coffee cup. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-15a83efa-2d28-438a-be84-6a8fa27e66ad.png",
+    "saved": "art-review/generated/food/clatitecucafea.png"
+  },
+  {
+    "name": "englishbreakfast",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one compact English breakfast serving with one sunny-side egg, a small curved sausage, a few baked beans and one grilled tomato half on a muted cobalt-blue plate; large simple ingredient shapes. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-b42ebf4b-456e-47b3-9a0f-47782ab3185e.png",
+    "saved": "art-review/generated/food/englishbreakfast.png"
+  },
+  {
+    "name": "fruits1",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one compact fruit serving: apple wedge, banana slices, a few purple grapes and orange segment on a muted cobalt-blue plate; no juice glass or additional props. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-317f4fb8-8dd6-45ce-81ad-93f70588de0d.png",
+    "saved": "art-review/generated/food/fruits1.png"
+  },
+  {
+    "name": "carbonara",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one compact mound of creamy spaghetti carbonara with a few bacon pieces on a shallow muted cobalt-blue plate, broad pasta loops, no tiny detailed strands or utensils. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-6900e375-22cc-46a3-a9cf-dca6de4e5dbd.png",
+    "saved": "art-review/generated/food/carbonara.png"
+  },
+  {
+    "name": "cafea",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one rounded muted cobalt-blue coffee cup filled with dark warm coffee and a simple cream swirl, handle visible, no pot, saucer or separate items. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-fc03db1e-dec8-4d6c-975a-9e088626ba80.png",
+    "saved": "art-review/generated/food/cafea.png"
+  },
+  {
+    "name": "steak1",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one compact serving of a small brown steak with a simple smooth seared surface and three potato wedges on a muted cobalt-blue plate; no grill stripes, no bone. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-fd18c416-1046-403a-b2a4-3ea7e34f59f4.png",
+    "saved": "art-review/generated/food/steak1.png"
+  },
+  {
+    "name": "soup",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one rounded muted cobalt-blue bowl filled with golden creamy soup with a tiny simple leaf garnish; no spoon or separate props. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-b23890b2-5f99-49bd-a1e6-3f988e20c85d.png",
+    "saved": "art-review/generated/food/soup.png"
+  },
+  {
+    "name": "salad",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one compact fresh green salad serving in a muted cobalt-blue shallow bowl with broad lettuce leaves, two tomato wedges and cucumber slices; no utensils. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-ee5ade39-4339-4b7f-881d-20267884801a.png",
+    "saved": "art-review/generated/food/salad.png"
+  },
+  {
+    "name": "steak2",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one compact thick grilled steak with clear dark diagonal grill marks and a small herb leaf on a muted cobalt-blue plate; distinct from plain steak, no side dishes or bone. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-06100a47-930c-4fee-8b6d-4fc2bfba1cea.png",
+    "saved": "art-review/generated/food/steak2.png"
+  },
+  {
+    "name": "cartofipai",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one compact serving of thin golden straw fries in a small muted cobalt-blue open cup, thin crisp fry silhouettes clearly visible, no separate sauce. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-3611a747-aa61-4739-9684-705f52deb2ed.png",
+    "saved": "art-review/generated/food/cartofipai.png"
+  },
+  {
+    "name": "burger",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one compact hamburger with a golden rounded bun, one patty, green lettuce, tomato and a slice of cheese; no plate, broad simple layers, minimal sesame detail. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-08db105f-dbb5-4c18-a471-c819895dba8f.png",
+    "saved": "art-review/generated/food/burger.png"
+  },
+  {
+    "name": "cola",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one small rounded takeaway cup of cola, warm terracotta body with simple cream band, pale lid and one short straw; no logo, letters or branding. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-e98016a0-ee1b-4248-8a79-94d45abaf7a2.png",
+    "saved": "art-review/generated/food/cola.png"
+  },
+  {
+    "name": "hotdog",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one compact hot dog in a rounded golden split bun with one sausage and a simple mustard zigzag, no plate or extra props. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-ad7a565b-28d8-4280-a241-04bb043e9f66.png",
+    "saved": "art-review/generated/food/hotdog.png"
+  },
+  {
+    "name": "nuggets",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one compact serving of four golden chicken nuggets, rounded distinct silhouettes with gently shaded crisp edges; no sauce bowl, plate or loose crumbs. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-99b8f83f-61d9-4dd3-a732-d913eacde6f6.png",
+    "saved": "art-review/generated/food/nuggets.png"
+  },
+  {
+    "name": "gogosi",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one round doughnut with muted strawberry-pink icing and five simple cream sprinkles, central hole visible, no plate or other doughnuts. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-1b1fcf58-9514-40e1-b67e-6e30e812fd45.png",
+    "saved": "art-review/generated/food/gogosi.png"
+  },
+  {
+    "name": "onionrings",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one compact serving of four golden onion rings stacked in a little rounded mound, visible holes, no carton, plate or sauce. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-43f15c57-0c3a-47a7-81c5-e7eb76d2fc9c.png",
+    "saved": "art-review/generated/food/onionrings.png"
+  },
+  {
+    "name": "pizza",
+    "group": "food",
+    "size": "600x600",
+    "ref": "art-review/samples/rice-source.png",
+    "prompt": "Create a NEW single food game sprite in the exact same soft sculpted storybook style as the provided approved rice-bowl reference. Reference image is for style, upper-left lighting, rounded satin materials and depth only; replace its subject completely. Subject: one thick triangular slice of cheese-and-tomato pizza with rounded golden crust, two tomato pieces and a few simple basil leaves, no plate or loose toppings. One compact centred serving, shallow three-quarter view, broad ingredient shapes recognisable at 64dp. Harmonise with warm ivory and muted cobalt blue, appetising restrained ochres/greens/reds. Same lighting for all items, no photographic texture, thick outlines, noisy details, separate decorative objects, branding or text. Square canvas with generous transparent margins, occupied width around75%. Genuinely transparent background, no floor or external cast shadow.",
+    "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-aa3f77b0-6acb-48e4-af2d-f03198d388ba.png",
+    "saved": "art-review/generated/food/pizza.png"
+  }
+]

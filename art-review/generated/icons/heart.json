@@ -1,0 +1,9 @@
+{
+  "name": "heart",
+  "group": "icons",
+  "size": "600x600",
+  "ref": "art-review/generated/icons/heart.png",
+  "prompt": "Edit this exact coral heart icon. Remove ALL external drop shadow and the brown/dark shadow haze below and around the heart. Keep only the clean heart silhouette, with genuine full transparency immediately outside its edge. Preserve heart shape, coral colour, internal satin shading and top-left highlight, size and composition exactly. No outside shadow, no floor, no glow, no new elements, no text. This is a clean transparent UI cutout.",
+  "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-50e95be9-4be2-4040-8186-cc74034f6d86.png",
+  "saved": "art-review/generated/icons/heart.png"
+}

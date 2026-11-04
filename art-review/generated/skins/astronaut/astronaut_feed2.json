@@ -1,0 +1,11 @@
+{
+  "name": "astronaut_feed2",
+  "group": "skins/astronaut",
+  "refs": [
+    "art-review/registered/classic/feed2.png",
+    "art-review/generated/skins/astronaut/astronaut_idle1.png"
+  ],
+  "prompt": "Precise matching animation skin edit. IMAGE 1 is the exact CLASSIC FRAME TO EDIT; preserve its pose, expression, eyelids, mouth shape, head/body/limb positions, perspective, canvas framing and feet baseline. IMAGE 2 is this skin's APPEARANCE MASTER ONLY: transfer its species/outfit, palette, materials and details onto image 1 WITHOUT transferring its idle pose. Skin: Classic black-and-white Pompi wearing a cute soft ivory space suit with muted blue seam panels, simple round boots and mittens, tiny gold chest accent with no symbols or text. Round clear glass helmet around the same head, delicate pale blue rim and restrained top-left reflection. Face and expression must remain fully clearly visible; no visor tint over eyes. Suit follows exact limb pose; no flags or weapons. Frame feed2: Seated eating pose: both paws near lower cheeks and mouth now closed with softly puffed cheeks, eyes gently closed in contentment, chewing beat. No food prop. The output must pose like image 1, NOT image 2. Keep identical body centre and approximate head scale, 600:650 portrait canvas, ground at 91% height. Preserve upper-left lighting and soft sculpted storybook shading. All accessories follow the pose; no extra limbs. Genuine transparent background including gaps; no floor, cast shadow, text, watermark or props. Keep full silhouette inside margins.",
+  "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-14d68d02-58a8-4118-9cb9-b75256e20ab8.png",
+  "saved": "art-review/generated/skins/astronaut/astronaut_feed2.png"
+}

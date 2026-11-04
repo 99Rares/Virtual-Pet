@@ -1,0 +1,2388 @@
+{
+  "expected_rasters": 132,
+  "checked_rasters": 132,
+  "paid_skin_images": 84,
+  "paid_skin_bytes": 3665066,
+  "kotlin_changes": [
+    "app/src/main/java/com/rares/virtualpetpompi/ui/components/Common.kt"
+  ],
+  "failures": [],
+  "assets": [
+    {
+      "name": "idle1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 32444,
+      "solid_bounds": [
+        97,
+        67,
+        508,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "idle2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 33362,
+      "solid_bounds": [
+        93,
+        63,
+        502,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "idle3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 32602,
+      "solid_bounds": [
+        95,
+        65,
+        507,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "hungry1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 35908,
+      "solid_bounds": [
+        93,
+        67,
+        503,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "hungry2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 36038,
+      "solid_bounds": [
+        95,
+        65,
+        501,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "dance1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 35452,
+      "solid_bounds": [
+        83,
+        57,
+        525,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "dance2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 39958,
+      "solid_bounds": [
+        74,
+        51,
+        530,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "dance3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 39524,
+      "solid_bounds": [
+        104,
+        54,
+        508,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "feed1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 35822,
+      "solid_bounds": [
+        95,
+        63,
+        500,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "feed2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 35758,
+      "solid_bounds": [
+        95,
+        63,
+        505,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "a1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 25904,
+      "solid_bounds": [
+        56,
+        285,
+        547,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "a2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 28168,
+      "solid_bounds": [
+        31,
+        239,
+        530,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "a3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 37752,
+      "solid_bounds": [
+        86,
+        110,
+        504,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "a4",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 34790,
+      "solid_bounds": [
+        94,
+        59,
+        507,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "a5",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 38340,
+      "solid_bounds": [
+        81,
+        64,
+        526,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "a6",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 44752,
+      "solid_bounds": [
+        55,
+        67,
+        557,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "a7",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 39638,
+      "solid_bounds": [
+        66,
+        64,
+        547,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "a8",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 37234,
+      "solid_bounds": [
+        97,
+        64,
+        503,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "a9",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 35892,
+      "solid_bounds": [
+        96,
+        65,
+        505,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "a10",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 32444,
+      "solid_bounds": [
+        97,
+        67,
+        508,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "classic_preview",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 32444,
+      "solid_bounds": [
+        97,
+        67,
+        508,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "rice",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 30436,
+      "solid_bounds": [
+        66,
+        86,
+        534,
+        513
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cirese",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 37700,
+      "solid_bounds": [
+        75,
+        67,
+        526,
+        534
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "clatitecucafea",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 35888,
+      "solid_bounds": [
+        66,
+        129,
+        534,
+        471
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "englishbreakfast",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 34848,
+      "solid_bounds": [
+        66,
+        123,
+        534,
+        477
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "fruits1",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 34930,
+      "solid_bounds": [
+        66,
+        120,
+        534,
+        480
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cafea",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 30752,
+      "solid_bounds": [
+        66,
+        115,
+        534,
+        485
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "carbonara",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 34080,
+      "solid_bounds": [
+        66,
+        132,
+        534,
+        468
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "salad",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 34760,
+      "solid_bounds": [
+        66,
+        110,
+        534,
+        490
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "soup",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 32936,
+      "solid_bounds": [
+        66,
+        105,
+        534,
+        494
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "steak1",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 36484,
+      "solid_bounds": [
+        66,
+        118,
+        533,
+        480
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "steak2",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 39658,
+      "solid_bounds": [
+        66,
+        122,
+        534,
+        477
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cartofipai",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 44326,
+      "solid_bounds": [
+        81,
+        67,
+        519,
+        533
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "burger",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 39416,
+      "solid_bounds": [
+        69,
+        67,
+        529,
+        534
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cola",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 32028,
+      "solid_bounds": [
+        126,
+        66,
+        473,
+        534
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "hotdog",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 30794,
+      "solid_bounds": [
+        66,
+        129,
+        534,
+        471
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "nuggets",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 35074,
+      "solid_bounds": [
+        67,
+        85,
+        534,
+        514
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "onionrings",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 41760,
+      "solid_bounds": [
+        66,
+        119,
+        534,
+        481
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "gogosi",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 32440,
+      "solid_bounds": [
+        67,
+        100,
+        533,
+        499
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "pizza",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 36434,
+      "solid_bounds": [
+        66,
+        83,
+        534,
+        516
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "coinimage",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 35944,
+      "solid_bounds": [
+        72,
+        66,
+        528,
+        534
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "heart",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 29616,
+      "solid_bounds": [
+        66,
+        96,
+        534,
+        503
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "skull",
+      "canvas": [
+        600,
+        600
+      ],
+      "bytes": 32042,
+      "solid_bounds": [
+        66,
+        66,
+        534,
+        534
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "bg0",
+      "canvas": [
+        1500,
+        2500
+      ],
+      "bytes": 35472,
+      "solid_bounds": [
+        0,
+        0,
+        1500,
+        2500
+      ],
+      "alpha": [
+        255,
+        255
+      ]
+    },
+    {
+      "name": "bg1",
+      "canvas": [
+        1500,
+        2500
+      ],
+      "bytes": 42850,
+      "solid_bounds": [
+        0,
+        0,
+        1500,
+        2500
+      ],
+      "alpha": [
+        255,
+        255
+      ]
+    },
+    {
+      "name": "bg2",
+      "canvas": [
+        1500,
+        2500
+      ],
+      "bytes": 58118,
+      "solid_bounds": [
+        0,
+        0,
+        1500,
+        2500
+      ],
+      "alpha": [
+        255,
+        255
+      ]
+    },
+    {
+      "name": "bg3",
+      "canvas": [
+        1500,
+        2500
+      ],
+      "bytes": 34870,
+      "solid_bounds": [
+        0,
+        0,
+        1500,
+        2500
+      ],
+      "alpha": [
+        255,
+        255
+      ]
+    },
+    {
+      "name": "ic_launcher_foreground",
+      "canvas": [
+        1080,
+        1080
+      ],
+      "bytes": 33990,
+      "solid_bounds": [
+        334,
+        278,
+        745,
+        801
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_idle1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 40200,
+      "solid_bounds": [
+        108,
+        76,
+        520,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_idle2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 47798,
+      "solid_bounds": [
+        104,
+        75,
+        523,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_idle3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 43602,
+      "solid_bounds": [
+        104,
+        77,
+        519,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_hungry1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 43994,
+      "solid_bounds": [
+        99,
+        73,
+        512,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_hungry2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 46710,
+      "solid_bounds": [
+        99,
+        69,
+        508,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_dance1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 47254,
+      "solid_bounds": [
+        81,
+        59,
+        523,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_dance2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 43724,
+      "solid_bounds": [
+        77,
+        64,
+        523,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_dance3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 45188,
+      "solid_bounds": [
+        106,
+        54,
+        508,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_feed1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 46252,
+      "solid_bounds": [
+        90,
+        61,
+        515,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_feed2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 44444,
+      "solid_bounds": [
+        102,
+        70,
+        511,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_wake1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 32580,
+      "solid_bounds": [
+        65,
+        285,
+        548,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_wake2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 39830,
+      "solid_bounds": [
+        42,
+        242,
+        545,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_wake3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 46540,
+      "solid_bounds": [
+        93,
+        110,
+        514,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_wake4",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 44938,
+      "solid_bounds": [
+        96,
+        67,
+        508,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_wake5",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 45798,
+      "solid_bounds": [
+        74,
+        74,
+        517,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_wake6",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 48834,
+      "solid_bounds": [
+        49,
+        71,
+        546,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_wake7",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 47368,
+      "solid_bounds": [
+        68,
+        70,
+        543,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_wake8",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 47962,
+      "solid_bounds": [
+        94,
+        68,
+        496,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_wake9",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 45906,
+      "solid_bounds": [
+        103,
+        74,
+        516,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_wake10",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 40200,
+      "solid_bounds": [
+        108,
+        76,
+        520,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "red_panda_preview",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 40200,
+      "solid_bounds": [
+        108,
+        76,
+        520,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_idle1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 41786,
+      "solid_bounds": [
+        95,
+        65,
+        507,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_idle2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 37088,
+      "solid_bounds": [
+        95,
+        64,
+        506,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_idle3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 35590,
+      "solid_bounds": [
+        95,
+        68,
+        500,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_hungry1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 40854,
+      "solid_bounds": [
+        95,
+        66,
+        505,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_hungry2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 38456,
+      "solid_bounds": [
+        92,
+        58,
+        505,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_dance1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 45228,
+      "solid_bounds": [
+        82,
+        62,
+        526,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_dance2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 38474,
+      "solid_bounds": [
+        72,
+        48,
+        528,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_dance3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 43864,
+      "solid_bounds": [
+        105,
+        54,
+        515,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_feed1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 40302,
+      "solid_bounds": [
+        91,
+        58,
+        499,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_feed2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 38130,
+      "solid_bounds": [
+        91,
+        64,
+        502,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_wake1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 28446,
+      "solid_bounds": [
+        60,
+        282,
+        546,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_wake2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 30624,
+      "solid_bounds": [
+        33,
+        235,
+        535,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_wake3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 39066,
+      "solid_bounds": [
+        87,
+        107,
+        515,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_wake4",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 36208,
+      "solid_bounds": [
+        98,
+        65,
+        502,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_wake5",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 45446,
+      "solid_bounds": [
+        82,
+        66,
+        526,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_wake6",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 40662,
+      "solid_bounds": [
+        61,
+        68,
+        554,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_wake7",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 44474,
+      "solid_bounds": [
+        64,
+        55,
+        542,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_wake8",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 38782,
+      "solid_bounds": [
+        94,
+        67,
+        504,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_wake9",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 37850,
+      "solid_bounds": [
+        97,
+        69,
+        507,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_wake10",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 41786,
+      "solid_bounds": [
+        95,
+        65,
+        507,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "polar_bear_preview",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 41786,
+      "solid_bounds": [
+        95,
+        65,
+        507,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_idle1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 55576,
+      "solid_bounds": [
+        95,
+        37,
+        506,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_idle2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 49568,
+      "solid_bounds": [
+        98,
+        47,
+        491,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_idle3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 49218,
+      "solid_bounds": [
+        96,
+        49,
+        498,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_hungry1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 49092,
+      "solid_bounds": [
+        92,
+        58,
+        504,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_hungry2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 49306,
+      "solid_bounds": [
+        97,
+        61,
+        496,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_dance1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 51112,
+      "solid_bounds": [
+        87,
+        51,
+        522,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_dance2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 51208,
+      "solid_bounds": [
+        90,
+        56,
+        519,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_dance3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 52404,
+      "solid_bounds": [
+        114,
+        65,
+        504,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_feed1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 49764,
+      "solid_bounds": [
+        96,
+        39,
+        490,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_feed2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 55056,
+      "solid_bounds": [
+        93,
+        47,
+        507,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_wake1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 33598,
+      "solid_bounds": [
+        59,
+        291,
+        544,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_wake2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 40138,
+      "solid_bounds": [
+        29,
+        223,
+        536,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_wake3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 47120,
+      "solid_bounds": [
+        86,
+        121,
+        507,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_wake4",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 51870,
+      "solid_bounds": [
+        96,
+        39,
+        505,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_wake5",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 51364,
+      "solid_bounds": [
+        86,
+        50,
+        518,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_wake6",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 50590,
+      "solid_bounds": [
+        62,
+        63,
+        550,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_wake7",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 62848,
+      "solid_bounds": [
+        69,
+        61,
+        533,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_wake8",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 76064,
+      "solid_bounds": [
+        96,
+        46,
+        505,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_wake9",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 50100,
+      "solid_bounds": [
+        95,
+        37,
+        503,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_wake10",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 55576,
+      "solid_bounds": [
+        95,
+        37,
+        506,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "astronaut_preview",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 55576,
+      "solid_bounds": [
+        95,
+        37,
+        506,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_idle1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 39418,
+      "solid_bounds": [
+        99,
+        48,
+        498,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_idle2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 37552,
+      "solid_bounds": [
+        104,
+        62,
+        498,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_idle3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 35698,
+      "solid_bounds": [
+        99,
+        48,
+        498,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_hungry1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 37828,
+      "solid_bounds": [
+        101,
+        53,
+        500,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_hungry2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 38140,
+      "solid_bounds": [
+        99,
+        46,
+        501,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_dance1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 40998,
+      "solid_bounds": [
+        90,
+        26,
+        519,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_dance2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 38392,
+      "solid_bounds": [
+        90,
+        44,
+        514,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_dance3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 40200,
+      "solid_bounds": [
+        109,
+        49,
+        502,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_feed1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 38548,
+      "solid_bounds": [
+        93,
+        52,
+        492,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_feed2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 52370,
+      "solid_bounds": [
+        94,
+        43,
+        489,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_wake1",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 29352,
+      "solid_bounds": [
+        57,
+        254,
+        547,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_wake2",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 32042,
+      "solid_bounds": [
+        34,
+        208,
+        533,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_wake3",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 40568,
+      "solid_bounds": [
+        93,
+        83,
+        506,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_wake4",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 39908,
+      "solid_bounds": [
+        97,
+        44,
+        501,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_wake5",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 41562,
+      "solid_bounds": [
+        92,
+        55,
+        524,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_wake6",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 40966,
+      "solid_bounds": [
+        61,
+        43,
+        554,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_wake7",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 41198,
+      "solid_bounds": [
+        82,
+        48,
+        536,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_wake8",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 40794,
+      "solid_bounds": [
+        102,
+        55,
+        502,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_wake9",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 39324,
+      "solid_bounds": [
+        99,
+        46,
+        500,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_wake10",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 39418,
+      "solid_bounds": [
+        99,
+        48,
+        498,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "cozy_preview",
+      "canvas": [
+        600,
+        650
+      ],
+      "bytes": 39418,
+      "solid_bounds": [
+        99,
+        48,
+        498,
+        590
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    }
+  ]
+}

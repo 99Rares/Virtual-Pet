@@ -1,0 +1,9 @@
+{
+  "name": "skull",
+  "group": "icons",
+  "size": "600x600",
+  "ref": "art-review/samples/coin-source.png",
+  "prompt": "Create a new UI game icon, matching the provided approved paw coin's soft sculpted storybook volume, clean rounded forms and upper-left lighting, but with matte satin material instead of metal. Reference is style only. Subject: one friendly simplified warm-ivory cartoon skull hazard icon, broad rounded cranium, two large charcoal eye sockets, small triangular nose hole and three simple rounded tooth bumps. Gentle cute game hazard rather than scary realism. Cool grey shaded edge gives contrast on pale backgrounds. No crossbones, no jaw clutter, no cracks or scary face. One object centered on square canvas with transparent margins, reads clearly at small UI sizes, no thick black outlines, no photorealism, no floor, no outside shadow, no glow, no text. Genuine transparent background.",
+  "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-89e599e1-e8e5-465a-80b2-405751490b4c.png",
+  "saved": "art-review/generated/icons/skull.png"
+}

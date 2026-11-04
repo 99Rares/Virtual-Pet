@@ -1,0 +1,237 @@
+[
+  {
+    "file": "a1.png",
+    "bytes": 15706,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|443x271+85+231"
+  },
+  {
+    "file": "a10.png",
+    "bytes": 30961,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|440x426+101+130"
+  },
+  {
+    "file": "a2.png",
+    "bytes": 17953,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|452x308+80+222"
+  },
+  {
+    "file": "a3.png",
+    "bytes": 21370,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|403x365+70+163"
+  },
+  {
+    "file": "a4.png",
+    "bytes": 21013,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|373x394+70+139"
+  },
+  {
+    "file": "a5.png",
+    "bytes": 21694,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|388x438+70+104"
+  },
+  {
+    "file": "a6.png",
+    "bytes": 22344,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|406x437+70+93"
+  },
+  {
+    "file": "a7.png",
+    "bytes": 29633,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|460x424+70+99"
+  },
+  {
+    "file": "a8.png",
+    "bytes": 30906,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|452x417+95+137"
+  },
+  {
+    "file": "a9.png",
+    "bytes": 30886,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|440x426+100+148"
+  },
+  {
+    "file": "bg0.png",
+    "bytes": 16528,
+    "geometry_channels_opaque_alpha_bounds": "1500x2500|srgb  3.0|True|0x0+1500+2500"
+  },
+  {
+    "file": "bg1.png",
+    "bytes": 139576,
+    "geometry_channels_opaque_alpha_bounds": "1500x2500|srgb  3.0|True|1500x2500+0+0"
+  },
+  {
+    "file": "bg2.png",
+    "bytes": 17329,
+    "geometry_channels_opaque_alpha_bounds": "1500x2500|srgb  3.0|True|1500x1963+0+263"
+  },
+  {
+    "file": "bg3.png",
+    "bytes": 76337,
+    "geometry_channels_opaque_alpha_bounds": "1500x2500|srgb  3.0|True|1500x2500+0+0"
+  },
+  {
+    "file": "burger.png",
+    "bytes": 188529,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|600x560+0+1"
+  },
+  {
+    "file": "cafea.png",
+    "bytes": 48707,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|544x489+12+60"
+  },
+  {
+    "file": "carbonara.png",
+    "bytes": 83065,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|551x326+24+133"
+  },
+  {
+    "file": "cartofipai.jpg",
+    "bytes": 28413,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|600x278+0+175"
+  },
+  {
+    "file": "cirese.jpg",
+    "bytes": 10557,
+    "geometry_channels_opaque_alpha_bounds": "250x250|srgb  3.0|True|220x208+20+16"
+  },
+  {
+    "file": "clatitecucafea.png",
+    "bytes": 68961,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|581x370+13+100"
+  },
+  {
+    "file": "coinimage.png",
+    "bytes": 32306,
+    "geometry_channels_opaque_alpha_bounds": "512x512|srgba 4.0|False|452x413+30+50"
+  },
+  {
+    "file": "cola.png",
+    "bytes": 73260,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|404x599+97+0"
+  },
+  {
+    "file": "dance1.png",
+    "bytes": 33907,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|522x500+25+113"
+  },
+  {
+    "file": "dance2.png",
+    "bytes": 34674,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|522x500+25+113"
+  },
+  {
+    "file": "dance3.png",
+    "bytes": 34902,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|522x500+25+113"
+  },
+  {
+    "file": "englishbreakfast.png",
+    "bytes": 47188,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|595x231+2+200"
+  },
+  {
+    "file": "feed1.png",
+    "bytes": 31641,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|438x421+98+135"
+  },
+  {
+    "file": "feed2.png",
+    "bytes": 31544,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|438x421+98+135"
+  },
+  {
+    "file": "fruits1.png",
+    "bytes": 65666,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|600x412+0+78"
+  },
+  {
+    "file": "gogosi.png",
+    "bytes": 129525,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|564x343+16+150"
+  },
+  {
+    "file": "heart.png",
+    "bytes": 12489,
+    "geometry_channels_opaque_alpha_bounds": "160x160|srgba 4.0|False|152x139+4+11"
+  },
+  {
+    "file": "hotdog.png",
+    "bytes": 147492,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|535x400+35+119"
+  },
+  {
+    "file": "hungry1.png",
+    "bytes": 30379,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|468x401+99+148"
+  },
+  {
+    "file": "hungry2.png",
+    "bytes": 31218,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|468x412+99+137"
+  },
+  {
+    "file": "icon1.png",
+    "bytes": 16211,
+    "geometry_channels_opaque_alpha_bounds": "512x512|srgba 4.0|True|445x274+43+117"
+  },
+  {
+    "file": "idle1.png",
+    "bytes": 30750,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|438x421+101+135"
+  },
+  {
+    "file": "idle2.png",
+    "bytes": 32111,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|442x417+101+133"
+  },
+  {
+    "file": "idle3.png",
+    "bytes": 32024,
+    "geometry_channels_opaque_alpha_bounds": "600x650|srgba 4.0|False|435x426+101+130"
+  },
+  {
+    "file": "nuggets.png",
+    "bytes": 127371,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|597x397+0+95"
+  },
+  {
+    "file": "onionrings.png",
+    "bytes": 177111,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|600x424+0+92"
+  },
+  {
+    "file": "pizza.png",
+    "bytes": 140046,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|600x431+0+54"
+  },
+  {
+    "file": "rice.png",
+    "bytes": 28127,
+    "geometry_channels_opaque_alpha_bounds": "512x512|srgba 4.0|False|512x512+0+0"
+  },
+  {
+    "file": "salad.png",
+    "bytes": 115147,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|598x372+0+88"
+  },
+  {
+    "file": "skull.png",
+    "bytes": 153932,
+    "geometry_channels_opaque_alpha_bounds": "480x475|srgba 4.0|False|480x475+0+0"
+  },
+  {
+    "file": "soup.png",
+    "bytes": 58256,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|576x402+14+99"
+  },
+  {
+    "file": "steak1.png",
+    "bytes": 68470,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|583x262+9+186"
+  },
+  {
+    "file": "steak2.png",
+    "bytes": 76745,
+    "geometry_channels_opaque_alpha_bounds": "600x600|srgb  3.0|True|597x309+0+128"
+  }
+]

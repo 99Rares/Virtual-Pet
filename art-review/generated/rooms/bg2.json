@@ -1,0 +1,10 @@
+{
+  "name": "bg2",
+  "group": "rooms",
+  "size": "1500x2500!",
+  "transparent": false,
+  "prompt": "Create a calm portrait mobile-game room background, 1500:2500 aspect ratio. Bamboo retreat: muted jade and sage, a few broad simplified bamboo leaves and short stem segments in only the top corners and upper third, softly filtered light. The lower 60% is a continuous quiet jade gradient with no bamboo, no scattered leaves and no sharp edges. Style: restrained vector-like storybook environment, very broad rounded shapes and soft smooth gradients, calm premium palette, minimal detail and no texture. Should complement simple gradient-based sunset, starry-night, ocean and blossom game rooms. Panda and glass UI will be overlaid in the lower 60%, so keep that region calm and low contrast. Fully opaque edge-to-edge background, no transparency, no text, no characters, no props, no furniture, no hard geometric ribbons, no visible ground shadow or platform, no photographic detail, no vignette black border.",
+  "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-cd161381-5c8b-48d4-93fa-542ec22f1e57.png",
+  "saved": "art-review/generated/rooms/bg2.png",
+  "display_name": "Garden"
+}

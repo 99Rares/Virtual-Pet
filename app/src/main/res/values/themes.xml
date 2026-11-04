@@ -1,16 +1,5 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.VirtualPetPompi" parent="Theme.AppCompat.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/emerald</item>
-        <item name="colorPrimaryVariant">@color/deep_space</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/jade</item>
-        <item name="colorSecondaryVariant">@color/green</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+<resources>
+    <style name="Theme.VirtualPetPompi" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 </resources>

@@ -1,0 +1,11 @@
+{
+  "name": "red_panda_wake8",
+  "group": "skins/red_panda",
+  "refs": [
+    "art-review/registered/classic/a8.png",
+    "art-review/generated/skins/red_panda/red_panda_idle1.png"
+  ],
+  "prompt": "Precise matching animation skin edit. IMAGE 1 is the exact CLASSIC FRAME TO EDIT; preserve its pose, expression, eyelids, mouth shape, head/body/limb positions, perspective, canvas framing and feet baseline. IMAGE 2 is this skin's APPEARANCE MASTER ONLY: transfer its species/outfit, palette, materials and details onto image 1 WITHOUT transferring its idle pose. Skin: Red panda species: russet fur #B95E38 with warm amber highlights, cream white eyebrows, muzzle and cheeks, softly pointed round ears with cream insides, charcoal paws and belly, compact ringed russet/dark-brown tail curled close behind body to image right. Keep tail from moving the body or feet. Frame a8: Wake-up frame 8 of 10: seated panda lowering arms to shoulder height, eyes open with a small smile. Same head scale, feet fixed. The output must pose like image 1, NOT image 2. Keep identical body centre and approximate head scale, 600:650 portrait canvas, ground at 91% height. Preserve upper-left lighting and soft sculpted storybook shading. All accessories follow the pose; no extra limbs. Genuine transparent background including gaps; no floor, cast shadow, text, watermark or props. Keep full silhouette inside margins.",
+  "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-12a7b30f-70a1-4ec9-bc67-d019516d71cf.png",
+  "saved": "art-review/generated/skins/red_panda/red_panda_wake8.png"
+}

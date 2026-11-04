@@ -1,64 +1,134 @@
 <resources>
     <string name="app_name">Virtual Pet Pompi</string>
-    <string name="channel_name">Hunger Notification</string>
-    <string name="channel_description">Channel for hunger notifications</string>
-    <string name="goal_reached_notification">Goal reached! %s steps and counting</string>
-    <string name="notification_text">%s steps to go</string>
-    <string name="steps">steps</string>
-    <string name="your_progress_will_be_shown_here_soon">Your progress will be shown here soon</string>
-    <string name="notification_title">The virtual pet is counting your steps</string>
-    <string name="average">Average</string>
-    <string name="total_last_7_days">Total last 7 days</string>
-    <string name="average_last_7_days">Average last 7 days</string>
-    <string name="total_this_month">Total this month</string>
-    <string name="average_this_month">Average this month</string>
+
+    <!-- Tabs -->
+    <string name="tab_pet">Pompi</string>
+    <string name="tab_shop">Shop</string>
+    <string name="tab_stats">Progress</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">Walk. Earn. Feed Pompi.</string>
+    <string name="onboarding_body">Your steps turn into coins. Coins buy food. Food keeps Pompi alive. Nothing leaves your phone.</string>
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_easy_desc">1 coin per 10 steps · 1000 lives · 100 starter coins</string>
+    <string name="difficulty_normal">Normal</string>
+    <string name="difficulty_normal_desc">1 coin per 100 steps · 5 lives · 5 starter coins</string>
+    <string name="onboarding_permission_note">Pompi needs access to your physical activity to count steps, and to notify you when it gets hungry.</string>
+
+    <!-- Pet -->
+    <string name="steps_today">steps today</string>
+    <string name="coins">Coins</string>
+    <string name="feed">Feed</string>
+    <string name="inventory">Pantry</string>
+    <string name="pantry_full">Pompi is full. Come back when it is hungry.</string>
+    <string name="bought">Added to pantry</string>
+    <string name="inventory_empty">Nothing to eat. Buy food in the shop.</string>
+    <string name="pet_dead_title">Pompi is gone</string>
+    <string name="pet_dead_body">It ran out of lives. Bring it back and keep everything you own, or start from scratch.</string>
+    <string name="revive">Bring back</string>
+    <string name="revive_not_enough">You need %1$s coins to bring Pompi back.</string>
+    <string name="start_over">Start over</string>
+    <string name="permission_banner">Allow activity access so Pompi can count your steps.</string>
+    <string name="permission_allow">Allow</string>
+    <string name="no_step_sensor">This device has no step counter, so coins cannot be earned.</string>
+
+    <!-- Mini-game -->
+    <string name="play">Play</string>
+    <string name="game_title">Catch</string>
+    <string name="game_rules">Slide to catch food. Skulls cost a heart. 30 seconds, 3 hearts.</string>
+    <string name="game_bet_label">Your bet</string>
+    <string name="game_payouts">%1$d catches: bet back\n%2$d catches: 1.5× your bet\n%3$d catches: 2× your bet</string>
+    <string name="game_cap_left">Up to %1$d more coins can be won today.</string>
+    <string name="game_cap_reached">Daily win limit reached: you can still play, but winnings are capped.</string>
+    <string name="game_start">Start</string>
+    <string name="game_score_label">caught</string>
+    <string name="game_result_won">You won %1$d coins</string>
+    <string name="game_result_even">Bet back, no loss</string>
+    <string name="game_result_lost">You lost %1$d coins</string>
+    <string name="game_result_capped">Daily win limit reached.</string>
+    <string name="game_again">Play again</string>
+    <string name="game_done">Done</string>
+    <string name="game_close">Close</string>
+
+    <!-- Shop -->
+    <string name="shop_food">Food</string>
+    <string name="shop_rooms">Rooms</string>
+    <string name="shop_skins">Skins</string>
+    <string name="skin_classic">Classic Pompi</string>
+    <string name="skin_classic_desc">The familiar round black-and-white panda, softly redrawn.</string>
+    <string name="skin_red_panda">Red Panda</string>
+    <string name="skin_red_panda_desc">Russet fur, cream face markings and a cosy ringed tail.</string>
+    <string name="skin_polar_bear">Polar Cub</string>
+    <string name="skin_polar_bear_desc">A fluffy ivory bear cub with a gentle snowy look.</string>
+    <string name="skin_cozy">Cozy Pompi</string>
+    <string name="skin_cozy_desc">Pompi wrapped in a soft beanie and scarf.</string>
+    <string name="skin_astronaut">Space Pompi</string>
+    <string name="skin_astronaut_desc">Pompi in a little space suit with a clear round helmet.</string>
+    <string name="equipped">In use</string>
+    <string name="equip">Use</string>
+    <string name="not_enough_coins">Not enough coins</string>
+    <string name="room_default">Meadow</string>
+    <string name="room_1">Dusk</string>
+    <string name="room_2">Garden</string>
+    <string name="room_3">Sky</string>
+    <string name="room_sunset">Sunset</string>
+    <string name="room_night">Starry night</string>
+    <string name="room_ocean">Ocean</string>
+    <string name="room_blossom">Blossom</string>
+
+    <!-- Progress -->
+    <string name="goal_of">of %1$s</string>
+    <string name="last_7_days">Last 7 days</string>
     <string name="total">Total</string>
-    <string name="record">Record</string>
-    <string name="no_sensor_explain">This app requires a dedicated hardware step sensor - which your device does not have. This app won\'t run on your device.</string>
-    <string name="_10_000">10.000</string>
-    <string name="steps_record">Steps Record</string>
-    <string name="your_pet_died">Your pet died! \n Reset the app</string>
-    <string name="_100">100%</string>
-    <string name="back">back</string>
-    <string name="coins">coins</string>
-    <string name="your_activity_is_not">Your activity is not being recorded anywhere, so feel free to accept the permission and enjoy this amazing free virtual pet</string>
-    <string name="we_do_not">We do not collect any user data!</string>
-    <string name="credits">Credits</string>
-    <string name="about">About</string>
-    <string name="help">Help</string>
-    <string name="privacy">Privacy</string>
-    <string name="show_steps">Show Steps</string>
-    <string name="pompi_ls">rares.dan.g@proton.me</string>
-    <string name="contact">Contact</string>
-    <string name="developer_dan_rares">Developer: Dan Rares</string>
-    <string name="_0">0</string>
-    <string name="shop">shop</string>
-    <string name="settings">settings</string>
-    <string name="easy_mode">easy mode</string>
-    <string name="normal_mode">normal Mode</string>
-    <string name="background">background</string>
-    <string name="inventory">Inventory</string>
-    <string name="please_buy">Please buy me some food :(</string>
-    <string name="heart">heart</string>
-    <string name="pompi">POMPI</string>
-    <string name="hunger">hunger</string>
-    <string name="steps_money">Steps = money</string>
-    <string name="money_food">money = food</string>
-    <string name="food_happy_pet">food = happy pet</string>
-    <string name="if_you_manage">If you manage to keep you pet happy, it means that you manage to walk enough to keep yourself healthy. Congrats!</string>
-    <string name="for_further">For further questions do not be shy, contact us.</string>
-    <string name="you_only">You only need to feed your pet, easy right? Well, in order to do that you need to walk and walk and walk even more! To make money, you need to make steps, and then you can buy food to feed your cute pet</string>
-    <string name="your_cute">Your cute virtual Pet</string>
-    <string name="achievements">Achievements</string>
-    <string name="_10k">10K</string>
-    <string name="_20k">20K</string>
-    <string name="_30k">30K</string>
-    <string name="channel_name_steps">Steps Notification</string>
-    <string name="channel_description_steps">Get the number of steps taken</string>
-    <string name="description_check">Check on your pet!</string>
-    <string name="description_title">Your pet might be hungry go and feed it.</string>
-    <string name="channel_id">hunger</string>
-    <string name="change_the_difficulty">Change the Difficulty</string>
-    <string name="caution">Caution!!! If you change the difficulty, all progress will be erased!!</string>
-    <string name="left">←←←←←←←←←←←←</string>
+    <string name="average">Daily average</string>
+    <string name="record">Best day</string>
+    <string name="this_week">This week</string>
+
+    <!-- Settings -->
+    <string name="settings_goal">Daily goal</string>
+    <string name="settings_goal_desc">Used for your progress ring and charts.</string>
+    <string name="settings_game">Game</string>
+    <string name="settings_difficulty">Difficulty</string>
+    <string name="settings_restart">Restart game</string>
+    <string name="settings_restart_desc">Erases coins, food, rooms and lives. Your step history is kept.</string>
+    <string name="settings_restart_confirm_title">Restart the game?</string>
+    <string name="settings_restart_confirm_body">All progress in the game will be erased.</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Restart</string>
+    <string name="settings_about">About</string>
+    <string name="settings_privacy">Privacy</string>
+    <string name="settings_privacy_body">Steps are read from the step counter on your device and stay on it. Nothing is collected or sent anywhere.</string>
+    <string name="settings_credits">Made by Dan Rares</string>
+    <string name="version_format">Version %1$s</string>
+
+    <!-- Notifications -->
+    <string name="channel_pet_name">Pet reminders</string>
+    <string name="channel_pet_desc">Tells you when Pompi is getting hungry.</string>
+    <string name="notif_hungry_title">Pompi is getting hungry</string>
+    <string name="notif_hungry_body">Take a walk, then feed it before it runs out of food.</string>
+
+    <!-- Food names -->
+    <string name="food_rice">Rice bowl</string>
+    <string name="food_cirese">Cherries</string>
+    <string name="food_clatitecucafea">Coffee crêpes</string>
+    <string name="food_englishbreakfast">English breakfast</string>
+    <string name="food_fruits1">Fruit plate</string>
+    <string name="food_cafea">Coffee</string>
+    <string name="food_carbonara">Carbonara</string>
+    <string name="food_salad">Salad</string>
+    <string name="food_soup">Soup</string>
+    <string name="food_steak1">Steak</string>
+    <string name="food_steak2">Grilled steak</string>
+    <string name="food_cartofipai">Straw fries</string>
+    <string name="food_burger">Burger</string>
+    <string name="food_cola">Cola</string>
+    <string name="food_hotdog">Hot dog</string>
+    <string name="food_nuggets">Nuggets</string>
+    <string name="food_onionrings">Onion rings</string>
+    <string name="food_gogosi">Doughnuts</string>
+    <string name="food_pizza">Pizza</string>
+    <string name="category_breakfast">Breakfast</string>
+    <string name="category_dinner">Dinner</string>
+    <string name="category_snacks">Snacks</string>
 </resources>
