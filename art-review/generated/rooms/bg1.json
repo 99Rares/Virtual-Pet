@@ -1,0 +1,9 @@
+{
+  "name": "bg1",
+  "group": "rooms",
+  "size": "1500x2500!",
+  "transparent": false,
+  "prompt": "Create a calm portrait mobile-game room background, 1500:2500 aspect ratio. Quiet forest: deep desaturated teal-green atmosphere, very simple broad rounded tree canopy silhouettes confined to the top corners and upper 35%, gentle cool light through the upper centre. The lower 60% stays a smooth dark green gradient with no trunks, foliage, floor objects or edges crossing it. Style: restrained vector-like storybook environment, very broad rounded shapes and soft smooth gradients, calm premium palette, minimal detail and no texture. Should complement simple gradient-based sunset, starry-night, ocean and blossom game rooms. Panda and glass UI will be overlaid in the lower 60%, so keep that region calm and low contrast. Fully opaque edge-to-edge background, no transparency, no text, no characters, no props, no furniture, no hard geometric ribbons, no visible ground shadow or platform, no photographic detail, no vignette black border.",
+  "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-a394bdb0-050a-40c5-b066-77f0602faade.png",
+  "saved": "art-review/generated/rooms/bg1.png"
+}

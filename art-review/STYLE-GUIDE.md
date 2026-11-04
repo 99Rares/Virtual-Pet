@@ -8,7 +8,7 @@ Status: approved by the user after the blue rice-bowl revision; production autho
 - Light: broad soft key from upper left, shadow lower right. Low gloss, no plastic specular blobs, grain, photographic texture or baked ground plane. Transparent outside each object, including between limbs.
 - Food: one compact serving, three-quarter view with a consistent shallow viewing angle. Broad ingredient shapes survive 64dp. Rice sample uses one muted cobalt-blue bowl (#365B91), with lighter blue edges for dark-backdrop separation, no chopsticks or extra props. Genuine transparency.
 - UI icons: simple silhouettes with the same shallow satin volume; no text or currency symbols. Paw-embossed single coin, coral heart, friendly skull.
-- Rooms: opaque portrait gradients and simple natural silhouettes; no text, calm lower 60%. Broad green variants should complement the code-painted rooms.
+- Rooms: opaque portrait gradients and simple natural silhouettes; no text, calm lower 60%. Meadow, a deep forest Dusk, a bamboo Garden and a blue Sky complement the code-painted rooms while keeping their existing labels.
 
 ## Registration for production
 

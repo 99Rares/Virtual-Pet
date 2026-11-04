@@ -1,0 +1,9 @@
+{
+  "name": "bg3",
+  "group": "rooms",
+  "size": "1500x2500!",
+  "transparent": false,
+  "prompt": "Create a calm portrait mobile-game room background called Sky, aspect ratio1500:2500. Restrained vector-like storybook art with very broad rounded forms and smooth soft gradients, no texture. Pale cool blue at the top softly transitions into muted seafoam teal toward the bottom. A few very simple soft rounded cloud silhouettes belong ONLY in the upper 30%, with a faint warm upper-left morning glow. Entire lower60% is an uninterrupted quiet low-contrast blue-to-seafoam gradient for the panda and glass UI. Fully opaque edge-to-edge image, no text, animals, plants, mountains, floor, props, characters, vignette, harsh edges or photographic detail. Match simple gradient-painted game rooms rather than realistic landscapes.",
+  "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-bd7e993e-e255-487d-8717-21788065ef3d.png",
+  "saved": "art-review/generated/rooms/bg3.png"
+}
