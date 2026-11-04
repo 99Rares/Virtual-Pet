@@ -1,0 +1,6 @@
+{
+  "name": "red_panda_idle1",
+  "source": "art-review/samples/red-panda-idle1.png",
+  "reference": "art-review/samples/classic-idle1-source.png",
+  "prompt": "Approved red-panda edit of the classic idle master; see art-review/PROMPTS.md. Exported with common foot registration."
+}
