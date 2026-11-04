@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Build and test
 
-Toolchain (upgraded 2026-11-04): AGP 9.5.0, Gradle 9.8.2, compileSdk 37, but still targetSdk 30, minSdk 26, Java 8 source level, no Kotlin. Build with **JDK 17** (Corretto 17 is at `~/Library/Java/JavaVirtualMachines/corretto-17.0.11/Contents/Home`); JDK 22 is too new for this Gradle/AGP.
+Toolchain (upgraded 2026-11-04): AGP 9.5.0, Gradle 9.8.2, compileSdk 37, targetSdk 37, minSdk 26, Java 8 source level, no Kotlin. Build with **JDK 17** (Corretto 17 is at `~/Library/Java/JavaVirtualMachines/corretto-17.0.11/Contents/Home`); JDK 22 is too new for this Gradle/AGP.
 
 ```bash
 ./gradlew assembleDebug              # build the debug APK
@@ -20,7 +20,7 @@ Toolchain (upgraded 2026-11-04): AGP 9.5.0, Gradle 9.8.2, compileSdk 37, but sti
 
 Environment on the Mac: the Android SDK is at `/opt/homebrew/share/android-commandlinetools` (Homebrew cask; platform 35 and 37.0, build-tools 35.0.0 and 36.0.0). `local.properties` (gitignored) points `sdk.dir` there; recreate it on a fresh checkout. Repositories are `google()` and `mavenCentral()` only (jcenter removed); `eazegraph` still resolves from Central.
 
-`./gradlew lintDebug` currently fails by design on pre-existing issues: `targetSdk 30` (Play requires 33+) and a missing `POST_NOTIFICATIONS` permission/check in `StepsService.getNotification` and `HungerNotification`. Raising targetSdk is the next step of the overhaul.
+`./gradlew lintDebug` passes (0 errors, about 200 warnings, mostly deprecations). It has not been exercised on a real device or emulator yet: no emulator image is installed.
 
 The only tests are the Android Studio template stubs (`ExampleUnitTest`, `ExampleInstrumentedTest`). There is effectively no test coverage.
 
@@ -50,5 +50,5 @@ Persistent state lives in about 14 named `SharedPreferences` files, plus one SQL
 ### Conventions and quirks to know
 - Code comments are in a mix of English and Romanian; identifiers like `stepsPoza` and `deleteEverithing` are legacy spellings. Don't "fix" them unless asked, since prefs keys and resource names depend on strings.
 - Resource and drawable names (`a10`, `icon1`, frame-animation XMLs like `idle_anim.xml`) are looked up by name at runtime via `getResources().getIdentifier(...)` for backgrounds and food, so renaming a drawable can break the shop and inventory without a compile error.
-- `ACTIVITY_RECOGNITION` is the only permission and is requested with Dexter in `MainActivity`. There is no `POST_NOTIFICATIONS` or foreground-service permission handling, and `PendingIntent` flags lack `FLAG_IMMUTABLE`, which matters when raising `targetSdk` above 30.
-- The manifest declares `StepsService` without a `foregroundServiceType`, and the app uses `setExactAndAllowWhileIdle`; both need attention on newer Android versions.
+- Permissions: `ACTIVITY_RECOGNITION` and `POST_NOTIFICATIONS` are requested at runtime with Dexter in `MainActivity`. `StepsService` is a `health`-type foreground service started with `startForegroundService`. Notification code checks `POST_NOTIFICATIONS` itself before `notify()`.
+- Targeting SDK 37 means edge-to-edge is enforced: every activity calls `Util.applySystemBarInsets(this)` after `setContentView` to pad the content for system bars. All PendingIntents use `FLAG_IMMUTABLE`. The hourly save alarm is inexact (`setAndAllowWhileIdle`) so no exact-alarm permission is needed.
