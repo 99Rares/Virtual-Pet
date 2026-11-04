@@ -59,6 +59,7 @@ import com.rares.virtualpetpompi.domain.CatchGame
 import com.rares.virtualpetpompi.domain.ItemKind
 import com.rares.virtualpetpompi.domain.MiniGameRules
 import com.rares.virtualpetpompi.ui.components.IconValue
+import com.rares.virtualpetpompi.ui.components.RoomBackground
 import com.rares.virtualpetpompi.ui.components.formatInt
 import com.rares.virtualpetpompi.ui.components.glass
 import com.rares.virtualpetpompi.ui.components.materialize
@@ -116,12 +117,7 @@ fun MiniGameScreen(
     }
 
     Box(Modifier.fillMaxSize().background(c.base)) {
-        Image(
-            painterResource(Catalog.room(state.selectedRoom).image),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize(),
-        )
+        RoomBackground(Catalog.room(state.selectedRoom), Modifier.fillMaxSize())
         Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.45f)))
 
         when (phase) {

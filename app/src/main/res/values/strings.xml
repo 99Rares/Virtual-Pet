@@ -61,6 +61,10 @@
     <string name="room_1">Dusk</string>
     <string name="room_2">Garden</string>
     <string name="room_3">Sky</string>
+    <string name="room_sunset">Sunset</string>
+    <string name="room_night">Starry night</string>
+    <string name="room_ocean">Ocean</string>
+    <string name="room_blossom">Blossom</string>
 
     <!-- Progress -->
     <string name="goal_of">of %1$s</string>

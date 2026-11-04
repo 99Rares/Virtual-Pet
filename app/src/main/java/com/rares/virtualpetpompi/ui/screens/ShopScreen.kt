@@ -48,6 +48,7 @@ import com.rares.virtualpetpompi.domain.Food
 import com.rares.virtualpetpompi.domain.FoodCategory
 import com.rares.virtualpetpompi.ui.components.FoodImage
 import com.rares.virtualpetpompi.ui.components.IconValue
+import com.rares.virtualpetpompi.ui.components.RoomBackground
 import com.rares.virtualpetpompi.ui.components.ScreenColumn
 import com.rares.virtualpetpompi.ui.components.Segmented
 import com.rares.virtualpetpompi.ui.components.formatInt
@@ -212,38 +213,34 @@ private fun PriceTag(price: Int, affordable: Boolean) {
 @Composable
 private fun RoomSection(state: GameState, onBuyRoom: (String) -> Unit, onSelect: (String) -> Unit) {
     val c = PetTheme.colors
-    @OptIn(ExperimentalLayoutApi::class)
-    FlowRow(
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-        maxItemsInEachRow = 2,
-    ) {
-        Catalog.rooms.forEachIndexed { i, room ->
-            val owned = room.id in state.ownedRooms
-            val selected = room.id == state.selectedRoom
-            Column(
-                Modifier
-                    .weight(1f)
-                    .materialize(i)
-                    .panel(RoundedCornerShape(24.dp))
-                    .pressable { if (owned) onSelect(room.id) else onBuyRoom(room.id) }
-                    .padding(10.dp),
-            ) {
-                Image(
-                    painterResource(room.image),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxWidth().aspectRatio(0.75f).clip(RoundedCornerShape(16.dp)),
-                )
-                Spacer(Modifier.height(10.dp))
-                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(stringResource(room.name), style = MaterialTheme.typography.titleMedium, color = c.text)
-                    when {
-                        selected -> Text(stringResource(R.string.equipped), style = MaterialTheme.typography.labelMedium, color = c.positive)
-                        owned -> Text(stringResource(R.string.equip), style = MaterialTheme.typography.labelMedium, color = c.textMuted)
-                        else -> PriceTag(room.price, state.coins >= room.price)
+    // Plain rows rather than FlowRow: the tall preview's intrinsic width made FlowRow wrap to one per row.
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        Catalog.rooms.chunked(2).forEachIndexed { rowIndex, rowRooms ->
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                rowRooms.forEachIndexed { col, room ->
+                    val owned = room.id in state.ownedRooms
+                    val selected = room.id == state.selectedRoom
+                    Column(
+                        Modifier
+                            .weight(1f)
+                            .materialize(rowIndex * 2 + col)
+                            .panel(RoundedCornerShape(24.dp))
+                            .pressable { if (owned) onSelect(room.id) else onBuyRoom(room.id) }
+                            .padding(10.dp),
+                    ) {
+                        RoomBackground(room, Modifier.fillMaxWidth().aspectRatio(0.75f).clip(RoundedCornerShape(16.dp)))
+                        Spacer(Modifier.height(10.dp))
+                        Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                            Text(stringResource(room.name), style = MaterialTheme.typography.titleMedium, color = c.text, maxLines = 1)
+                            when {
+                                selected -> Text(stringResource(R.string.equipped), style = MaterialTheme.typography.labelMedium, color = c.positive)
+                                owned -> Text(stringResource(R.string.equip), style = MaterialTheme.typography.labelMedium, color = c.textMuted)
+                                else -> PriceTag(room.price, state.coins >= room.price)
+                            }
+                        }
                     }
                 }
+                if (rowRooms.size == 1) Spacer(Modifier.weight(1f))
             }
         }
     }

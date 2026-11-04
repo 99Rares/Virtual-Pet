@@ -120,3 +120,18 @@ class CatchGameTest {
         assertTrue(g.lives < 1000 || g.items.any { it.kind == ItemKind.SKULL })
     }
 }
+
+class CatalogTest {
+    @org.junit.Test fun `room and food ids are unique`() {
+        val rooms = com.rares.virtualpetpompi.domain.Catalog.rooms.map { it.id }
+        val foods = com.rares.virtualpetpompi.domain.Catalog.foods.map { it.id }
+        org.junit.Assert.assertEquals(rooms.size, rooms.toSet().size)
+        org.junit.Assert.assertEquals(foods.size, foods.toSet().size)
+    }
+
+    @org.junit.Test fun `the default room is free and listed first`() {
+        val first = com.rares.virtualpetpompi.domain.Catalog.rooms.first()
+        org.junit.Assert.assertEquals(com.rares.virtualpetpompi.domain.Catalog.DEFAULT_ROOM_ID, first.id)
+        org.junit.Assert.assertEquals(0, first.price)
+    }
+}

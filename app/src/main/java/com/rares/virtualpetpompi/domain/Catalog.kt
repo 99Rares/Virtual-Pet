@@ -16,11 +16,19 @@ data class Food(
     val price: Int,
 )
 
+/** How a room is drawn: the original artwork, or a scene painted in code. */
+sealed interface RoomArt {
+    data class Image(@DrawableRes val res: Int) : RoomArt
+    data class Scene(val kind: SceneKind) : RoomArt
+}
+
+enum class SceneKind { SUNSET, NIGHT, OCEAN, BLOSSOM }
+
 /** A room (background) Pompi lives in. */
 data class Room(
     val id: String,
     @StringRes val name: Int,
-    @DrawableRes val image: Int,
+    val art: RoomArt,
     val price: Int,
 )
 
@@ -50,10 +58,14 @@ object Catalog {
     )
 
     val rooms: List<Room> = listOf(
-        Room("bg0", R.string.room_default, R.drawable.bg0, 0),
-        Room("bg1", R.string.room_1, R.drawable.bg1, 45),
-        Room("bg2", R.string.room_2, R.drawable.bg2, 40),
-        Room("bg3", R.string.room_3, R.drawable.bg3, 30),
+        Room("bg0", R.string.room_default, RoomArt.Image(R.drawable.bg0), 0),
+        Room("bg1", R.string.room_1, RoomArt.Image(R.drawable.bg1), 45),
+        Room("bg2", R.string.room_2, RoomArt.Image(R.drawable.bg2), 40),
+        Room("bg3", R.string.room_3, RoomArt.Image(R.drawable.bg3), 30),
+        Room("sunset", R.string.room_sunset, RoomArt.Scene(SceneKind.SUNSET), 35),
+        Room("night", R.string.room_night, RoomArt.Scene(SceneKind.NIGHT), 40),
+        Room("ocean", R.string.room_ocean, RoomArt.Scene(SceneKind.OCEAN), 45),
+        Room("blossom", R.string.room_blossom, RoomArt.Scene(SceneKind.BLOSSOM), 50),
     )
 
     const val DEFAULT_ROOM_ID = "bg0"

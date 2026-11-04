@@ -53,6 +53,7 @@ import com.rares.virtualpetpompi.domain.PetRules
 import com.rares.virtualpetpompi.ui.components.FoodImage
 import com.rares.virtualpetpompi.ui.components.IconValue
 import com.rares.virtualpetpompi.ui.components.PetSprite
+import com.rares.virtualpetpompi.ui.components.RoomBackground
 import com.rares.virtualpetpompi.ui.components.SpriteAction
 import com.rares.virtualpetpompi.ui.components.SpriteKind
 import com.rares.virtualpetpompi.ui.components.TabBarInset
@@ -94,12 +95,7 @@ fun PetScreen(
 
     Box(Modifier.fillMaxSize()) {
         // The room Pompi lives in, full bleed, with scrims so the white figures stay readable.
-        Image(
-            painterResource(Catalog.room(state.selectedRoom).image),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize(),
-        )
+        RoomBackground(Catalog.room(state.selectedRoom), Modifier.fillMaxSize())
         Box(
             Modifier.fillMaxSize().background(
                 Brush.verticalGradient(0f to Color.Black.copy(alpha = 0.45f), 0.35f to Color.Transparent, 0.7f to Color.Transparent, 1f to Color.Black.copy(alpha = 0.35f)),
@@ -127,13 +123,13 @@ fun PetScreen(
             Spacer(Modifier.height(16.dp))
             Row(Modifier.fillMaxWidth().materialize(1), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 StatChip(Modifier.weight(0.9f)) { IconValue(R.drawable.coinimage, formatInt(state.coins), color = OnRoom) }
-                StatChip(Modifier.weight(1.3f)) {
+                StatChip(Modifier.weight(1.2f)) {
                     Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
                         IconValue(R.drawable.rice, "${state.pet.hunger}%", color = OnRoom)
                         HungerBar(state.pet.hunger)
                     }
                 }
-                StatChip(Modifier.weight(0.9f)) { IconValue(R.drawable.heart, formatInt(state.pet.lives), color = OnRoom) }
+                StatChip(Modifier.weight(1.1f)) { IconValue(R.drawable.heart, formatInt(state.pet.lives), color = OnRoom) }
             }
 
             if (!hasActivityPermission || !stepSensorAvailable) {
@@ -224,7 +220,7 @@ fun PetScreen(
 @Composable
 private fun StatChip(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
     Box(
-        modifier.glass(RoundedCornerShape(20.dp), RoomGlass).padding(horizontal = 12.dp, vertical = 12.dp),
+        modifier.glass(RoundedCornerShape(20.dp), RoomGlass).padding(horizontal = 10.dp, vertical = 12.dp),
         contentAlignment = Alignment.CenterStart,
     ) { content() }
 }
