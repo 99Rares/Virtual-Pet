@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Build and test
 
-Toolchain (upgraded 2026-11-04): AGP 8.7.3, Gradle 8.9, compileSdk 35, but still targetSdk 30, minSdk 26, Java 8 source level, no Kotlin. Build with **JDK 17** (Corretto 17 is at `~/Library/Java/JavaVirtualMachines/corretto-17.0.11/Contents/Home`); JDK 22 is too new for this Gradle/AGP.
+Toolchain (upgraded 2026-11-04): AGP 9.5.0, Gradle 9.8.2, compileSdk 37, but still targetSdk 30, minSdk 26, Java 8 source level, no Kotlin. Build with **JDK 17** (Corretto 17 is at `~/Library/Java/JavaVirtualMachines/corretto-17.0.11/Contents/Home`); JDK 22 is too new for this Gradle/AGP.
 
 ```bash
 ./gradlew assembleDebug              # build the debug APK
@@ -18,7 +18,7 @@ Toolchain (upgraded 2026-11-04): AGP 8.7.3, Gradle 8.9, compileSdk 35, but still
 ./gradlew connectedDebugAndroidTest  # instrumented tests (src/androidTest), needs a device
 ```
 
-Environment on the Mac: the Android SDK is at `/opt/homebrew/share/android-commandlinetools` (Homebrew cask; platform 35, build-tools 35.0.0). `local.properties` (gitignored) points `sdk.dir` there; recreate it on a fresh checkout. Repositories are `google()` and `mavenCentral()` only (jcenter removed); `eazegraph` still resolves from Central.
+Environment on the Mac: the Android SDK is at `/opt/homebrew/share/android-commandlinetools` (Homebrew cask; platform 35 and 37.0, build-tools 35.0.0 and 36.0.0). `local.properties` (gitignored) points `sdk.dir` there; recreate it on a fresh checkout. Repositories are `google()` and `mavenCentral()` only (jcenter removed); `eazegraph` still resolves from Central.
 
 `./gradlew lintDebug` currently fails by design on pre-existing issues: `targetSdk 30` (Play requires 33+) and a missing `POST_NOTIFICATIONS` permission/check in `StepsService.getNotification` and `HungerNotification`. Raising targetSdk is the next step of the overhaul.
 
