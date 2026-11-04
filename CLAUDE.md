@@ -4,51 +4,52 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-"Virtual Pet Pompi" is a single-module Android app (Java, package `com.rares.virtualpetpompi`) from a bachelor's thesis. The phone's step counter is converted into in-game coins, which are spent in a shop on food and backgrounds for a virtual pet. The pet loses hunger over time and dies if neglected. No README, lint config, Cursor/Copilot rules, or CI exist.
+"Virtual Pet Pompi" is an Android app (Kotlin, Jetpack Compose, package `com.rares.virtualpetpompi`) originally written as a bachelor's thesis in Java and fully rewritten in November 2026. The phone's step counter is turned into coins; coins buy food and rooms; food keeps a virtual panda alive. There is no backend and nothing leaves the device. The old Java/XML implementation is only in git history (before the "Rewrite in Kotlin and Compose" commit); its SharedPreferences and SQLite data are deliberately not migrated.
 
 ## Build and test
 
-Toolchain (upgraded 2026-11-04): AGP 9.5.0, Gradle 9.8.2, compileSdk 37, targetSdk 37, minSdk 26, Java 8 source level, no Kotlin. Build with **JDK 17** (Corretto 17 is at `~/Library/Java/JavaVirtualMachines/corretto-17.0.11/Contents/Home`); JDK 22 is too new for this Gradle/AGP.
+Gradle (wrapper 9.8.2), AGP 9.5.0 with built-in Kotlin 2.4, KSP for Room, compileSdk/targetSdk 37, minSdk 26. Versions live in `gradle/libs.versions.toml`. **Use JDK 17**: `export JAVA_HOME=~/Library/Java/JavaVirtualMachines/corretto-17.0.11/Contents/Home` (the default JDK 22 is too new for this AGP).
 
 ```bash
-./gradlew assembleDebug              # build the debug APK
-./gradlew installDebug               # install on a connected device or emulator
-./gradlew testDebugUnitTest          # JVM unit tests (src/test)
-./gradlew testDebugUnitTest --tests "com.rares.virtualpetpompi.ExampleUnitTest"   # one test class
-./gradlew connectedDebugAndroidTest  # instrumented tests (src/androidTest), needs a device
+./gradlew assembleDebug                 # debug APK
+./gradlew installDebug                  # install on the running emulator/device
+./gradlew testDebugUnitTest             # JVM tests: domain rules (app/src/test)
+./gradlew testDebugUnitTest --tests "com.rares.virtualpetpompi.PetRulesTest"   # one class
+./gradlew connectedDebugAndroidTest     # instrumented tests on a device/emulator: repository + Room + DataStore
+./gradlew lintDebug                     # must stay at 0 errors
+./gradlew assembleRelease               # R8-minified, unsigned (about 4 MB)
 ```
 
-Environment on the Mac: the Android SDK is at `/opt/homebrew/share/android-commandlinetools` (Homebrew cask; platform 35 and 37.0, build-tools 35.0.0 and 36.0.0). `local.properties` (gitignored) points `sdk.dir` there; recreate it on a fresh checkout. Repositories are `google()` and `mavenCentral()` only (jcenter removed); `eazegraph` still resolves from Central.
+Environment on the Mac: the Android SDK is at `/opt/homebrew/share/android-commandlinetools` (Homebrew cask), referenced by the gitignored `local.properties` (`sdk.dir=...`); recreate it on a fresh checkout. An AVD `pet37` (API 37, arm64) exists: `$ANDROID_HOME/emulator/emulator -avd pet37 -no-audio -gpu swiftshader_indirect`. The emulator has **no step sensor**, so debug builds include `DebugStepReceiver` (in `app/src/debug`):
 
-`./gradlew lintDebug` passes (0 errors, about 200 warnings, mostly deprecations). Smoke-tested on an API 37 emulator on 2026-11-04 (launches, health foreground service runs with its notification, insets fine, no crashes). Emulator setup: AVD `pet37` (system image `android-37.0;google_apis;arm64-v8a`); run `emulator -avd pet37 -no-audio -gpu swiftshader_indirect` from `$ANDROID_HOME/emulator`, then `./gradlew installDebug`. The emulator has no real step sensor, so the step-to-coin flow is untested end to end.
-
-The only tests are the Android Studio template stubs (`ExampleUnitTest`, `ExampleInstrumentedTest`). There is effectively no test coverage.
+```bash
+adb shell am broadcast -n com.rares.virtualpetpompi/.DebugStepReceiver --el counter 10000   # first call sets the baseline
+adb shell am broadcast -n com.rares.virtualpetpompi/.DebugStepReceiver --el counter 18200   # +8200 steps
+```
 
 ## Architecture
 
-Package layout under `app/src/main/java/com/rares/virtualpetpompi/`:
-- `activity/`: `MainActivity` (the pet screen, about 600 lines and the real hub), plus `ShopActivity`, `FoodActivity`, `BackgroundActivity`, `StatisticsActivity`, `SettingsActivity`. All are portrait-locked and built with view binding by `findViewById`.
-- `repository/`: `CoinRepository`, `HungerRepository`, `FoodRepository`, `BackgroundRepository`. These are thin wrappers over `SharedPreferences` that each activity instantiates itself. They are not a data layer in the Room or ViewModel sense.
-- `service/`: `StepsService` (foreground step counter), `DataBase` (SQLite helper), `HungerNotification` (broadcast receiver), `ShutdownReceiver`.
-- `model/Food`, `util/Util` (day-boundary helpers), `util/OnSwipeTouchListener`.
+Three layers under `app/src/main/java/com/rares/virtualpetpompi/`, wired by hand (no DI framework): `PetApp` holds an `AppContainer` (repository and `StepCounter`), `MainActivity` creates `PetViewModel` from it.
 
-### The step to coin to spend pipeline (spans several files)
+- `domain/`: pure Kotlin with no Android imports, fully unit tested. `PetRules` (hunger decay, losing lives, feeding), `CoinRules`, `StepRules.delta` (turns the cumulative sensor into new steps and handles reboot resets), `Difficulty`, and the static `Catalog` of foods and rooms. **All game balance numbers live here** (1 hunger point per 20 minutes, coins per step by difficulty, food prices and fullness).
+- `data/`: `GameRepository` is the single writer. It combines Room (`StepDay` per calendar day, `PantryItem` counts) and a DataStore (`GameStore`: difficulty, pet hunger/lives, hunger anchor timestamp, total steps earned, spent coins, last sensor counter, owned/selected rooms, daily goal). Every mutation goes through one `Mutex`. Coins are **derived**, never stored: `CoinRules.balance(stepsEarned, difficulty, spentCoins)`. Hunger is stored with an anchor timestamp and aged lazily by `settle()`, so it also advances while the app is closed. The repository takes an injectable clock and zone for tests.
+- `ui/`: Compose, single activity, four tabs in a floating glass tab bar (no Navigation library). `AppRoot` owns the permission flow, the haze blur source, and a lifecycle-scoped loop that samples the step sensor and calls `settle()` while the app is on screen. Screens are in `ui/screens`, shared pieces in `ui/components`, tokens in `ui/theme`.
+- `work/`: `PetCheckWorker` (WorkManager, every 30 minutes) samples the step counter, settles hunger, and posts one "Pompi is hungry" reminder at 30% hunger (re-armed after feeding). There is no foreground service and no permanent notification: the hardware step counter keeps counting while the app is not running.
 
-1. `StepsService` registers a `TYPE_STEP_COUNTER` listener. That sensor reports cumulative steps since device boot, so the service tracks offsets. `onSensorChanged` writes the *steps since the last reset* into `myPrefs["total"]`. The service restarts itself via `AlarmManager` every hour and in `onTaskRemoved`, and runs as a foreground service with an ongoing progress notification.
-2. `updateIfNecessary()` persists the raw counter to SQLite (`DataBase.saveCurrentSteps`) and inserts a per-day row through `insertNewDay` when a new day starts. Day rows store a *negative offset* of the counter at midnight, so a day's steps are `counter + offset`. The `pedometer` prefs name, `correctShutdown` flag and the "BootReceiver" comment suggest this logic was adapted from an open-source pedometer app; there is no `BootReceiver` in this repo. `ShutdownReceiver` flushes the counter before reboot because the sensor resets to 0 on boot.
-3. `CoinRepository.calculateCoins()` (run in its constructor and after every `removeAmount`) computes `coins = myPrefs["total"] / coins["divide"] + recover["prevCoins"] - coins["spentCoins"]`, clamped at 0. Difficulty sets `divide` (100 for normal, 10 for easy). Coins are mirrored into the SQLite `User` table and `coins["totalCoins"]`.
-4. `FoodActivity` and `BackgroundActivity` (the two shop screens, reached from `ShopActivity`) call `CoinRepository.removeAmount()`, then add the item through `FoodRepository` or `BackgroundRepository`.
+Step pipeline: sensor value, `StepRules.delta` against the stored last counter, then `StepDay` (history and charts) plus `stepsEarned` (coins). The first reading only sets a baseline; steps taken while the app never ran are attributed to the day of the next reading.
 
-### Hunger and lives
-`HungerRepository.hunger()` runs at construction and subtracts `minutes / 20` from `hunger["hungerLevel"]` (0 to 100), based on a timestamp in the `time` prefs. `MainActivity.manageLifes()` spends one life when hunger hits 0 and refills hunger. At 0 lives the pet is dead and the reset button calls `deleteEverithing()`, which clears every prefs file plus the food, coin and hunger repositories. `HungerNotification` is a manifest-registered receiver that posts a notification on the `hunger` channel. `MainActivity` creates the channel and schedules it with a daily `setRepeating` alarm, guarded by the `firstTimeSetNotification` flag (which `ShutdownReceiver` clears so the alarm is re-armed after a reboot).
+## Design system
 
-### State is split across many stores
-Persistent state lives in about 14 named `SharedPreferences` files, plus one SQLite database. Prefs names are string literals scattered across classes: `myPrefs`, `coins`, `recover`, `hunger`, `time`, `food`, `currentValue`, `backgrounds`, `savedLifes`, `firstTime`, `pedometer`. The activities and the service both write them directly (for example, `MainActivity.setDifficulty()` and `deleteEverithing()` edit prefs that the repositories own). When changing any of this, grep for the literal prefs name across the whole module, because there is no single owner for a given key.
+The UI follows Rares's Liquid Glass design guide in `~/AiMemmory/DESIGN.md`, ported from web to Compose; read it before changing UI. Key points as implemented:
+- Glass is only floating chrome (tab bar, stat chips over the room art, toasts): `Modifier.glass()` uses Haze (`dev.chrisbanes.haze:haze-blur`) over a shared `LocalHazeState` source. Content sits on `Modifier.panel()` frosted fills with no blur, so glass never nests in glass. Over the room artwork glass uses a fixed smoky tint so white figures stay legible in both themes.
+- Dark is the reference theme; light is supported through `PetColors` tokens, never hard-coded colours in screens.
+- Motion: 120ms press scale 0.97 (`Modifier.pressable`), one-time 360ms ease-out arrival with 30ms stagger (`Modifier.materialize`), critically damped spring for the sliding thumb in tab bars and segmented controls, one-time sweep for charts. `LocalReduceMotion` (system animator scale 0) removes travel and scale.
+- Typography is the system font with size-specific tracking and tabular figures.
 
-`DataBase` (name `stepsData`, version 3) is a singleton `SQLiteOpenHelper` with a manual **reference-counted `close()`**: every `getInstance()` must be paired with a `close()`, and the real close only happens when the counter reaches zero. `onUpgrade` only handles version 1; versions 2 and 3 have no migration path. `DataBase` holds the day-by-day `stepsData` table plus `User`, `achievement` and `hasAchievement` tables (achievements are only minimally used).
+## Things to know
 
-### Conventions and quirks to know
-- Code comments are in a mix of English and Romanian; identifiers like `stepsPoza` and `deleteEverithing` are legacy spellings. Don't "fix" them unless asked, since prefs keys and resource names depend on strings.
-- Resource and drawable names (`a10`, `icon1`, frame-animation XMLs like `idle_anim.xml`) are looked up by name at runtime via `getResources().getIdentifier(...)` for backgrounds and food, so renaming a drawable can break the shop and inventory without a compile error.
-- Permissions: `ACTIVITY_RECOGNITION` and `POST_NOTIFICATIONS` are requested at runtime with Dexter in `MainActivity`. `StepsService` is a `health`-type foreground service started with `startForegroundService`. Notification code checks `POST_NOTIFICATIONS` itself before `notify()`.
-- Targeting SDK 37 means edge-to-edge is enforced: every activity calls `Util.applySystemBarInsets(this)` after `setContentView` to pad the content for system bars. All PendingIntents use `FLAG_IMMUTABLE`. The hourly save alarm is inexact (`setAndAllowWhileIdle`) so no exact-alarm permission is needed.
+- The pet sprite frames (`idle*`, `hungry*`, `dance*`, `feed*`, `a1..a10` for waking up) and food art are the original assets. Frame sequences and timings are in `PetSprite.kt`. Some food JPGs have opaque white backgrounds, which is why `FoodImage` draws every dish on a white plate.
+- Food and room ids (`rice`, `bg1`, ...) are stored in the database, so renaming one orphans owned items.
+- Dead pet (`lives == 0`) can only be revived with "Start over", which calls `GameRepository.restart()`: it clears game state and pantry but keeps step history and the sensor baseline.
+- The launcher icon still uses `@drawable/icon1` directly; lint reports the old mipmap icons as unused and misplaced. An adaptive icon has not been made yet.
+- Not verified on real hardware: live step counting with a real sensor, and the hunger notification path through `PetCheckWorker` (tested only by reading the code).

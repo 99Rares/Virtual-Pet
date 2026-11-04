@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <!-- Debug builds only: lets the emulator (which has no step sensor) feed steps in via adb. -->
+        <receiver
+            android:name=".DebugStepReceiver"
+            android:exported="true" />
+    </application>
+</manifest>
