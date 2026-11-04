@@ -6,6 +6,7 @@ import com.rares.virtualpetpompi.domain.Difficulty
 import com.rares.virtualpetpompi.domain.MiniGameRules
 import com.rares.virtualpetpompi.domain.PetRules
 import com.rares.virtualpetpompi.domain.PetState
+import com.rares.virtualpetpompi.domain.Skins
 import com.rares.virtualpetpompi.domain.StepRules
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
@@ -27,6 +28,8 @@ data class GameState(
     val coins: Int,
     val selectedRoom: String,
     val ownedRooms: Set<String>,
+    val selectedSkin: String,
+    val ownedSkins: Set<String>,
     val pantry: Map<String, Int>,
     val dailyGoal: Int,
     val todaySteps: Int,
@@ -86,6 +89,8 @@ class GameRepository(
                 coins = snap.difficulty?.let { CoinRules.balance(snap.stepsEarned, it, snap.spentCoins, snap.bonusCoins) } ?: 0,
                 selectedRoom = snap.selectedRoom,
                 ownedRooms = snap.ownedRooms,
+                selectedSkin = snap.selectedSkin,
+                ownedSkins = snap.ownedSkins,
                 pantry = pantry.associate { it.foodId to it.count },
                 dailyGoal = snap.dailyGoal,
                 todaySteps = days.firstOrNull { it.epochDay == date.toEpochDay() }?.steps ?: 0,
@@ -182,6 +187,27 @@ class GameRepository(
     suspend fun selectRoom(roomId: String) = mutex.withLock {
         val snap = store.current()
         if (roomId in snap.ownedRooms) store.edit { it.setSelectedRoom(roomId) }
+    }
+
+    suspend fun buySkin(skinId: String): BuyResult = mutex.withLock {
+        val skin = Skins.all.firstOrNull { it.id == skinId } ?: return BuyResult.NOT_ENOUGH_COINS
+        val snap = store.current()
+        val difficulty = snap.difficulty ?: return BuyResult.NOT_ENOUGH_COINS
+        if (skin.id in snap.ownedSkins) return BuyResult.ALREADY_OWNED
+        if (CoinRules.balance(snap.stepsEarned, difficulty, snap.spentCoins, snap.bonusCoins) < skin.price) {
+            return BuyResult.NOT_ENOUGH_COINS
+        }
+        store.edit {
+            it.setSpentCoins(snap.spentCoins + skin.price)
+            it.setOwnedSkins(snap.ownedSkins + skin.id)
+            it.setSelectedSkin(skin.id)
+        }
+        BuyResult.OK
+    }
+
+    suspend fun selectSkin(skinId: String) = mutex.withLock {
+        val snap = store.current()
+        if (skinId in snap.ownedSkins) store.edit { it.setSelectedSkin(skinId) }
     }
 
     /** Eats one portion of [foodId] from the pantry. Returns false if there was none. */

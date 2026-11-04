@@ -54,6 +54,17 @@
     <!-- Shop -->
     <string name="shop_food">Food</string>
     <string name="shop_rooms">Rooms</string>
+    <string name="shop_skins">Skins</string>
+    <string name="skin_classic">Classic Pompi</string>
+    <string name="skin_classic_desc">The familiar round black-and-white panda, softly redrawn.</string>
+    <string name="skin_red_panda">Red Panda</string>
+    <string name="skin_red_panda_desc">Russet fur, cream face markings and a cosy ringed tail.</string>
+    <string name="skin_polar_bear">Polar Cub</string>
+    <string name="skin_polar_bear_desc">A fluffy ivory bear cub with a gentle snowy look.</string>
+    <string name="skin_cozy">Cozy Pompi</string>
+    <string name="skin_cozy_desc">Pompi wrapped in a soft beanie and scarf.</string>
+    <string name="skin_astronaut">Space Pompi</string>
+    <string name="skin_astronaut_desc">Pompi in a little space suit with a clear round helmet.</string>
     <string name="equipped">In use</string>
     <string name="equip">Use</string>
     <string name="not_enough_coins">Not enough coins</string>

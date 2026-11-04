@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.rares.virtualpetpompi.R
 import com.rares.virtualpetpompi.domain.Difficulty
+import com.rares.virtualpetpompi.domain.Skins
 import com.rares.virtualpetpompi.ui.components.PetSprite
 import com.rares.virtualpetpompi.ui.components.SpriteAction
 import com.rares.virtualpetpompi.ui.components.SpriteKind
@@ -38,7 +39,7 @@ fun OnboardingScreen(onChoose: (Difficulty) -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Spacer(Modifier.weight(1f))
-        PetSprite(hungry = false, action = SpriteAction(SpriteKind.WAKE, 0), modifier = Modifier.fillMaxWidth(0.5f).aspectRatio(600f / 650f))
+        PetSprite(skin = Skins.byId(Skins.DEFAULT_ID), hungry = false, action = SpriteAction(SpriteKind.WAKE, 0), modifier = Modifier.fillMaxWidth(0.5f).aspectRatio(600f / 650f))
         Spacer(Modifier.height(16.dp))
         Text(
             stringResource(R.string.onboarding_title),

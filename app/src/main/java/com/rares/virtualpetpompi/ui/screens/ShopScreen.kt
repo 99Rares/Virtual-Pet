@@ -46,6 +46,7 @@ import com.rares.virtualpetpompi.data.GameState
 import com.rares.virtualpetpompi.domain.Catalog
 import com.rares.virtualpetpompi.domain.Food
 import com.rares.virtualpetpompi.domain.FoodCategory
+import com.rares.virtualpetpompi.domain.Skins
 import com.rares.virtualpetpompi.ui.components.FoodImage
 import com.rares.virtualpetpompi.ui.components.IconValue
 import com.rares.virtualpetpompi.ui.components.RoomBackground
@@ -67,6 +68,8 @@ fun ShopScreen(
     onBuyFood: suspend (String) -> BuyResult,
     onBuyRoom: suspend (String) -> BuyResult,
     onSelectRoom: (String) -> Unit,
+    onBuySkin: suspend (String) -> BuyResult,
+    onSelectSkin: (String) -> Unit,
 ) {
     val c = PetTheme.colors
     val scope = rememberCoroutineScope()
@@ -91,7 +94,7 @@ fun ShopScreen(
             }
             Spacer(Modifier.height(20.dp))
             Segmented(
-                options = listOf(stringResource(R.string.shop_food), stringResource(R.string.shop_rooms)),
+                options = listOf(stringResource(R.string.shop_food), stringResource(R.string.shop_rooms), stringResource(R.string.shop_skins)),
                 selected = section,
                 onSelect = { section = it },
                 modifier = Modifier.fillMaxWidth().materialize(2),
@@ -106,6 +109,15 @@ fun ShopScreen(
                         }
                     }
                 }
+            } else if (section == 2) {
+                SkinSection(state, onBuySkin = { id ->
+                    scope.launch {
+                        if (onBuySkin(id) == BuyResult.NOT_ENOUGH_COINS) {
+                            haptics.performHapticFeedback(HapticFeedbackType.Reject)
+                            toast = Toast(notEnough, false)
+                        } else haptics.performHapticFeedback(HapticFeedbackType.Confirm)
+                    }
+                }, onSelect = onSelectSkin)
             } else {
                 RoomSection(state, onBuyRoom = { id ->
                     scope.launch {
@@ -241,6 +253,54 @@ private fun RoomSection(state: GameState, onBuyRoom: (String) -> Unit, onSelect:
                     }
                 }
                 if (rowRooms.size == 1) Spacer(Modifier.weight(1f))
+            }
+        }
+    }
+}
+
+@Composable
+private fun SkinSection(state: GameState, onBuySkin: (String) -> Unit, onSelect: (String) -> Unit) {
+    val c = PetTheme.colors
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        Skins.all.chunked(2).forEachIndexed { rowIndex, rowSkins ->
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                rowSkins.forEachIndexed { col, skin ->
+                    val owned = skin.id in state.ownedSkins
+                    val selected = skin.id == state.selectedSkin
+                    Column(
+                        Modifier
+                            .weight(1f)
+                            .materialize(rowIndex * 2 + col)
+                            .panel(RoundedCornerShape(24.dp))
+                            .pressable { if (owned) onSelect(skin.id) else onBuySkin(skin.id) }
+                            .padding(12.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Image(
+                            painterResource(skin.preview),
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxWidth().aspectRatio(600f / 650f),
+                            contentScale = ContentScale.Fit,
+                        )
+                        Spacer(Modifier.height(8.dp))
+                        Text(stringResource(skin.name), style = MaterialTheme.typography.titleMedium, color = c.text, maxLines = 1)
+                        Text(
+                            stringResource(skin.description),
+                            style = MaterialTheme.typography.labelMedium,
+                            color = c.textMuted,
+                            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                            maxLines = 3,
+                            minLines = 3,
+                        )
+                        Spacer(Modifier.height(8.dp))
+                        when {
+                            selected -> Text(stringResource(R.string.equipped), style = MaterialTheme.typography.labelMedium, color = c.positive)
+                            owned -> Text(stringResource(R.string.equip), style = MaterialTheme.typography.labelMedium, color = c.textMuted)
+                            else -> PriceTag(skin.price, state.coins >= skin.price)
+                        }
+                    }
+                }
+                if (rowSkins.size == 1) Spacer(Modifier.weight(1f))
             }
         }
     }

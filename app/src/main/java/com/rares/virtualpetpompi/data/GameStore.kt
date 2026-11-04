@@ -13,6 +13,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.rares.virtualpetpompi.domain.Catalog
 import com.rares.virtualpetpompi.domain.Difficulty
 import com.rares.virtualpetpompi.domain.PetState
+import com.rares.virtualpetpompi.domain.Skins
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -36,6 +37,8 @@ data class GameSnapshot(
     val lastCounter: Long?,
     val ownedRooms: Set<String>,
     val selectedRoom: String,
+    val ownedSkins: Set<String>,
+    val selectedSkin: String,
     val dailyGoal: Int,
     val reminderSent: Boolean,
 ) {
@@ -69,6 +72,8 @@ class GameStore(private val store: DataStore<Preferences>) {
             lastCounter = this[LAST_COUNTER],
             ownedRooms = this[OWNED_ROOMS] ?: setOf(Catalog.DEFAULT_ROOM_ID),
             selectedRoom = this[SELECTED_ROOM] ?: Catalog.DEFAULT_ROOM_ID,
+            ownedSkins = this[OWNED_SKINS] ?: setOf(Skins.DEFAULT_ID),
+            selectedSkin = this[SELECTED_SKIN] ?: Skins.DEFAULT_ID,
             dailyGoal = this[DAILY_GOAL] ?: DEFAULT_GOAL,
             reminderSent = this[REMINDER_SENT] ?: false,
         )
@@ -92,6 +97,8 @@ class GameStore(private val store: DataStore<Preferences>) {
         fun setLastCounter(value: Long) { p[LAST_COUNTER] = value }
         fun setOwnedRooms(value: Set<String>) { p[OWNED_ROOMS] = value }
         fun setSelectedRoom(value: String) { p[SELECTED_ROOM] = value }
+        fun setOwnedSkins(value: Set<String>) { p[OWNED_SKINS] = value }
+        fun setSelectedSkin(value: String) { p[SELECTED_SKIN] = value }
         fun setDailyGoal(value: Int) { p[DAILY_GOAL] = value }
         fun setReminderSent(value: Boolean) { p[REMINDER_SENT] = value }
 
@@ -119,6 +126,8 @@ class GameStore(private val store: DataStore<Preferences>) {
         private val LAST_COUNTER = longPreferencesKey("last_counter")
         private val OWNED_ROOMS = stringSetPreferencesKey("owned_rooms")
         private val SELECTED_ROOM = stringPreferencesKey("selected_room")
+        private val OWNED_SKINS = stringSetPreferencesKey("owned_skins")
+        private val SELECTED_SKIN = stringPreferencesKey("selected_skin")
         private val DAILY_GOAL = intPreferencesKey("daily_goal")
         private val REMINDER_SENT = booleanPreferencesKey("reminder_sent")
     }

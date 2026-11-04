@@ -56,6 +56,8 @@ import com.rares.virtualpetpompi.data.BuyResult
 import com.rares.virtualpetpompi.data.GameState
 import com.rares.virtualpetpompi.domain.Catalog
 import com.rares.virtualpetpompi.domain.CatchGame
+import com.rares.virtualpetpompi.domain.Skin
+import com.rares.virtualpetpompi.domain.Skins
 import com.rares.virtualpetpompi.domain.ItemKind
 import com.rares.virtualpetpompi.domain.MiniGameRules
 import com.rares.virtualpetpompi.ui.components.IconValue
@@ -135,7 +137,7 @@ fun MiniGameScreen(
                 },
                 onClose = onExit,
             )
-            Phase.PLAYING -> game?.let { PlayField(it, frame) }
+            Phase.PLAYING -> game?.let { PlayField(it, frame, Skins.byId(state.selectedSkin)) }
             Phase.RESULT -> ResultPanel(
                 bet = bet,
                 score = finalScore,
@@ -210,11 +212,11 @@ private fun BetPanel(state: GameState, bet: Int, onBet: (Int) -> Unit, onStart: 
 }
 
 @Composable
-private fun PlayField(game: CatchGame, frame: Int) {
+private fun PlayField(game: CatchGame, frame: Int, skin: Skin) {
     val foods = remember { Catalog.foods.take(8).map { it.image } }
     val foodBitmaps = foods.map { ImageBitmap.imageResource(it) }
     val skull = ImageBitmap.imageResource(R.drawable.skull)
-    val pandaFrames = listOf(R.drawable.idle1, R.drawable.idle2, R.drawable.idle3).map { ImageBitmap.imageResource(it) }
+    val pandaFrames = skin.idle.map { ImageBitmap.imageResource(it) }
 
     Box(
         Modifier

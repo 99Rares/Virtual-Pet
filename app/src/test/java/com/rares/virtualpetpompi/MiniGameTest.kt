@@ -135,3 +135,21 @@ class CatalogTest {
         org.junit.Assert.assertEquals(0, first.price)
     }
 }
+
+class SkinsTest {
+    @org.junit.Test fun `skin ids are unique and classic is the free default listed first`() {
+        val all = com.rares.virtualpetpompi.domain.Skins.all
+        org.junit.Assert.assertEquals(all.size, all.map { it.id }.toSet().size)
+        org.junit.Assert.assertEquals(com.rares.virtualpetpompi.domain.Skins.DEFAULT_ID, all.first().id)
+        org.junit.Assert.assertEquals(0, all.first().price)
+    }
+
+    @org.junit.Test fun `every skin has the same frame counts and no shared frames with another`() {
+        val all = com.rares.virtualpetpompi.domain.Skins.all
+        all.forEach {
+            org.junit.Assert.assertEquals(it.id, listOf(3, 2, 10, 3, 2), listOf(it.idle.size, it.hungry.size, it.wake.size, it.dance.size, it.feed.size))
+        }
+        val frames = all.flatMap { it.idle + it.hungry + it.wake + it.dance + it.feed + it.preview }
+        org.junit.Assert.assertEquals(frames.size, frames.toSet().size)
+    }
+}

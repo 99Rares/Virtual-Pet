@@ -123,7 +123,7 @@ fun AppRoot(container: AppContainer, vm: PetViewModel) {
                                     onPlay = { playing = true },
                                     onRestart = vm::restart,
                                 )
-                                1 -> ShopScreen(s, vm::buyFood, vm::buyRoom, vm::selectRoom)
+                                1 -> ShopScreen(s, vm::buyFood, vm::buyRoom, vm::selectRoom, vm::buySkin, vm::selectSkin)
                                 2 -> StatsScreen(stats)
                                 else -> SettingsScreen(s, vm::setDailyGoal, vm::restart)
                             }

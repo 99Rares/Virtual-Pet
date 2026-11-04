@@ -30,6 +30,9 @@ class PetViewModel(private val repo: GameRepository) : ViewModel() {
     fun setDailyGoal(goal: Int) = viewModelScope.launch { repo.setDailyGoal(goal) }
     fun selectRoom(id: String) = viewModelScope.launch { repo.selectRoom(id) }
 
+    fun selectSkin(id: String) = viewModelScope.launch { repo.selectSkin(id) }
+
+    suspend fun buySkin(id: String): BuyResult = repo.buySkin(id)
     suspend fun buyFood(id: String): BuyResult = repo.buyFood(id)
     suspend fun buyRoom(id: String): BuyResult = repo.buyRoom(id)
     suspend fun feed(id: String): Boolean = repo.feed(id)

@@ -1,6 +1,6 @@
 # Pompi skins
 
-Catalogue for the approved art refresh. Classic remains the free default. No skin system or Kotlin changes are included in this change.
+Catalogue for the approved art refresh. Classic remains the free default. 
 
 | ID | English display name | Description | Suggested price |
 | --- | --- | --- | ---: |
@@ -12,4 +12,4 @@ Catalogue for the approved art refresh. Classic remains the free default. No ski
 
 Each paid skin has idle1–3, hungry1–2, dance1–3, feed1–2, wake1–10 and preview, prefixed with its ID and an underscore. Classic keeps idle1–3, hungry1–2, dance1–3, feed1–2 and a1–a10, plus classic_preview. All share a 600×650 transparent canvas and matching pose registration.
 
-The four complete sets contain 84 resources including previews, built by editing the corresponding approved classic poses. Feet share the y=590 baseline on a 600×650 canvas. Skin wiring remains separate from this art-only change. Review sheets and eight-room composites are in art-review/.
+The four complete sets contain 84 resources including previews, built by editing the corresponding approved classic poses. Feet share the y=590 baseline on a 600×650 canvas. Skins are wired into the app (shop Skins tab, `domain/Skins.kt`). Review sheets and eight-room composites are in art-review/.

@@ -50,6 +50,7 @@ import com.rares.virtualpetpompi.R
 import com.rares.virtualpetpompi.data.GameState
 import com.rares.virtualpetpompi.domain.Catalog
 import com.rares.virtualpetpompi.domain.PetRules
+import com.rares.virtualpetpompi.domain.Skins
 import com.rares.virtualpetpompi.ui.components.FoodImage
 import com.rares.virtualpetpompi.ui.components.IconValue
 import com.rares.virtualpetpompi.ui.components.PetSprite
@@ -144,6 +145,7 @@ fun PetScreen(
             Spacer(Modifier.weight(1f))
             if (!state.pet.isDead) {
                 PetSprite(
+                    skin = Skins.byId(state.selectedSkin),
                     hungry = hungry,
                     action = action,
                     modifier = Modifier

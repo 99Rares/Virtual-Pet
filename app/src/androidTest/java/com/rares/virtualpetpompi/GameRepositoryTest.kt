@@ -206,6 +206,21 @@ class GameRepositoryTest {
     }
 
     @Test
+    fun skinsCanBeBoughtOnceAndSelected() = runBlocking {
+        repo.onboard(Difficulty.EASY)                                        // 100 starter coins
+        assertEquals("classic", state().selectedSkin)
+        assertEquals(BuyResult.NOT_ENOUGH_COINS, repo.buySkin("astronaut"))  // 120
+        assertEquals(BuyResult.OK, repo.buySkin("red_panda"))                // 60
+        assertEquals("red_panda", state().selectedSkin)
+        assertEquals(40, state().coins)
+        assertEquals(BuyResult.ALREADY_OWNED, repo.buySkin("red_panda"))
+        repo.selectSkin("classic")
+        assertEquals("classic", state().selectedSkin)
+        repo.selectSkin("cozy")                                              // not owned: ignored
+        assertEquals("classic", state().selectedSkin)
+    }
+
+    @Test
     fun restartWipesTheGameButKeepsStepHistory() = runBlocking {
         repo.onboard(Difficulty.NORMAL)
         repo.recordCounter(1_000)
