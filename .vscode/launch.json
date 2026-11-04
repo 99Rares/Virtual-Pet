@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Pompi on Android",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "bash scripts/dev.sh run",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

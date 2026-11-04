@@ -36,7 +36,16 @@ android {
     }
 
     testOptions {
+        // Required when editor project import realizes Compose preview tasks.
+        unitTests.includeAndroidResources = true
         unitTests.returnDefaultValues = true
+    }
+}
+
+// Language-server model import visits preview tasks for both build variants.
+androidComponents {
+    beforeVariants(selector().all()) { variant ->
+        variant.enableUnitTest = true
     }
 }
 

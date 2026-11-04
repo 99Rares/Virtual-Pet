@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "jetbrains.kotlin-server",
+    "redhat.vscode-xml"
+  ],
+  "unwantedRecommendations": [
+    "fwcd.kotlin",
+    "jetbrains.kotlin",
+    "mathiasfrohlich.kotlin"
+  ]
+}

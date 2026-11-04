@@ -1,0 +1,487 @@
+{
+  "version": "2.0.0",
+  "options": {
+    "cwd": "${workspaceFolder}"
+  },
+  "presentation": {
+    "reveal": "always",
+    "panel": "dedicated",
+    "clear": true
+  },
+  "tasks": [
+    {
+      "label": "Android: Check setup",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "doctor"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Android: Build debug",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "build"
+      ],
+      "problemMatcher": [
+        {
+          "owner": "kotlin-build",
+          "fileLocation": "absolute",
+          "severity": "error",
+          "pattern": {
+            "regexp": "^e: (?:file://)?(.+?):(\\d+):(\\d+):?\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
+          }
+        },
+        {
+          "owner": "kotlin-build",
+          "fileLocation": "absolute",
+          "severity": "warning",
+          "pattern": {
+            "regexp": "^w: (?:file://)?(.+?):(\\d+):(\\d+):?\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
+          }
+        },
+        {
+          "owner": "android-lint",
+          "fileLocation": [
+            "autoDetect",
+            "${workspaceFolder}"
+          ],
+          "severity": "error",
+          "pattern": {
+            "regexp": "^(.+):(\\d+): Error: (.*)$",
+            "file": 1,
+            "line": 2,
+            "message": 3
+          }
+        },
+        {
+          "owner": "android-lint",
+          "fileLocation": [
+            "autoDetect",
+            "${workspaceFolder}"
+          ],
+          "severity": "warning",
+          "pattern": {
+            "regexp": "^(.+):(\\d+): Warning: (.*)$",
+            "file": 1,
+            "line": 2,
+            "message": 3
+          }
+        }
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Android: Unit tests",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "test"
+      ],
+      "problemMatcher": [
+        {
+          "owner": "kotlin-build",
+          "fileLocation": "absolute",
+          "severity": "error",
+          "pattern": {
+            "regexp": "^e: (?:file://)?(.+?):(\\d+):(\\d+):?\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
+          }
+        },
+        {
+          "owner": "kotlin-build",
+          "fileLocation": "absolute",
+          "severity": "warning",
+          "pattern": {
+            "regexp": "^w: (?:file://)?(.+?):(\\d+):(\\d+):?\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
+          }
+        },
+        {
+          "owner": "android-lint",
+          "fileLocation": [
+            "autoDetect",
+            "${workspaceFolder}"
+          ],
+          "severity": "error",
+          "pattern": {
+            "regexp": "^(.+):(\\d+): Error: (.*)$",
+            "file": 1,
+            "line": 2,
+            "message": 3
+          }
+        },
+        {
+          "owner": "android-lint",
+          "fileLocation": [
+            "autoDetect",
+            "${workspaceFolder}"
+          ],
+          "severity": "warning",
+          "pattern": {
+            "regexp": "^(.+):(\\d+): Warning: (.*)$",
+            "file": 1,
+            "line": 2,
+            "message": 3
+          }
+        }
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Android: Lint",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "lint"
+      ],
+      "problemMatcher": [
+        {
+          "owner": "kotlin-build",
+          "fileLocation": "absolute",
+          "severity": "error",
+          "pattern": {
+            "regexp": "^e: (?:file://)?(.+?):(\\d+):(\\d+):?\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
+          }
+        },
+        {
+          "owner": "kotlin-build",
+          "fileLocation": "absolute",
+          "severity": "warning",
+          "pattern": {
+            "regexp": "^w: (?:file://)?(.+?):(\\d+):(\\d+):?\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
+          }
+        },
+        {
+          "owner": "android-lint",
+          "fileLocation": [
+            "autoDetect",
+            "${workspaceFolder}"
+          ],
+          "severity": "error",
+          "pattern": {
+            "regexp": "^(.+):(\\d+): Error: (.*)$",
+            "file": 1,
+            "line": 2,
+            "message": 3
+          }
+        },
+        {
+          "owner": "android-lint",
+          "fileLocation": [
+            "autoDetect",
+            "${workspaceFolder}"
+          ],
+          "severity": "warning",
+          "pattern": {
+            "regexp": "^(.+):(\\d+): Warning: (.*)$",
+            "file": 1,
+            "line": 2,
+            "message": 3
+          }
+        }
+      ]
+    },
+    {
+      "label": "Android: Verify all",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "check"
+      ],
+      "problemMatcher": [
+        {
+          "owner": "kotlin-build",
+          "fileLocation": "absolute",
+          "severity": "error",
+          "pattern": {
+            "regexp": "^e: (?:file://)?(.+?):(\\d+):(\\d+):?\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
+          }
+        },
+        {
+          "owner": "kotlin-build",
+          "fileLocation": "absolute",
+          "severity": "warning",
+          "pattern": {
+            "regexp": "^w: (?:file://)?(.+?):(\\d+):(\\d+):?\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
+          }
+        },
+        {
+          "owner": "android-lint",
+          "fileLocation": [
+            "autoDetect",
+            "${workspaceFolder}"
+          ],
+          "severity": "error",
+          "pattern": {
+            "regexp": "^(.+):(\\d+): Error: (.*)$",
+            "file": 1,
+            "line": 2,
+            "message": 3
+          }
+        },
+        {
+          "owner": "android-lint",
+          "fileLocation": [
+            "autoDetect",
+            "${workspaceFolder}"
+          ],
+          "severity": "warning",
+          "pattern": {
+            "regexp": "^(.+):(\\d+): Warning: (.*)$",
+            "file": 1,
+            "line": 2,
+            "message": 3
+          }
+        }
+      ]
+    },
+    {
+      "label": "Android: Build release",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "release"
+      ],
+      "problemMatcher": [
+        {
+          "owner": "kotlin-build",
+          "fileLocation": "absolute",
+          "severity": "error",
+          "pattern": {
+            "regexp": "^e: (?:file://)?(.+?):(\\d+):(\\d+):?\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
+          }
+        },
+        {
+          "owner": "kotlin-build",
+          "fileLocation": "absolute",
+          "severity": "warning",
+          "pattern": {
+            "regexp": "^w: (?:file://)?(.+?):(\\d+):(\\d+):?\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
+          }
+        },
+        {
+          "owner": "android-lint",
+          "fileLocation": [
+            "autoDetect",
+            "${workspaceFolder}"
+          ],
+          "severity": "error",
+          "pattern": {
+            "regexp": "^(.+):(\\d+): Error: (.*)$",
+            "file": 1,
+            "line": 2,
+            "message": 3
+          }
+        },
+        {
+          "owner": "android-lint",
+          "fileLocation": [
+            "autoDetect",
+            "${workspaceFolder}"
+          ],
+          "severity": "warning",
+          "pattern": {
+            "regexp": "^(.+):(\\d+): Warning: (.*)$",
+            "file": 1,
+            "line": 2,
+            "message": 3
+          }
+        }
+      ]
+    },
+    {
+      "label": "Android: Clean",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "clean"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Android: Devices",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "devices"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Android: List emulators",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "emulators"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Android: Start emulator",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "emulator",
+        "${input:avd}"
+      ],
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "Android: Run app",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "run"
+      ],
+      "problemMatcher": [
+        {
+          "owner": "kotlin-build",
+          "fileLocation": "absolute",
+          "severity": "error",
+          "pattern": {
+            "regexp": "^e: (?:file://)?(.+?):(\\d+):(\\d+):?\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
+          }
+        },
+        {
+          "owner": "kotlin-build",
+          "fileLocation": "absolute",
+          "severity": "warning",
+          "pattern": {
+            "regexp": "^w: (?:file://)?(.+?):(\\d+):(\\d+):?\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
+          }
+        },
+        {
+          "owner": "android-lint",
+          "fileLocation": [
+            "autoDetect",
+            "${workspaceFolder}"
+          ],
+          "severity": "error",
+          "pattern": {
+            "regexp": "^(.+):(\\d+): Error: (.*)$",
+            "file": 1,
+            "line": 2,
+            "message": 3
+          }
+        },
+        {
+          "owner": "android-lint",
+          "fileLocation": [
+            "autoDetect",
+            "${workspaceFolder}"
+          ],
+          "severity": "warning",
+          "pattern": {
+            "regexp": "^(.+):(\\d+): Warning: (.*)$",
+            "file": 1,
+            "line": 2,
+            "message": 3
+          }
+        }
+      ]
+    },
+    {
+      "label": "Android: App logs",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "logcat"
+      ],
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "Android: Inject step counter",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "scripts/dev.sh",
+        "steps",
+        "${input:counter}"
+      ],
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "avd",
+      "type": "promptString",
+      "description": "AVD name (see Android: List emulators)",
+      "default": "pet37"
+    },
+    {
+      "id": "counter",
+      "type": "promptString",
+      "description": "Cumulative step counter: first 10000 sets baseline, then 18200 adds 8200",
+      "default": "10000"
+    }
+  ]
+}
