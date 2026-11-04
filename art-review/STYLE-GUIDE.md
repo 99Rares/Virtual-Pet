@@ -1,6 +1,6 @@
 # Proposed direction: soft sculpted storybook
 
-Status: proposed, awaiting approval of four samples. Glass stays in UI chrome; artwork uses a satin finish with broad, soft shading.
+Status: approved by the user after the blue rice-bowl revision; production authorised unsupervised. Glass stays in UI chrome; artwork uses a satin finish with broad, soft shading.
 
 - Pompi: oversized round head, small pear-shaped body, round ears, large asymmetric-looking oval eye patches, small nose and friendly eyes. Preserve the old seated panda's identity while regularising its geometry. No realistic fur strands or heavy ink contour.
 - Palette: warm porcelain #F7F3EB, cool shaded ivory #D4DCE1, charcoal #252B35 with lifted lit edges #465361. Restrained blush #E9ADA4. Food uses appetising muted ochre, terracotta and leaf green. Coin: honey #E8B44F, light #FFE3A0, shade #B5782B. Red panda: russet #B95E38, amber #DA9059, cream markings and charcoal legs.
@@ -18,4 +18,4 @@ Classic names/counts and PetSprite.kt playback stay unchanged. Skin names/counts
 
 ## Checkpoint and next stage
 
-Four separate sample assets: classic idle, an edit of that idle into red panda, rice, coin. Samples live outside res and are not wired into the app. Show them on near-black, pale and colourful backdrops before approval. Final pose registration, compression and full animation checks happen after style approval. Other skins, frame sets, food, rooms and launcher assets must wait.
+Four separate sample assets: classic idle, an edit of that idle into red panda, rice, coin. Samples live outside res and are not wired into the app. Show them on near-black, pale and colourful backdrops before approval. Final pose registration, compression and full animation checks happen after style approval. The user approved continuing with all frame sets, food, rooms, launcher assets and verification.

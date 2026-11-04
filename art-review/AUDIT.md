@@ -42,7 +42,7 @@ RoomBackground.kt uses gradients and soft landscape/wave silhouettes for sunset,
 - icon1: opaque green square despite RGBA storage, sleepy low-contrast panda; no adaptive safe-zone design.
 - ic_launcher_background.xml: Android Studio's green construction-grid template, unrelated to the app.
 - ic_stat_pet.xml: clean white paw vector at 24dp, suitable as a notification silhouette; retain.
-- Manifest points both icon fields to drawable/icon1. Existing mipmap-anydpi-v26 adaptive XMLs reference an absent ic_launcher_foreground; no monochrome layer exists. Launcher configuration and obsolete mipmaps will be addressed only after sample approval.
+- Manifest points both icon fields to drawable/icon1. Existing mipmap-anydpi-v26 adaptive XMLs reference a template foreground in drawable-v24 (found during the production-wide resource check), rather than a Pompi foreground; no monochrome layer exists. Launcher configuration and obsolete mipmaps will be addressed after sample approval.
 
 ## Verification boundary
 

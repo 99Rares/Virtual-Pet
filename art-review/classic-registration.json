@@ -1,0 +1,249 @@
+[
+  {
+    "frame": "a1",
+    "shift": [
+      -4,
+      -7
+    ],
+    "solid_bounds": [
+      56,
+      285,
+      547,
+      590
+    ]
+  },
+  {
+    "frame": "a2",
+    "shift": [
+      -22,
+      -2
+    ],
+    "solid_bounds": [
+      31,
+      239,
+      530,
+      590
+    ]
+  },
+  {
+    "frame": "a3",
+    "shift": [
+      -2,
+      1
+    ],
+    "solid_bounds": [
+      86,
+      110,
+      504,
+      590
+    ]
+  },
+  {
+    "frame": "a4",
+    "shift": [
+      11,
+      -6
+    ],
+    "solid_bounds": [
+      94,
+      59,
+      507,
+      590
+    ]
+  },
+  {
+    "frame": "a5",
+    "shift": [
+      10,
+      -1
+    ],
+    "solid_bounds": [
+      81,
+      64,
+      526,
+      590
+    ]
+  },
+  {
+    "frame": "a6",
+    "shift": [
+      8,
+      0
+    ],
+    "solid_bounds": [
+      55,
+      67,
+      557,
+      590
+    ]
+  },
+  {
+    "frame": "a7",
+    "shift": [
+      7,
+      0
+    ],
+    "solid_bounds": [
+      66,
+      64,
+      547,
+      590
+    ]
+  },
+  {
+    "frame": "a8",
+    "shift": [
+      8,
+      -1
+    ],
+    "solid_bounds": [
+      97,
+      64,
+      503,
+      590
+    ]
+  },
+  {
+    "frame": "a9",
+    "shift": [
+      7,
+      0
+    ],
+    "solid_bounds": [
+      96,
+      65,
+      505,
+      590
+    ]
+  },
+  {
+    "frame": "dance1",
+    "shift": [
+      4,
+      -12
+    ],
+    "solid_bounds": [
+      83,
+      57,
+      525,
+      590
+    ]
+  },
+  {
+    "frame": "dance2",
+    "shift": [
+      8,
+      -11
+    ],
+    "solid_bounds": [
+      74,
+      51,
+      530,
+      590
+    ]
+  },
+  {
+    "frame": "dance3",
+    "shift": [
+      14,
+      -7
+    ],
+    "solid_bounds": [
+      104,
+      54,
+      508,
+      590
+    ]
+  },
+  {
+    "frame": "feed1",
+    "shift": [
+      8,
+      -1
+    ],
+    "solid_bounds": [
+      95,
+      63,
+      500,
+      590
+    ]
+  },
+  {
+    "frame": "feed2",
+    "shift": [
+      8,
+      -1
+    ],
+    "solid_bounds": [
+      95,
+      63,
+      505,
+      590
+    ]
+  },
+  {
+    "frame": "hungry1",
+    "shift": [
+      4,
+      -1
+    ],
+    "solid_bounds": [
+      93,
+      67,
+      503,
+      590
+    ]
+  },
+  {
+    "frame": "hungry2",
+    "shift": [
+      8,
+      0
+    ],
+    "solid_bounds": [
+      95,
+      65,
+      501,
+      590
+    ]
+  },
+  {
+    "frame": "idle1",
+    "shift": [
+      6,
+      1
+    ],
+    "solid_bounds": [
+      97,
+      67,
+      508,
+      590
+    ]
+  },
+  {
+    "frame": "idle2",
+    "shift": [
+      6,
+      -1
+    ],
+    "solid_bounds": [
+      93,
+      63,
+      502,
+      590
+    ]
+  },
+  {
+    "frame": "idle3",
+    "shift": [
+      6,
+      1
+    ],
+    "solid_bounds": [
+      95,
+      65,
+      507,
+      590
+    ]
+  }
+]
