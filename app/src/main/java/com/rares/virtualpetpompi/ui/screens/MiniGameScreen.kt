@@ -241,7 +241,7 @@ private fun PlayField(game: CatchGame, frame: Int, skin: Skin) {
             val pandaBmp = pandaFrames[(game.elapsed * 4).toInt() % pandaFrames.size]
             drawBitmap(pandaBmp, (game.playerX * w - pandaSize / 2f).toInt(), (CatchGame.PLAYER_Y * h - pandaSize * 0.55f).toInt(), pandaSize)
         }
-        Hud(game)
+        Hud(game.score, game.timeLeft, game.lives, game.startLives, game.durationSeconds.toInt())
     }
 }
 
@@ -259,25 +259,27 @@ private fun DrawScope.drawItem(bitmap: ImageBitmap, x: Int, y: Int, size: Int, r
 }
 
 @Composable
-private fun Hud(game: CatchGame) {
+private fun Hud(score: Int, timeLeft: Float, lives: Int, startLives: Int, duration: Int) {
+    // CatchGame is not Compose state, so the values are read by PlayField (which recomposes every
+    // frame) and passed in; a changed value is what makes Compose redraw this.
     Row(
         Modifier.fillMaxWidth().statusBarsPadding().padding(horizontal = 20.dp, vertical = 16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column {
-            Text(game.score.toString(), style = MaterialTheme.typography.displayMedium, color = Color.White)
+            Text(score.toString(), style = MaterialTheme.typography.displayMedium, color = Color.White)
             Text(stringResource(R.string.game_score_label), style = MaterialTheme.typography.labelMedium, color = Color.White.copy(alpha = 0.8f))
         }
         Column(horizontalAlignment = Alignment.End) {
-            Text(game.timeLeft.toInt().plus(1).coerceAtMost(game.durationSeconds.toInt()).toString() + "s", style = MaterialTheme.typography.titleLarge, color = Color.White)
+            Text(timeLeft.toInt().plus(1).coerceAtMost(duration).toString() + "s", style = MaterialTheme.typography.titleLarge, color = Color.White)
             Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                repeat(game.startLives) { i ->
+                repeat(startLives) { i ->
                     Image(
                         painterResource(R.drawable.heart),
                         contentDescription = null,
                         modifier = Modifier.size(20.dp),
-                        alpha = if (i < game.lives) 1f else 0.25f,
+                        alpha = if (i < lives) 1f else 0.25f,
                     )
                 }
             }

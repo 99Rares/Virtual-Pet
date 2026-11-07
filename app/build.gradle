@@ -8,6 +8,10 @@ android {
     namespace 'com.rares.virtualpetpompi'
     compileSdk 37
 
+    sourceSets {
+        androidTest.assets.srcDirs += "$projectDir/schemas"   // migration tests read the exported Room schemas
+    }
+
     defaultConfig {
         applicationId "com.rares.virtualpetpompi"
         minSdk 26

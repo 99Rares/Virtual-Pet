@@ -8,6 +8,8 @@ import androidx.room.PrimaryKey
 import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.flow.Flow
 
 /** Steps walked on one calendar day, keyed by [java.time.LocalDate.toEpochDay]. */
@@ -59,13 +61,36 @@ interface PantryDao {
     suspend fun clear()
 }
 
-@Database(entities = [StepDay::class, PantryItem::class], version = 1, exportSchema = true)
+@Database(entities = [StepDay::class, PantryItem::class], version = 2, exportSchema = true)
 abstract class PetDatabase : RoomDatabase() {
     abstract fun stepDays(): StepDayDao
     abstract fun pantry(): PantryDao
 
     companion object {
+        /** Food ids used to be a mix of Romanian and English; this moves owned portions to the English ids. */
+        val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                LEGACY_FOOD_IDS.forEach { (old, new) ->
+                    db.execSQL("UPDATE pantry SET foodId = ? WHERE foodId = ?", arrayOf(new, old))
+                }
+            }
+        }
+
+        val LEGACY_FOOD_IDS = mapOf(
+            "cirese" to "cherries",
+            "clatitecucafea" to "coffee_crepes",
+            "englishbreakfast" to "english_breakfast",
+            "fruits1" to "fruit_plate",
+            "cafea" to "coffee",
+            "steak1" to "steak",
+            "steak2" to "grilled_steak",
+            "cartofipai" to "straw_fries",
+            "hotdog" to "hot_dog",
+            "onionrings" to "onion_rings",
+            "gogosi" to "doughnuts",
+        )
+
         fun create(context: Context): PetDatabase =
-            Room.databaseBuilder(context, PetDatabase::class.java, "pet.db").build()
+            Room.databaseBuilder(context, PetDatabase::class.java, "pet.db").addMigrations(MIGRATION_1_2).build()
     }
 }

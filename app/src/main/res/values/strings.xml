@@ -65,6 +65,10 @@
     <string name="skin_cozy_desc">Pompi wrapped in a soft beanie and scarf.</string>
     <string name="skin_astronaut">Space Pompi</string>
     <string name="skin_astronaut_desc">Pompi in a little space suit with a clear round helmet.</string>
+    <string name="skin_pupsy">Pupsy</string>
+    <string name="skin_pupsy_desc">Golden eyes and velvet-black fur, inspired by Pupsy.</string>
+    <string name="skin_kira">Kira</string>
+    <string name="skin_kira_desc">Bright blue eyes and a fluffy husky coat, inspired by Kira.</string>
     <string name="equipped">In use</string>
     <string name="equip">Use</string>
     <string name="not_enough_coins">Not enough coins</string>
@@ -110,23 +114,23 @@
 
     <!-- Food names -->
     <string name="food_rice">Rice bowl</string>
-    <string name="food_cirese">Cherries</string>
-    <string name="food_clatitecucafea">Coffee crêpes</string>
-    <string name="food_englishbreakfast">English breakfast</string>
-    <string name="food_fruits1">Fruit plate</string>
-    <string name="food_cafea">Coffee</string>
+    <string name="food_cherries">Cherries</string>
+    <string name="food_coffee_crepes">Coffee crêpes</string>
+    <string name="food_english_breakfast">English breakfast</string>
+    <string name="food_fruit_plate">Fruit plate</string>
+    <string name="food_coffee">Coffee</string>
     <string name="food_carbonara">Carbonara</string>
     <string name="food_salad">Salad</string>
     <string name="food_soup">Soup</string>
-    <string name="food_steak1">Steak</string>
-    <string name="food_steak2">Grilled steak</string>
-    <string name="food_cartofipai">Straw fries</string>
+    <string name="food_steak">Steak</string>
+    <string name="food_grilled_steak">Grilled steak</string>
+    <string name="food_straw_fries">Straw fries</string>
     <string name="food_burger">Burger</string>
     <string name="food_cola">Cola</string>
-    <string name="food_hotdog">Hot dog</string>
+    <string name="food_hot_dog">Hot dog</string>
     <string name="food_nuggets">Nuggets</string>
-    <string name="food_onionrings">Onion rings</string>
-    <string name="food_gogosi">Doughnuts</string>
+    <string name="food_onion_rings">Onion rings</string>
+    <string name="food_doughnuts">Doughnuts</string>
     <string name="food_pizza">Pizza</string>
     <string name="category_breakfast">Breakfast</string>
     <string name="category_dinner">Dinner</string>

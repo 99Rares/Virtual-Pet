@@ -88,3 +88,28 @@ class PetRulesTest {
         assertFalse(pet.isDead)
     }
 }
+
+class FoodBalanceTest {
+    private val foods = com.rares.virtualpetpompi.domain.Catalog.foods
+    private fun perPoint(f: com.rares.virtualpetpompi.domain.Food) = f.price.toDouble() / f.fullness
+
+    @org.junit.Test
+    fun wholeFoodIsCheapPerPointAndJunkIsNot() {
+        foods.filter { it.health >= 4 }.forEach { org.junit.Assert.assertTrue("${it.id} ${perPoint(it)}", perPoint(it) <= 0.65) }
+        foods.filter { it.health <= 1 }.forEach { org.junit.Assert.assertTrue("${it.id} ${perPoint(it)}", perPoint(it) >= 1.0) }
+    }
+
+    @org.junit.Test
+    fun healthierFoodIsNeverWorseValueThanJunk() {
+        val worstHealthy = foods.filter { it.health >= 4 }.maxOf { perPoint(it) }
+        val bestJunk = foods.filter { it.health <= 1 }.minOf { perPoint(it) }
+        org.junit.Assert.assertTrue(worstHealthy < bestJunk)
+    }
+
+    @org.junit.Test
+    fun statsAreSane() {
+        foods.forEach {
+            org.junit.Assert.assertTrue(it.id, it.price > 0 && it.fullness in 1..100 && it.health in 0..5)
+        }
+    }
+}

@@ -30,7 +30,7 @@ object Skins {
             "classic", R.string.skin_classic, R.string.skin_classic_desc, 0, R.drawable.classic_preview,
             idle = listOf(R.drawable.idle1, R.drawable.idle2, R.drawable.idle3),
             hungry = listOf(R.drawable.hungry1, R.drawable.hungry2),
-            wake = listOf(R.drawable.a1, R.drawable.a2, R.drawable.a3, R.drawable.a4, R.drawable.a5, R.drawable.a6, R.drawable.a7, R.drawable.a8, R.drawable.a9, R.drawable.a10),
+            wake = listOf(R.drawable.wake1, R.drawable.wake2, R.drawable.wake3, R.drawable.wake4, R.drawable.wake5, R.drawable.wake6, R.drawable.wake7, R.drawable.wake8, R.drawable.wake9, R.drawable.wake10),
             dance = listOf(R.drawable.dance1, R.drawable.dance2, R.drawable.dance3),
             feed = listOf(R.drawable.feed1, R.drawable.feed2),
         ),
@@ -65,6 +65,22 @@ object Skins {
             wake = listOf(R.drawable.astronaut_wake1, R.drawable.astronaut_wake2, R.drawable.astronaut_wake3, R.drawable.astronaut_wake4, R.drawable.astronaut_wake5, R.drawable.astronaut_wake6, R.drawable.astronaut_wake7, R.drawable.astronaut_wake8, R.drawable.astronaut_wake9, R.drawable.astronaut_wake10),
             dance = listOf(R.drawable.astronaut_dance1, R.drawable.astronaut_dance2, R.drawable.astronaut_dance3),
             feed = listOf(R.drawable.astronaut_feed1, R.drawable.astronaut_feed2),
+        ),
+        Skin(
+            "pupsy", R.string.skin_pupsy, R.string.skin_pupsy_desc, 140, R.drawable.pupsy_preview,
+            idle = listOf(R.drawable.pupsy_idle1, R.drawable.pupsy_idle2, R.drawable.pupsy_idle3),
+            hungry = listOf(R.drawable.pupsy_hungry1, R.drawable.pupsy_hungry2),
+            wake = listOf(R.drawable.pupsy_wake1, R.drawable.pupsy_wake2, R.drawable.pupsy_wake3, R.drawable.pupsy_wake4, R.drawable.pupsy_wake5, R.drawable.pupsy_wake6, R.drawable.pupsy_wake7, R.drawable.pupsy_wake8, R.drawable.pupsy_wake9, R.drawable.pupsy_wake10),
+            dance = listOf(R.drawable.pupsy_dance1, R.drawable.pupsy_dance2, R.drawable.pupsy_dance3),
+            feed = listOf(R.drawable.pupsy_feed1, R.drawable.pupsy_feed2),
+        ),
+        Skin(
+            "kira", R.string.skin_kira, R.string.skin_kira_desc, 160, R.drawable.kira_preview,
+            idle = listOf(R.drawable.kira_idle1, R.drawable.kira_idle2, R.drawable.kira_idle3),
+            hungry = listOf(R.drawable.kira_hungry1, R.drawable.kira_hungry2),
+            wake = listOf(R.drawable.kira_wake1, R.drawable.kira_wake2, R.drawable.kira_wake3, R.drawable.kira_wake4, R.drawable.kira_wake5, R.drawable.kira_wake6, R.drawable.kira_wake7, R.drawable.kira_wake8, R.drawable.kira_wake9, R.drawable.kira_wake10),
+            dance = listOf(R.drawable.kira_dance1, R.drawable.kira_dance2, R.drawable.kira_dance3),
+            feed = listOf(R.drawable.kira_feed1, R.drawable.kira_feed2),
         ),
     )
 
