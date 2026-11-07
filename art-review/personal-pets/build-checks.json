@@ -1,0 +1,23 @@
+{
+  "unit_tests": {
+    "tests": 43,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "Warning": 201,
+    "Hint": 1
+  },
+  "lint_errors": 0,
+  "new_skin_images": 42,
+  "new_skin_bytes": 2085328,
+  "new_skin_largest_bytes": 66228,
+  "all_paid_skin_images": 126,
+  "all_paid_skin_bytes": 5750394,
+  "instrumented_tests": {
+    "tests": 15,
+    "failures": 0,
+    "device": "emulator-5554"
+  }
+}

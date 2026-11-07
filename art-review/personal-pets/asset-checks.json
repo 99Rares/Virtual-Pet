@@ -1,0 +1,427 @@
+{
+  "images": 42,
+  "bytes": 2085328,
+  "failures": [],
+  "assets": [
+    {
+      "file": "pupsy_idle1.webp",
+      "bytes": 40264,
+      "solid_bounds": [
+        123,
+        64,
+        491,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_idle2.webp",
+      "bytes": 38714,
+      "solid_bounds": [
+        123,
+        65,
+        491,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_idle3.webp",
+      "bytes": 37774,
+      "solid_bounds": [
+        122,
+        64,
+        492,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_hungry1.webp",
+      "bytes": 38266,
+      "solid_bounds": [
+        121,
+        65,
+        491,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_hungry2.webp",
+      "bytes": 39630,
+      "solid_bounds": [
+        125,
+        68,
+        492,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_dance1.webp",
+      "bytes": 41142,
+      "solid_bounds": [
+        84,
+        33,
+        523,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_dance2.webp",
+      "bytes": 39752,
+      "solid_bounds": [
+        80,
+        66,
+        515,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_dance3.webp",
+      "bytes": 40950,
+      "solid_bounds": [
+        136,
+        57,
+        509,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_feed1.webp",
+      "bytes": 40086,
+      "solid_bounds": [
+        120,
+        63,
+        486,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_feed2.webp",
+      "bytes": 40946,
+      "solid_bounds": [
+        118,
+        58,
+        500,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_wake1.webp",
+      "bytes": 28300,
+      "solid_bounds": [
+        60,
+        272,
+        551,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_wake2.webp",
+      "bytes": 29116,
+      "solid_bounds": [
+        48,
+        241,
+        539,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_wake3.webp",
+      "bytes": 37626,
+      "solid_bounds": [
+        114,
+        105,
+        514,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_wake4.webp",
+      "bytes": 39526,
+      "solid_bounds": [
+        124,
+        67,
+        491,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_wake5.webp",
+      "bytes": 43310,
+      "solid_bounds": [
+        86,
+        58,
+        524,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_wake6.webp",
+      "bytes": 47708,
+      "solid_bounds": [
+        72,
+        62,
+        542,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_wake7.webp",
+      "bytes": 44416,
+      "solid_bounds": [
+        79,
+        57,
+        537,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_wake8.webp",
+      "bytes": 41986,
+      "solid_bounds": [
+        112,
+        58,
+        493,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_wake9.webp",
+      "bytes": 37788,
+      "solid_bounds": [
+        117,
+        61,
+        487,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_wake10.webp",
+      "bytes": 40264,
+      "solid_bounds": [
+        123,
+        64,
+        491,
+        590
+      ]
+    },
+    {
+      "file": "pupsy_preview.webp",
+      "bytes": 40264,
+      "solid_bounds": [
+        123,
+        64,
+        491,
+        590
+      ]
+    },
+    {
+      "file": "kira_idle1.webp",
+      "bytes": 61548,
+      "solid_bounds": [
+        116,
+        40,
+        525,
+        590
+      ]
+    },
+    {
+      "file": "kira_idle2.webp",
+      "bytes": 53960,
+      "solid_bounds": [
+        114,
+        44,
+        526,
+        590
+      ]
+    },
+    {
+      "file": "kira_idle3.webp",
+      "bytes": 56162,
+      "solid_bounds": [
+        114,
+        31,
+        530,
+        590
+      ]
+    },
+    {
+      "file": "kira_hungry1.webp",
+      "bytes": 57472,
+      "solid_bounds": [
+        112,
+        43,
+        527,
+        590
+      ]
+    },
+    {
+      "file": "kira_hungry2.webp",
+      "bytes": 64306,
+      "solid_bounds": [
+        118,
+        43,
+        522,
+        590
+      ]
+    },
+    {
+      "file": "kira_dance1.webp",
+      "bytes": 61166,
+      "solid_bounds": [
+        84,
+        28,
+        518,
+        590
+      ]
+    },
+    {
+      "file": "kira_dance2.webp",
+      "bytes": 60038,
+      "solid_bounds": [
+        88,
+        29,
+        522,
+        590
+      ]
+    },
+    {
+      "file": "kira_dance3.webp",
+      "bytes": 62232,
+      "solid_bounds": [
+        137,
+        35,
+        518,
+        590
+      ]
+    },
+    {
+      "file": "kira_feed1.webp",
+      "bytes": 57978,
+      "solid_bounds": [
+        117,
+        39,
+        523,
+        590
+      ]
+    },
+    {
+      "file": "kira_feed2.webp",
+      "bytes": 61052,
+      "solid_bounds": [
+        114,
+        47,
+        527,
+        590
+      ]
+    },
+    {
+      "file": "kira_wake1.webp",
+      "bytes": 46848,
+      "solid_bounds": [
+        71,
+        268,
+        565,
+        590
+      ]
+    },
+    {
+      "file": "kira_wake2.webp",
+      "bytes": 56340,
+      "solid_bounds": [
+        41,
+        213,
+        564,
+        590
+      ]
+    },
+    {
+      "file": "kira_wake3.webp",
+      "bytes": 64008,
+      "solid_bounds": [
+        100,
+        76,
+        530,
+        590
+      ]
+    },
+    {
+      "file": "kira_wake4.webp",
+      "bytes": 59654,
+      "solid_bounds": [
+        117,
+        44,
+        521,
+        590
+      ]
+    },
+    {
+      "file": "kira_wake5.webp",
+      "bytes": 60944,
+      "solid_bounds": [
+        80,
+        38,
+        514,
+        590
+      ]
+    },
+    {
+      "file": "kira_wake6.webp",
+      "bytes": 64860,
+      "solid_bounds": [
+        73,
+        39,
+        547,
+        590
+      ]
+    },
+    {
+      "file": "kira_wake7.webp",
+      "bytes": 66228,
+      "solid_bounds": [
+        74,
+        42,
+        551,
+        590
+      ]
+    },
+    {
+      "file": "kira_wake8.webp",
+      "bytes": 61488,
+      "solid_bounds": [
+        98,
+        28,
+        501,
+        590
+      ]
+    },
+    {
+      "file": "kira_wake9.webp",
+      "bytes": 58120,
+      "solid_bounds": [
+        115,
+        40,
+        519,
+        590
+      ]
+    },
+    {
+      "file": "kira_wake10.webp",
+      "bytes": 61548,
+      "solid_bounds": [
+        116,
+        40,
+        525,
+        590
+      ]
+    },
+    {
+      "file": "kira_preview.webp",
+      "bytes": 61548,
+      "solid_bounds": [
+        116,
+        40,
+        525,
+        590
+      ]
+    }
+  ]
+}
