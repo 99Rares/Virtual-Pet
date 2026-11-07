@@ -1,0 +1,38 @@
+--- a/app/src/main/java/com/rares/virtualpetpompi/domain/Skins.kt
++++ b/app/src/main/java/com/rares/virtualpetpompi/domain/Skins.kt
+@@ -66,6 +66,22 @@
+             dance = listOf(R.drawable.astronaut_dance1, R.drawable.astronaut_dance2, R.drawable.astronaut_dance3),
+             feed = listOf(R.drawable.astronaut_feed1, R.drawable.astronaut_feed2),
+         ),
++        Skin(
++            "pupsy", R.string.skin_pupsy, R.string.skin_pupsy_desc, 140, R.drawable.pupsy_preview,
++            idle = listOf(R.drawable.pupsy_idle1, R.drawable.pupsy_idle2, R.drawable.pupsy_idle3),
++            hungry = listOf(R.drawable.pupsy_hungry1, R.drawable.pupsy_hungry2),
++            wake = listOf(R.drawable.pupsy_wake1, R.drawable.pupsy_wake2, R.drawable.pupsy_wake3, R.drawable.pupsy_wake4, R.drawable.pupsy_wake5, R.drawable.pupsy_wake6, R.drawable.pupsy_wake7, R.drawable.pupsy_wake8, R.drawable.pupsy_wake9, R.drawable.pupsy_wake10),
++            dance = listOf(R.drawable.pupsy_dance1, R.drawable.pupsy_dance2, R.drawable.pupsy_dance3),
++            feed = listOf(R.drawable.pupsy_feed1, R.drawable.pupsy_feed2),
++        ),
++        Skin(
++            "kira", R.string.skin_kira, R.string.skin_kira_desc, 160, R.drawable.kira_preview,
++            idle = listOf(R.drawable.kira_idle1, R.drawable.kira_idle2, R.drawable.kira_idle3),
++            hungry = listOf(R.drawable.kira_hungry1, R.drawable.kira_hungry2),
++            wake = listOf(R.drawable.kira_wake1, R.drawable.kira_wake2, R.drawable.kira_wake3, R.drawable.kira_wake4, R.drawable.kira_wake5, R.drawable.kira_wake6, R.drawable.kira_wake7, R.drawable.kira_wake8, R.drawable.kira_wake9, R.drawable.kira_wake10),
++            dance = listOf(R.drawable.kira_dance1, R.drawable.kira_dance2, R.drawable.kira_dance3),
++            feed = listOf(R.drawable.kira_feed1, R.drawable.kira_feed2),
++        ),
+     )
+ 
+     fun byId(id: String): Skin = all.firstOrNull { it.id == id } ?: all.first()
+--- a/app/src/main/res/values/strings.xml
++++ b/app/src/main/res/values/strings.xml
+@@ -65,6 +65,10 @@
+     <string name="skin_cozy_desc">Pompi wrapped in a soft beanie and scarf.</string>
+     <string name="skin_astronaut">Space Pompi</string>
+     <string name="skin_astronaut_desc">Pompi in a little space suit with a clear round helmet.</string>
++    <string name="skin_pupsy">Pupsy</string>
++    <string name="skin_pupsy_desc">Golden eyes and velvet-black fur, inspired by Pupsy.</string>
++    <string name="skin_kira">Kira</string>
++    <string name="skin_kira_desc">Bright blue eyes and a fluffy husky coat, inspired by Kira.</string>
+     <string name="equipped">In use</string>
+     <string name="equip">Use</string>
+     <string name="not_enough_coins">Not enough coins</string>

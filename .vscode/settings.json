@@ -1,0 +1,46 @@
+{
+  "intellij.buildTool": "gradle",
+  "java.import.gradle.enabled": false,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.rulers": [
+    120
+  ],
+  "[kotlin]": {
+    "editor.defaultFormatter": "jetbrains.kotlin-server",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+  },
+  "[groovy]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+  },
+  "files.exclude": {
+    "**/.gradle": true,
+    "**/build": true,
+    "**/__pycache__": true
+  },
+  "search.exclude": {
+    "**/.gradle/**": true,
+    "**/build/**": true,
+    "art-review/generated/**": true,
+    "art-review/registered/**": true
+  },
+  "files.watcherExclude": {
+    "**/.gradle/**": true,
+    "**/build/**": true,
+    "**/art-review/generated/**": true,
+    "**/art-review/registered/**": true
+  },
+  "files.associations": {
+    "*.gradle": "groovy",
+    "*.toml": "toml"
+  },
+  "java.configuration.updateBuildConfiguration": "interactive"
+}

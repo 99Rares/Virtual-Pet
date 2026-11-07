@@ -1,0 +1,22 @@
+{
+  "device": "emulator-5554",
+  "physical_devices_changed": false,
+  "purchases": {
+    "pupsy": {
+      "price": 140,
+      "wallet_before": 1005,
+      "wallet_after": 865
+    },
+    "kira": {
+      "price": 160,
+      "wallet_before": 860,
+      "wallet_after": 700
+    }
+  },
+  "both_equipped": true,
+  "both_dance_and_catch_observed": true,
+  "kira_selection_survived_cold_restart": true,
+  "original_preferences_restored": true,
+  "restored_preferences_sha256": "9c329e84e09d5838891f88b80b2fc1b4534c4fa13a186090b1c3a5c90de3d8f6",
+  "display_overrides_reset": true
+}

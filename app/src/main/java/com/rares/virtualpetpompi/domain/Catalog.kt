@@ -12,8 +12,11 @@ data class Food(
     @StringRes val name: Int,
     @DrawableRes val image: Int,
     val category: FoodCategory,
+    /** Hunger points restored. */
     val fullness: Int,
     val price: Int,
+    /** 0 (empty calories) to 5 (whole food). Healthier food is better value per coin, see [Catalog.foods]. */
+    val health: Int,
 )
 
 /** How a room is drawn: the original artwork, or a scene painted in code. */
@@ -33,28 +36,33 @@ data class Room(
 )
 
 object Catalog {
+    /**
+     * Balance: the pet loses 3 hunger points an hour, so about 72 a day. Whole food costs roughly
+     * 0.4 coins per point (about 30 coins a day, affordable at ~3,000 steps on Normal); junk costs
+     * 1.0 to 2.0 coins per point and fills little, so it is never the efficient choice.
+     */
     val foods: List<Food> = listOf(
-        Food("rice", R.string.food_rice, R.drawable.rice, FoodCategory.BREAKFAST, 5, 5),
-        Food("cirese", R.string.food_cirese, R.drawable.cirese, FoodCategory.BREAKFAST, 1, 2),
-        Food("clatitecucafea", R.string.food_clatitecucafea, R.drawable.clatitecucafea, FoodCategory.BREAKFAST, 20, 16),
-        Food("englishbreakfast", R.string.food_englishbreakfast, R.drawable.englishbreakfast, FoodCategory.BREAKFAST, 26, 16),
-        Food("fruits1", R.string.food_fruits1, R.drawable.fruits1, FoodCategory.BREAKFAST, 15, 13),
-        Food("cafea", R.string.food_cafea, R.drawable.cafea, FoodCategory.BREAKFAST, 4, 4),
+        Food("rice", R.string.food_rice, R.drawable.rice, FoodCategory.BREAKFAST, 12, 5, 4),
+        Food("cherries", R.string.food_cherries, R.drawable.cherries, FoodCategory.BREAKFAST, 8, 3, 5),
+        Food("coffee_crepes", R.string.food_coffee_crepes, R.drawable.coffee_crepes, FoodCategory.BREAKFAST, 14, 15, 2),
+        Food("english_breakfast", R.string.food_english_breakfast, R.drawable.english_breakfast, FoodCategory.BREAKFAST, 28, 24, 2),
+        Food("fruit_plate", R.string.food_fruit_plate, R.drawable.fruit_plate, FoodCategory.BREAKFAST, 22, 9, 5),
+        Food("coffee", R.string.food_coffee, R.drawable.coffee, FoodCategory.BREAKFAST, 3, 4, 1),
 
-        Food("carbonara", R.string.food_carbonara, R.drawable.carbonara, FoodCategory.DINNER, 15, 25),
-        Food("salad", R.string.food_salad, R.drawable.salad, FoodCategory.DINNER, 8, 15),
-        Food("soup", R.string.food_soup, R.drawable.soup, FoodCategory.DINNER, 10, 12),
-        Food("steak1", R.string.food_steak1, R.drawable.steak1, FoodCategory.DINNER, 30, 35),
-        Food("steak2", R.string.food_steak2, R.drawable.steak2, FoodCategory.DINNER, 20, 22),
+        Food("carbonara", R.string.food_carbonara, R.drawable.carbonara, FoodCategory.DINNER, 26, 22, 2),
+        Food("salad", R.string.food_salad, R.drawable.salad, FoodCategory.DINNER, 18, 7, 5),
+        Food("soup", R.string.food_soup, R.drawable.soup, FoodCategory.DINNER, 20, 9, 4),
+        Food("steak", R.string.food_steak, R.drawable.steak, FoodCategory.DINNER, 32, 22, 3),
+        Food("grilled_steak", R.string.food_grilled_steak, R.drawable.grilled_steak, FoodCategory.DINNER, 30, 18, 4),
 
-        Food("cartofipai", R.string.food_cartofipai, R.drawable.cartofipai, FoodCategory.SNACKS, 7, 10),
-        Food("burger", R.string.food_burger, R.drawable.burger, FoodCategory.SNACKS, 20, 27),
-        Food("cola", R.string.food_cola, R.drawable.cola, FoodCategory.SNACKS, 4, 3),
-        Food("hotdog", R.string.food_hotdog, R.drawable.hotdog, FoodCategory.SNACKS, 16, 20),
-        Food("nuggets", R.string.food_nuggets, R.drawable.nuggets, FoodCategory.SNACKS, 10, 10),
-        Food("onionrings", R.string.food_onionrings, R.drawable.onionrings, FoodCategory.SNACKS, 9, 8),
-        Food("gogosi", R.string.food_gogosi, R.drawable.gogosi, FoodCategory.SNACKS, 12, 10),
-        Food("pizza", R.string.food_pizza, R.drawable.pizza, FoodCategory.SNACKS, 10, 9),
+        Food("straw_fries", R.string.food_straw_fries, R.drawable.straw_fries, FoodCategory.SNACKS, 8, 12, 1),
+        Food("burger", R.string.food_burger, R.drawable.burger, FoodCategory.SNACKS, 16, 20, 1),
+        Food("cola", R.string.food_cola, R.drawable.cola, FoodCategory.SNACKS, 2, 4, 0),
+        Food("hot_dog", R.string.food_hot_dog, R.drawable.hot_dog, FoodCategory.SNACKS, 12, 16, 1),
+        Food("nuggets", R.string.food_nuggets, R.drawable.nuggets, FoodCategory.SNACKS, 10, 14, 1),
+        Food("onion_rings", R.string.food_onion_rings, R.drawable.onion_rings, FoodCategory.SNACKS, 8, 12, 1),
+        Food("doughnuts", R.string.food_doughnuts, R.drawable.doughnuts, FoodCategory.SNACKS, 6, 10, 1),
+        Food("pizza", R.string.food_pizza, R.drawable.pizza, FoodCategory.SNACKS, 14, 14, 2),
     )
 
     val rooms: List<Room> = listOf(

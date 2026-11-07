@@ -77,7 +77,7 @@ class GameRepositoryTest {
     @Test
     fun cannotBuyWithoutCoins() = runBlocking {
         repo.onboard(Difficulty.NORMAL)   // 5 starter coins
-        assertEquals(BuyResult.NOT_ENOUGH_COINS, repo.buyFood("steak1"))   // costs 35
+        assertEquals(BuyResult.NOT_ENOUGH_COINS, repo.buyFood("steak"))   // costs 22
         assertEquals(5, state().coins)
         assertTrue(state().pantry.isEmpty())
     }
@@ -85,16 +85,16 @@ class GameRepositoryTest {
     @Test
     fun buyThenFeedRestoresHunger() = runBlocking {
         repo.onboard(Difficulty.NORMAL)
-        assertEquals(BuyResult.OK, repo.buyFood("rice"))                    // 5 coins, +5 fullness
+        assertEquals(BuyResult.OK, repo.buyFood("rice"))                    // 5 coins, +12 fullness
         assertEquals(0, state().coins)
         assertEquals(1, state().pantry["rice"])
 
-        now += 10 * PetRules.MILLIS_PER_HUNGER_POINT                         // 10 points hungrier
+        now += 30 * PetRules.MILLIS_PER_HUNGER_POINT                         // 30 points hungrier
         repo.settle()
-        assertEquals(90, state().pet.hunger)
+        assertEquals(70, state().pet.hunger)
 
         assertTrue(repo.feed("rice"))
-        assertEquals(95, state().pet.hunger)
+        assertEquals(82, state().pet.hunger)
         assertTrue(state().pantry.isEmpty())
         assertFalse("nothing left to eat", repo.feed("rice"))
     }
@@ -225,7 +225,7 @@ class GameRepositoryTest {
         repo.onboard(Difficulty.NORMAL)
         repo.recordCounter(1_000)
         repo.recordCounter(1_300)
-        repo.buyFood("cirese")
+        repo.buyFood("cherries")
         repo.restart()
         val s = state()
         assertFalse(s.isOnboarded)

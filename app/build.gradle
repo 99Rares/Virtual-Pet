@@ -8,6 +8,10 @@ android {
     namespace 'com.rares.virtualpetpompi'
     compileSdk 37
 
+    sourceSets {
+        androidTest.assets.srcDirs += "$projectDir/schemas"   // migration tests read the exported Room schemas
+    }
+
     defaultConfig {
         applicationId "com.rares.virtualpetpompi"
         minSdk 26
@@ -36,7 +40,16 @@ android {
     }
 
     testOptions {
+        // Required when editor project import realizes Compose preview tasks.
+        unitTests.includeAndroidResources = true
         unitTests.returnDefaultValues = true
+    }
+}
+
+// Language-server model import visits preview tasks for both build variants.
+androidComponents {
+    beforeVariants(selector().all()) { variant ->
+        variant.enableUnitTest = true
     }
 }
 

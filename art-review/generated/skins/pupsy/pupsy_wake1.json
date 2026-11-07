@@ -1,0 +1,12 @@
+{
+  "skin": "pupsy",
+  "frame": "wake1",
+  "pose": "asleep lying curled low on tummy, head resting down on forepaws toward viewer-left, hind foot visible on viewer-right, eyes closed",
+  "prompt": "Use case: style-transfer / identity-preserve. Asset: ONE transparent pupsy_wake1 game-animation sprite.\nImage 1 is the exact corresponding CLASSIC frame a1: use it strictly for pose, expression, composition, limb geometry and ground contact. Image 2 is the SELECTED pupsy idle1 character master: use it strictly for species, appearance, head/body design, fur/eye colors, facial identity, tail and rendering style.\nCreate pupsy in the EXACT pose and expression of image 1. Pose for this frame: asleep lying curled low on tummy, head resting down on forepaws toward viewer-left, hind foot visible on viewer-right, eyes closed.\nIdentity invariants: Pupsy, solid black cat, pointed triangular ears, golden-yellow irises with large black pupils, small charcoal nose, fine subtle whiskers, curved BLACK tail, charcoal paw pads. All fur including muzzle/chest stays BLACK; no white bib.\nThe master image 2 shows idle; DO NOT simply repeat that idle pose. Match the body/limb and eye/mouth state in image 1 for this named frame. Keep image 2's rounded chibi head and satin sculpted storybook style, soft upper-left lighting, warm shading, fine fur, and proportions. Adjust facial expression without changing its identity.\nKeep roughly the matching classic frame's body/head size, foot-contact center and baseline. Canvas portrait 600:650 ratio, full character with ample transparent margins; common horizontal foot center x=300 and lowest solid foot contact y=590 on a 600x650 export. Tail behind the body, within margins; no extra limbs, no floating feet. Both hands/ears/feet visible as required by the reference pose.\nTruly transparent background. No outside glow, ground shadow, floor, scene, props, text, guides, labels, watermark or collage. No panda features, no costumes. ONE frame only.",
+  "source": "/Users/rares/.codex/generated_images/01a1a423-c477-7483-81e4-0c73bcf841ca/exec-96274e6e-07ff-46dd-a4bf-eb23bea03264.png",
+  "references": [
+    "a1",
+    "pupsy_idle1"
+  ],
+  "mode": "built-in image_gen"
+}
